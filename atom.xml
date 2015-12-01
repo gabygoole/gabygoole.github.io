@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Gabygoole's blog]]></title>
+  <subtitle><![CDATA[poetry,beauty,romance,love,these are what we stay alive for.]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://gabygoole.github.io/"/>
+  <updated>2015-11-30T15:45:32.926Z</updated>
+  <id>http://gabygoole.github.io/</id>
+  
+  <author>
+    <name><![CDATA[GabyGoole]]></name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="http://gabygoole.github.io/2015/12/01/hello-world/"/>
+    <id>http://gabygoole.github.io/2015/12/01/hello-world/</id>
+    <published>2015-12-01T05:19:17.058Z</published>
+    <updated>2015-11-30T15:45:32.926Z</updated>
+    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[my new post]]></title>
+    <link href="http://gabygoole.github.io/2015/12/01/my-new-post/"/>
+    <id>http://gabygoole.github.io/2015/12/01/my-new-post/</id>
+    <published>2015-12-01T05:10:43.000Z</published>
+    <updated>2015-12-01T06:12:23.114Z</updated>
+    <content type="html"><![CDATA[<p>#这是我的第一篇博客文章</p>
+<p>这郭佳乐搭建的博客，稍后会学习markdown<br>谢谢</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>#这是我的第一篇博客文章</p>
+<p>这郭佳乐搭建的博客，稍后会学习markdown<br>谢谢</p>
+]]>
+    </summary>
+    
+      <category term="test" scheme="http://gabygoole.github.io/tags/test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[git学习 - guojiale23]]></title>
+    <link href="http://gabygoole.github.io/2015/11/30/git%E5%AD%A6%E4%B9%A0-guojiale23/"/>
+    <id>http://gabygoole.github.io/2015/11/30/git学习-guojiale23/</id>
+    <published>2015-11-30T14:52:00.000Z</published>
+    <updated>2015-12-01T16:41:42.319Z</updated>
+    <content type="html"><![CDATA[<p>【摘要】遇过的坑：使用GitBash安装Hexo（npm的环境变量配置）注意安装完成后添加Path环境变量，使npm命令生效。新版已经会自动配置Path1;C:\Program Files\nodejs\node_modules\npm第二坑：安装了旧版本的hexo，卸载：Q：如何卸载Hexo？A：3.0…. <a href="http://www.cnblogs.com/gabygoole/p/5008730.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/5008730" alt=""></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>【摘要】遇过的坑：使用GitBash安装Hexo（npm的环境变量配置）注意安装完成后添加Path环境变量，使npm命令生效。新版已经会自动配置Path1;C:\Program Files\nodejs\node_modules\npm第二坑：安装了旧版本的hexo，卸载：]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[android studio 环境配置 - guojiale23]]></title>
+    <link href="http://gabygoole.github.io/2015/11/30/android-studio-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-guojiale23/"/>
+    <id>http://gabygoole.github.io/2015/11/30/android-studio-环境配置-guojiale23/</id>
+    <published>2015-11-30T08:25:00.000Z</published>
+    <updated>2015-12-01T16:41:42.319Z</updated>
+    <content type="html"><![CDATA[<p>【摘要】遇到哪些坑:Gradle:configure project 卡死在此处Haxm is not installedhax is not working and emulator runs in emulation mode(Haxm安装之后)Genymotion插件安装及使用他们的解决方法：Grad… <a href="http://www.cnblogs.com/gabygoole/p/5007545.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/5007545" alt=""></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>【摘要】遇到哪些坑:Gradle:configure project 卡死在此处Haxm is not installedhax is not working and emulator runs in emulation mode(Haxm安装之后)Genymotion插件]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[栈用于2进制转换10进制 - guojiale23]]></title>
+    <link href="http://gabygoole.github.io/2015/11/17/%E6%A0%88%E7%94%A8%E4%BA%8E2%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A210%E8%BF%9B%E5%88%B6-guojiale23/"/>
+    <id>http://gabygoole.github.io/2015/11/17/栈用于2进制转换10进制-guojiale23/</id>
+    <published>2015-11-17T06:51:00.000Z</published>
+    <updated>2015-12-01T16:41:42.319Z</updated>
+    <content type="html"><![CDATA[<p>【摘要】#include #include #includestruct Node;typedef struct Node* ptrToNode;typedef ptrToNode Stack;int len = 0;struct Node{ char bin; Stack Next;};Sta… <a href="http://www.cnblogs.com/gabygoole/p/4971728.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/4971728" alt=""></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>【摘要】#include #include #includestruct Node;typedef struct Node* ptrToNode;typedef ptrToNode Stack;int len = 0;struct Node{ char bin; Stack]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[html和js - guojiale23]]></title>
+    <link href="http://gabygoole.github.io/2015/11/12/html%E5%92%8Cjs-guojiale23/"/>
+    <id>http://gabygoole.github.io/2015/11/12/html和js-guojiale23/</id>
+    <published>2015-11-12T06:59:00.000Z</published>
+    <updated>2015-12-01T16:41:42.325Z</updated>
+    <content type="html"><![CDATA[<p>【摘要】1.2.click me以上两种均可设置button////////////////////////////form的action属性表示表单的数据将会发送到这个地方浏览器的method属性GET和POST两种get：浏览器与表单处理服务器建立连接，然后将表单数据附加在action URL后，一次性… <a href="http://www.cnblogs.com/gabygoole/p/4959040.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/4959040" alt=""></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>【摘要】1.2.click me以上两种均可设置button////////////////////////////form的action属性表示表单的数据将会发送到这个地方浏览器的method属性GET和POST两种get：浏览器与表单处理服务器建立连接，然后将表单数据附]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[js - guojiale23]]></title>
+    <link href="http://gabygoole.github.io/2015/11/11/js-guojiale23/"/>
+    <id>http://gabygoole.github.io/2015/11/11/js-guojiale23/</id>
+    <published>2015-11-11T07:01:00.000Z</published>
+    <updated>2015-12-01T16:41:42.328Z</updated>
+    <content type="html"><![CDATA[<p>【摘要】1.仅用js的document.write来向文档写内容My First Web PageView Code2.但如果在文档加载完成后，类似于用某个按钮来document.write就会覆盖整个文档My First Web PageMy First Paragraph.点击这里View Code3…. <a href="http://www.cnblogs.com/gabygoole/p/4956055.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/4956055" alt=""></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>【摘要】1.仅用js的document.write来向文档写内容My First Web PageView Code2.但如果在文档加载完成后，类似于用某个按钮来document.write就会覆盖整个文档My First Web PageMy First Paragrap]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[文件读写 - guojiale23]]></title>
+    <link href="http://gabygoole.github.io/2015/11/09/%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99-guojiale23/"/>
+    <id>http://gabygoole.github.io/2015/11/09/文件读写-guojiale23/</id>
+    <published>2015-11-09T11:28:00.000Z</published>
+    <updated>2015-12-01T16:41:42.324Z</updated>
+    <content type="html"><![CDATA[<p>【摘要】File file = new File(“SongList.txt”);BufferedReader reader = new BufferedReader(new FileReader(file));String line = null;while((line = reader.readLine… <a href="http://www.cnblogs.com/gabygoole/p/4950858.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/4950858" alt=""></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>【摘要】File file = new File(“SongList.txt”);BufferedReader reader = new BufferedReader(new FileReader(file));String line = null;while((line ]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[java双线程调用同一个对象+锁 - guojiale23]]></title>
+    <link href="http://gabygoole.github.io/2015/11/08/java%E5%8F%8C%E7%BA%BF%E7%A8%8B%E8%B0%83%E7%94%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1-%E9%94%81-guojiale23/"/>
+    <id>http://gabygoole.github.io/2015/11/08/java双线程调用同一个对象-锁-guojiale23/</id>
+    <published>2015-11-08T14:13:00.000Z</published>
+    <updated>2015-12-01T16:41:42.324Z</updated>
+    <content type="html"><![CDATA[<p>【摘要】两个线程(Thread)调用同一个对象(使用Runnable接口的对象ThreadJob)误区：下一个线程会从上一个线程结束的地方开始正解：如public domd implements Runnable{ int blance = 0; public void run{ … <a href="http://www.cnblogs.com/gabygoole/p/4948543.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/4948543" alt=""></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>【摘要】两个线程(Thread)调用同一个对象(使用Runnable接口的对象ThreadJob)误区：下一个线程会从上一个线程结束的地方开始正解：如public domd implements Runnable{ int blance = 0; public void r]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[简易聊天客户端程序 - guojiale23]]></title>
+    <link href="http://gabygoole.github.io/2015/11/08/%E7%AE%80%E6%98%93%E8%81%8A%E5%A4%A9%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%A8%8B%E5%BA%8F-guojiale23/"/>
+    <id>http://gabygoole.github.io/2015/11/08/简易聊天客户端程序-guojiale23/</id>
+    <published>2015-11-08T10:01:00.000Z</published>
+    <updated>2015-12-01T16:41:42.324Z</updated>
+    <content type="html"><![CDATA[<p>【摘要】import java.io.<em>;import javax.swing.</em>;import java.net.<em>;import java.awt.</em>;import java.awt.event.*;public class simpleChatClientA { JTextArea incomi… <a href="http://www.cnblogs.com/gabygoole/p/4947746.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/4947746" alt=""></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>【摘要】import java.io.<em>;import javax.swing.</em>;import java.net.<em>;import java.awt.</em>;import java.awt.event.*;public class simpleCh]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[java 多线程使用方法及Socket的使用 - guojiale23]]></title>
+    <link href="http://gabygoole.github.io/2015/11/06/java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8ASocket%E7%9A%84%E4%BD%BF%E7%94%A8-guojiale23/"/>
+    <id>http://gabygoole.github.io/2015/11/06/java-多线程使用方法及Socket的使用-guojiale23/</id>
+    <published>2015-11-06T13:54:00.000Z</published>
+    <updated>2015-12-01T16:41:42.329Z</updated>
+    <content type="html"><![CDATA[<p>【摘要】public class newThread implements Runnable{ public void run(){ dosome(); } public void dosome(){ System.out.println(“ss… <a href="http://www.cnblogs.com/gabygoole/p/4943744.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/4943744" alt=""></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>【摘要】public class newThread implements Runnable{ public void run(){ dosome(); } public void dosome(){ System.out.println(“ss… <a href="htt]]>
+    </summary>
+    
+  </entry>
+  
+</feed>
