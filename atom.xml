@@ -4,7 +4,7 @@
   <subtitle><![CDATA[poetry,beauty,romance,love,these are what we stay alive for.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://gabygoole.github.io/"/>
-  <updated>2015-11-30T15:45:32.926Z</updated>
+  <updated>2015-12-02T12:17:50.173Z</updated>
   <id>http://gabygoole.github.io/</id>
   
   <author>
@@ -15,169 +15,55 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <link href="http://gabygoole.github.io/2015/12/01/hello-world/"/>
-    <id>http://gabygoole.github.io/2015/12/01/hello-world/</id>
-    <published>2015-12-01T05:19:17.058Z</published>
-    <updated>2015-11-30T15:45:32.926Z</updated>
-    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <title><![CDATA[使用GitHub和Hexo搭建Blog]]></title>
+    <link href="http://gabygoole.github.io/2015/12/02/%E4%BD%BF%E7%94%A8GitHub%E5%92%8CHexo%E6%90%AD%E5%BB%BABlog/"/>
+    <id>http://gabygoole.github.io/2015/12/02/使用GitHub和Hexo搭建Blog/</id>
+    <published>2015-12-02T08:53:00.000Z</published>
+    <updated>2015-12-02T12:17:50.173Z</updated>
+    <content type="html"><![CDATA[<h2 id="Hexo是什么？"><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>是什么？</h2><p><code>A fast, simple &amp; powerful blog framework</code><br>Hexo 是一个快速/简单/强有力的博客框架</p>
+<h2 id="基础搭建过程">基础搭建过程</h2><h3 id="1-_安装node-js_和_git">1. 安装<a href="https://nodejs.org/en/" target="_blank" rel="external">node.js</a> 和 <a href="https://git-scm.com/downloads" target="_blank" rel="external">git</a></h3><ul>
+<li>npm环境变量配置：node.js中自带npm，所以安装好后在Path处配置环境变量，通常node.js会自动配置：<code>C:\Program Files\nodejs\</code>，但就我遇到的情况，还得更具体到npm的位置，npm命令才能使用，即：<code>C:\Program Files\nodejs\node_modules\npm</code></li>
+<li>下载git后，git要先自报家门，参见<a href="http://www.cnblogs.com/gabygoole/p/4972633.html" target="_blank" rel="external">gabygoole’s 博客</a></li>
+</ul>
+<h3 id="2-_安装Hexo,并hexo一个文件夹">2. 安装Hexo,并hexo一个文件夹</h3><ul>
+<li>桌面上打开<code>git bash</code>输入<code>$ npm install -g hexo-cli</code></li>
+<li>任意盘下创建你的blog文件夹,在该文件夹根目录下启动<code>git bash</code><br>输入：<code>$hexo init</code></li>
+</ul>
+<h3 id="3-_设定主题">3. 设定<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">主题</a></h3><ul>
+<li>本博客采用<a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jackman</a></li>
+<li>修改配置文件参照<a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">jark’s blog</a></li>
+<li>注意： 在博客根目录下启用<code>git bash</code>输入<code>$git clone https://github.com/wuchong/jacman.git themes/jacman</code><br>其意在将主题clone到博客theme文件夹下，并命名jacman</li>
+</ul>
+<h3 id="4-_关于博客目录下文件组成">4. 关于博客目录下<a href="https://hexo.io/docs/setup.html" target="_blank" rel="external">文件组成</a></h3><p>.<br>├──node_modules<br>├── _config.yml<br>├── package.json<br>├── scaffolds<br>├── scripts<br>├── source<br>|   ├── _drafts<br>|   └── _posts<br>└── themes</p>
+<ul>
+<li>_config.yml<br>该文件为网站的配置文件，依照框架的规定，进行配置即可，参见<a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">jark’s blog</a></li>
+<li>scaffolds<br>每当<code>$ hexo new [layout] &lt;filename&gt;</code>，都会基于<code>scaffolds</code>文件来创建文件，在<code>_config.yml</code>中设定的<code>default_layout: post</code>，默认即是里面的post方式</li>
+<li>themes<br>该文件夹下放置博客主题</li>
+<li>source<br>即使在根目录下<code>new</code>，也会把文件创建到<code>source/_posts</code>下</li>
+<li>node_modules<br>该文件夹下存放npm的插件</li>
+</ul>
+<h3 id="5-_可能遇到的意外情况">5. 可能遇到的意外情况</h3><ul>
+<li>以下操作都在blog目录下操作</li>
+<li>第一次generate前执行<code>$npm install hexo-deployer-git --save</code>，然后才能generate和deploy</li>
+<li>先有了<code>hexo-migrator-rss</code>这个插件才能迁移<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">Gaby</span><span class="variable">@Gaby</span>-<span class="constant">PC</span> <span class="constant">MINGW64</span> /c/blog</span><br><span class="line"><span class="variable">$ </span>npm install hexo-migrator-rss --save</span><br><span class="line">hexo-migrator-rss<span class="variable">@0</span>.<span class="number">1.2</span> node_modules\hexo-migrator-rss</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>后安装<code>hexo-generator-feed</code>插件，别人能订阅我们搭建的博客，我们也能从自己其他博客通过RSS迁移我们文章到我们搭建的博客<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Gaby@Gaby-PC MINGW64 /c/blog</span><br><span class="line">$ npm install hexo-generator-feed --save</span><br><span class="line">hexo-generator-feed@<span class="number">1.0</span><span class="number">.3</span> node_modules\hexo-generator-feed</span><br><span class="line">├── object-assign@<span class="number">3.0</span><span class="number">.0</span></span><br><span class="line">└── ejs@<span class="number">1.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure></p>
+<p>安装以上插件后执行：<code>$ hexo migrate rss &lt;source&gt;</code> source即为xml路径(网址或者本地路径)</p>
+<p>若有任一个插件未安装都将报错如下：<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Gaby@Gaby-PC MINGW64 /c/blog</span><br><span class="line">$ hexo migrate rss http://feed.cnblogs.com/blog/u/226073/rss</span><br><span class="line">undefined migrator plugin is<span class="instruction"> not </span>installed.</span><br><span class="line"></span><br><span class="line">Installed migrator plugins:</span><br><span class="line"></span><br><span class="line">For more help, you can<span class="instruction"> check </span>the online docs: http://hexo.io/</span><br></pre></td></tr></table></figure></p>
+<p>安装以上<br><code>http://feed.cnblogs.com/blog/u/226073/rss</code><br>这个是<a href="http://www.cnblogs.com/gabygoole/" target="_blank" rel="external">我的博客园博客</a>首页的订阅按钮下的xml地址</p>
+<h3 id="6-_参考资源">6. 参考资源</h3><ul>
+<li><a href="http://zipperary.com/2013/05/28/hexo-guide-2/" target="_blank" rel="external">zipperary’s hexo教程</a></li>
+<li><a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown" target="_blank" rel="external">markdown教程</a></li>
+<li><a href="https://hexo.io/docs/" target="_blank" rel="external">hexo文档</a></li>
+<li><a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">jark’s blog</a></li>
+</ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    <![CDATA[<h2 id="Hexo是什么？"><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>是什么？</h2><p><code>A fast, simple &amp; powerful blog fra]]>
     </summary>
     
-  </entry>
-  
-  <entry>
-    <title><![CDATA[my new post]]></title>
-    <link href="http://gabygoole.github.io/2015/12/01/my-new-post/"/>
-    <id>http://gabygoole.github.io/2015/12/01/my-new-post/</id>
-    <published>2015-12-01T05:10:43.000Z</published>
-    <updated>2015-12-01T06:12:23.114Z</updated>
-    <content type="html"><![CDATA[<p>#这是我的第一篇博客文章</p>
-<p>这郭佳乐搭建的博客，稍后会学习markdown<br>谢谢</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>#这是我的第一篇博客文章</p>
-<p>这郭佳乐搭建的博客，稍后会学习markdown<br>谢谢</p>
-]]>
-    </summary>
-    
-      <category term="test" scheme="http://gabygoole.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[git学习 - guojiale23]]></title>
-    <link href="http://gabygoole.github.io/2015/11/30/git%E5%AD%A6%E4%B9%A0-guojiale23/"/>
-    <id>http://gabygoole.github.io/2015/11/30/git学习-guojiale23/</id>
-    <published>2015-11-30T14:52:00.000Z</published>
-    <updated>2015-12-01T16:41:42.319Z</updated>
-    <content type="html"><![CDATA[<p>【摘要】遇过的坑：使用GitBash安装Hexo（npm的环境变量配置）注意安装完成后添加Path环境变量，使npm命令生效。新版已经会自动配置Path1;C:\Program Files\nodejs\node_modules\npm第二坑：安装了旧版本的hexo，卸载：Q：如何卸载Hexo？A：3.0…. <a href="http://www.cnblogs.com/gabygoole/p/5008730.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/5008730" alt=""></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>【摘要】遇过的坑：使用GitBash安装Hexo（npm的环境变量配置）注意安装完成后添加Path环境变量，使npm命令生效。新版已经会自动配置Path1;C:\Program Files\nodejs\node_modules\npm第二坑：安装了旧版本的hexo，卸载：]]>
-    </summary>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[android studio 环境配置 - guojiale23]]></title>
-    <link href="http://gabygoole.github.io/2015/11/30/android-studio-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-guojiale23/"/>
-    <id>http://gabygoole.github.io/2015/11/30/android-studio-环境配置-guojiale23/</id>
-    <published>2015-11-30T08:25:00.000Z</published>
-    <updated>2015-12-01T16:41:42.319Z</updated>
-    <content type="html"><![CDATA[<p>【摘要】遇到哪些坑:Gradle:configure project 卡死在此处Haxm is not installedhax is not working and emulator runs in emulation mode(Haxm安装之后)Genymotion插件安装及使用他们的解决方法：Grad… <a href="http://www.cnblogs.com/gabygoole/p/5007545.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/5007545" alt=""></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>【摘要】遇到哪些坑:Gradle:configure project 卡死在此处Haxm is not installedhax is not working and emulator runs in emulation mode(Haxm安装之后)Genymotion插件]]>
-    </summary>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[栈用于2进制转换10进制 - guojiale23]]></title>
-    <link href="http://gabygoole.github.io/2015/11/17/%E6%A0%88%E7%94%A8%E4%BA%8E2%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A210%E8%BF%9B%E5%88%B6-guojiale23/"/>
-    <id>http://gabygoole.github.io/2015/11/17/栈用于2进制转换10进制-guojiale23/</id>
-    <published>2015-11-17T06:51:00.000Z</published>
-    <updated>2015-12-01T16:41:42.319Z</updated>
-    <content type="html"><![CDATA[<p>【摘要】#include #include #includestruct Node;typedef struct Node* ptrToNode;typedef ptrToNode Stack;int len = 0;struct Node{ char bin; Stack Next;};Sta… <a href="http://www.cnblogs.com/gabygoole/p/4971728.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/4971728" alt=""></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>【摘要】#include #include #includestruct Node;typedef struct Node* ptrToNode;typedef ptrToNode Stack;int len = 0;struct Node{ char bin; Stack]]>
-    </summary>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[html和js - guojiale23]]></title>
-    <link href="http://gabygoole.github.io/2015/11/12/html%E5%92%8Cjs-guojiale23/"/>
-    <id>http://gabygoole.github.io/2015/11/12/html和js-guojiale23/</id>
-    <published>2015-11-12T06:59:00.000Z</published>
-    <updated>2015-12-01T16:41:42.325Z</updated>
-    <content type="html"><![CDATA[<p>【摘要】1.2.click me以上两种均可设置button////////////////////////////form的action属性表示表单的数据将会发送到这个地方浏览器的method属性GET和POST两种get：浏览器与表单处理服务器建立连接，然后将表单数据附加在action URL后，一次性… <a href="http://www.cnblogs.com/gabygoole/p/4959040.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/4959040" alt=""></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>【摘要】1.2.click me以上两种均可设置button////////////////////////////form的action属性表示表单的数据将会发送到这个地方浏览器的method属性GET和POST两种get：浏览器与表单处理服务器建立连接，然后将表单数据附]]>
-    </summary>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[js - guojiale23]]></title>
-    <link href="http://gabygoole.github.io/2015/11/11/js-guojiale23/"/>
-    <id>http://gabygoole.github.io/2015/11/11/js-guojiale23/</id>
-    <published>2015-11-11T07:01:00.000Z</published>
-    <updated>2015-12-01T16:41:42.328Z</updated>
-    <content type="html"><![CDATA[<p>【摘要】1.仅用js的document.write来向文档写内容My First Web PageView Code2.但如果在文档加载完成后，类似于用某个按钮来document.write就会覆盖整个文档My First Web PageMy First Paragraph.点击这里View Code3…. <a href="http://www.cnblogs.com/gabygoole/p/4956055.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/4956055" alt=""></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>【摘要】1.仅用js的document.write来向文档写内容My First Web PageView Code2.但如果在文档加载完成后，类似于用某个按钮来document.write就会覆盖整个文档My First Web PageMy First Paragrap]]>
-    </summary>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[文件读写 - guojiale23]]></title>
-    <link href="http://gabygoole.github.io/2015/11/09/%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99-guojiale23/"/>
-    <id>http://gabygoole.github.io/2015/11/09/文件读写-guojiale23/</id>
-    <published>2015-11-09T11:28:00.000Z</published>
-    <updated>2015-12-01T16:41:42.324Z</updated>
-    <content type="html"><![CDATA[<p>【摘要】File file = new File(“SongList.txt”);BufferedReader reader = new BufferedReader(new FileReader(file));String line = null;while((line = reader.readLine… <a href="http://www.cnblogs.com/gabygoole/p/4950858.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/4950858" alt=""></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>【摘要】File file = new File(“SongList.txt”);BufferedReader reader = new BufferedReader(new FileReader(file));String line = null;while((line ]]>
-    </summary>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[java双线程调用同一个对象+锁 - guojiale23]]></title>
-    <link href="http://gabygoole.github.io/2015/11/08/java%E5%8F%8C%E7%BA%BF%E7%A8%8B%E8%B0%83%E7%94%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1-%E9%94%81-guojiale23/"/>
-    <id>http://gabygoole.github.io/2015/11/08/java双线程调用同一个对象-锁-guojiale23/</id>
-    <published>2015-11-08T14:13:00.000Z</published>
-    <updated>2015-12-01T16:41:42.324Z</updated>
-    <content type="html"><![CDATA[<p>【摘要】两个线程(Thread)调用同一个对象(使用Runnable接口的对象ThreadJob)误区：下一个线程会从上一个线程结束的地方开始正解：如public domd implements Runnable{ int blance = 0; public void run{ … <a href="http://www.cnblogs.com/gabygoole/p/4948543.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/4948543" alt=""></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>【摘要】两个线程(Thread)调用同一个对象(使用Runnable接口的对象ThreadJob)误区：下一个线程会从上一个线程结束的地方开始正解：如public domd implements Runnable{ int blance = 0; public void r]]>
-    </summary>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[简易聊天客户端程序 - guojiale23]]></title>
-    <link href="http://gabygoole.github.io/2015/11/08/%E7%AE%80%E6%98%93%E8%81%8A%E5%A4%A9%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%A8%8B%E5%BA%8F-guojiale23/"/>
-    <id>http://gabygoole.github.io/2015/11/08/简易聊天客户端程序-guojiale23/</id>
-    <published>2015-11-08T10:01:00.000Z</published>
-    <updated>2015-12-01T16:41:42.324Z</updated>
-    <content type="html"><![CDATA[<p>【摘要】import java.io.<em>;import javax.swing.</em>;import java.net.<em>;import java.awt.</em>;import java.awt.event.*;public class simpleChatClientA { JTextArea incomi… <a href="http://www.cnblogs.com/gabygoole/p/4947746.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/4947746" alt=""></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>【摘要】import java.io.<em>;import javax.swing.</em>;import java.net.<em>;import java.awt.</em>;import java.awt.event.*;public class simpleCh]]>
-    </summary>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[java 多线程使用方法及Socket的使用 - guojiale23]]></title>
-    <link href="http://gabygoole.github.io/2015/11/06/java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8ASocket%E7%9A%84%E4%BD%BF%E7%94%A8-guojiale23/"/>
-    <id>http://gabygoole.github.io/2015/11/06/java-多线程使用方法及Socket的使用-guojiale23/</id>
-    <published>2015-11-06T13:54:00.000Z</published>
-    <updated>2015-12-01T16:41:42.329Z</updated>
-    <content type="html"><![CDATA[<p>【摘要】public class newThread implements Runnable{ public void run(){ dosome(); } public void dosome(){ System.out.println(“ss… <a href="http://www.cnblogs.com/gabygoole/p/4943744.html" target="_blank" rel="external">阅读全文</a><img src="http://counter.cnblogs.com/blog/rss/4943744" alt=""></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>【摘要】public class newThread implements Runnable{ public void run(){ dosome(); } public void dosome(){ System.out.println(“ss… <a href="htt]]>
-    </summary>
+      <category term="hexo" scheme="http://gabygoole.github.io/tags/hexo/"/>
     
   </entry>
   
