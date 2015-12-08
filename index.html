@@ -81,6 +81,74 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/12/08/探究adroid活动/" title="探究adroid活动" itemprop="url">探究adroid活动</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-08T14:19:38.000Z" itemprop="datePublished"> 发表于 2015-12-08</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Intent用处">Intent用处</h2><p>隐式使用intent，在被启动的activity的manifest文件配置该活动<action> <category><br>在出发活动建立intent时就写好<action>和<category></p>
+<p>网页浏览器用new intent 时用Intent.ACTION_VIEW<br>其在activity的manifest文件下的intent filter值为android.intent.action.VIEW<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="type">intent</span> = new <span class="type">Intent</span>(<span class="type">Intent</span>.ACTION_VIEW);//设置<span class="keyword">action</span></span><br><span class="line"><span class="type">intent</span>.setData(Uri.parse(<span class="string">"http://www.baidu.com"</span>));//将网址解析成一个Uri对象</span><br><span class="line">startActivity(<span class="type">intent</span>)//该方法会自动加上category为默认的android.<span class="type">intent</span>.category.<span class="keyword">DEFAULT</span></span><br></pre></td></tr></table></figure></p>
+<p>调用系统内置的拨号界面，new intent 时使用Intent.ACTION_DIAL<br>其值为android.intent.action.</p>
+<h2 id="退出一个活动回传数据">退出一个活动回传数据</h2><p>在一个活动中使用startActivityForResult（intent,requestcode）,在被启动的Activity中setResult（resultcode,intent ）</p>
+<p>当界面finish或者back时，会回调启动方activity的onActivityResult（requestcode,resultcode ,Intent data）方法</p>
+<p>这个requestcode是启动方activity，在启动其他activity时，所用到的请求码，用于标识是哪个活动回调了这个方法,resultcode是被调用活动返回的结果码，通常RESULT_OK/RESULT_CANCEL</p>
+<p>Intent data即为被调用活动 返回的intent</p>
+<p>data.getStringExtra（”键”）</p>
+<p>intent.putExtra(“键”，“键值”)</p>
+<p>在覆写onBackPressed 去掉 ，能起到应该要有的输出的效果<br>super.onBackPressed();<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/12/08/探究adroid活动/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/08/探究adroid活动/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/08/探究adroid活动/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/12/02/使用GitHub和Hexo搭建Blog/" title="使用GitHub和Hexo搭建Blog" itemprop="url">使用GitHub和Hexo搭建Blog</a>
   </h1>
   <p class="article-author">By
@@ -160,6 +228,10 @@
 				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
 			
 		
+			
+				<li><a href="/tags/android/" title="android">android<sup>1</sup></a></li>
+			
+		
 		</ul>
 </div>
 
@@ -199,20 +271,20 @@
 	 
 	<div class="social-font" class="clearfix">
 		
-		<a href="http://weibo.com/http://weibo.com/2232962361/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" class="icon-weibo" title="微博"></a>
+		<a href="http://weibo.com/2232962361/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" class="icon-weibo" title="微博"></a>
 		
 		
-		<a href="https://github.com/https://github.com/gabygoole" target="_blank" class="icon-github" title="github"></a>
+		<a href="https://github.com/gabygoole" target="_blank" class="icon-github" title="github"></a>
 		
 		
-		<a href="http://stackoverflow.com/users/http://stackoverflow.com/users/5617711/%E9%83%AD%E4%BD%B3%E4%B9%90" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
-		
-		
-		
+		<a href="http://stackoverflow.com/users/5617711/%E9%83%AD%E4%BD%B3%E4%B9%90" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
 		
 		
 		
-		<a href="http://www.zhihu.com/people/http://www.zhihu.com/people/jia-guo-67" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="http://www.zhihu.com/people/jia-guo-67" target="_blank" class="icon-zhihu" title="知乎"></a>
 		
 		
 		

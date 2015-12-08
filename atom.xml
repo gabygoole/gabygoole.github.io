@@ -4,7 +4,7 @@
   <subtitle><![CDATA[poetry,beauty,romance,love,these are what we stay alive for.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://gabygoole.github.io/"/>
-  <updated>2015-12-03T02:40:11.293Z</updated>
+  <updated>2015-12-08T14:47:12.075Z</updated>
   <id>http://gabygoole.github.io/</id>
   
   <author>
@@ -13,6 +13,76 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[探究adroid活动]]></title>
+    <link href="http://gabygoole.github.io/2015/12/08/%E6%8E%A2%E7%A9%B6adroid%E6%B4%BB%E5%8A%A8/"/>
+    <id>http://gabygoole.github.io/2015/12/08/探究adroid活动/</id>
+    <published>2015-12-08T14:19:38.000Z</published>
+    <updated>2015-12-08T14:47:12.075Z</updated>
+    <content type="html"><![CDATA[<h2 id="Intent用处">Intent用处</h2><p>隐式使用intent，在被启动的activity的manifest文件配置该活动<action> <category><br>在出发活动建立intent时就写好<action>和<category></category></action></category></action></p>
+<p>网页浏览器用new intent 时用Intent.ACTION_VIEW<br>其在activity的manifest文件下的intent filter值为android.intent.action.VIEW<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="type">intent</span> = new <span class="type">Intent</span>(<span class="type">Intent</span>.ACTION_VIEW);//设置<span class="keyword">action</span></span><br><span class="line"><span class="type">intent</span>.setData(Uri.parse(<span class="string">"http://www.baidu.com"</span>));//将网址解析成一个Uri对象</span><br><span class="line">startActivity(<span class="type">intent</span>)//该方法会自动加上category为默认的android.<span class="type">intent</span>.category.<span class="keyword">DEFAULT</span></span><br></pre></td></tr></table></figure></p>
+<p>调用系统内置的拨号界面，new intent 时使用Intent.ACTION_DIAL<br>其值为android.intent.action.</p>
+<h2 id="退出一个活动回传数据">退出一个活动回传数据</h2><p>在一个活动中使用startActivityForResult（intent,requestcode）,在被启动的Activity中setResult（resultcode,intent ）</p>
+<p>当界面finish或者back时，会回调启动方activity的onActivityResult（requestcode,resultcode ,Intent data）方法</p>
+<p>这个requestcode是启动方activity，在启动其他activity时，所用到的请求码，用于标识是哪个活动回调了这个方法,resultcode是被调用活动返回的结果码，通常RESULT_OK/RESULT_CANCEL</p>
+<p>Intent data即为被调用活动 返回的intent</p>
+<p>data.getStringExtra（”键”）</p>
+<p>intent.putExtra(“键”，“键值”)</p>
+<p>在覆写onBackPressed 去掉 ，能起到应该要有的输出的效果<br>super.onBackPressed();<br><a id="more"></a></p>
+<h2 id="活动的生命周期">活动的生命周期</h2><h3 id="1-_活动生命周期分类：">1. 活动生命周期分类：</h3><p>完整生存期：onCreate&lt;-&gt;onDestroy<br>可见生存期：onStart&lt;-&gt;onStop<br>前台生存期：onResume&lt;-&gt;onPause<br>出现rendering problems时，可更改主题或降低android版本，均可在在手机preview上方更改</p>
+<h3 id="2-_对话框活动和普通活动区别">2. 对话框活动和普通活动区别</h3><ul>
+<li>当从A活动跳转到B活动，A活动会执行onPause-&gt;onStop,如果此时返回A，A活动执行onRestart-&gt;onStart-&gt;onResume</li>
+<li>如果从A活动跳转到对话框类型的B活动，A活动只会执行onPause,返回时执行onResume</li>
+</ul>
+<p>在活动完全不可见(这里的可见与否，指的是用户还能不能看到.当B活动覆盖A活动时，A活动那个就不可见了.而A活动弹出对话框B，A活动依旧可见，就只会执行onPause())的时候执行onStop()</p>
+<p>要将一个活动注册为对话框格式，只需在manifest文件下对活动进行注册<br><code>&lt;activity android:name=&quot;.DialogActivity&quot; android:theme=&quot;@android:style/Theme.Dialog&quot;&gt;&lt;/activity&gt;</code></p>
+<h3 id="3-_活动在意外情况下被回收后，返回该活动，该如何保存原有的数据？">3. 活动在意外情况下被回收后，返回该活动，该如何保存原有的数据？</h3><p>如果A活动跳转到B活动，A活动会onPause-&gt;onStop,这时候系统如果内存不足，A活动就会被回收，若此时从B活动退回A活动，就不会再执行A活动的onStart（因为活动已被回收），现在执行onCreate，新建活动,为了能呈现活动被回收前的的状态/数据，Activity里面有个method–onSaveInstanceState(Bundle outstate),这个方法能保证在活动被回收前将数据/状态存储在outstate这个Bundle中，待到该活动被回收后，重新onCreate(Bundle savedInstanceState),savedInstanceState就不再为null，而是outstate这个bundle，所以在onCreate(Bundle savedInstanceState)函数中加入判断savedInstanceState是否为空可<br>预防活动在系统内存不够时被回收，而返回该活动后原有的数据不在的情况</p>
+<h3 id="4-_总结下，Intent传入数据和取用数据的方法：">4. 总结下，Intent传入数据和取用数据的方法：</h3><p>Intent intent = new Intent();<br>intent.putExtra(“键”，”键值”);<br>intent.getStringExtra（”键”）;<br>Bundle传入数据和取用数据的方法：<br>Bundle bundle = new Bundle();<br>bundle.putString(“键”,”键值”);<br>bundle.getString(“键”);</p>
+<h2 id="活动的状态：">活动的状态：</h2><h3 id="1-_standard">1. standard</h3><p>可在Manifest文件下配置活动的启动模式，默认的是standard，每次启动都会产生创建一个新的实例</p>
+<h3 id="2-_singleTop">2. singleTop</h3><p>如果发现返回栈的栈顶已经是该活动，就不会再创建新的活动实例。若从A跳转到B活动，此时B活动位于栈顶，若此时再按下按钮到A活动，A活动会被创建新的实例，因为A不在栈顶</p>
+<h3 id="3-_singleTask">3. singleTask</h3><p>从A活动跳转到B活动，再从B跳转到A，系统首先检查返回栈，如果有该活动，其上所有活动全出栈.需要特别注意的是，在B-&gt;A过程实地运行时，过程：是A先restart,后B onDestroy</p>
+<p>是通过直接出栈其上活动来重启该活动</p>
+<h3 id="4-_singleInstance">4. singleInstance</h3><p>在一个应用程序中，如果某个活动启动模式是singleInstance,该活动会单独存在于一个返回栈（getTaskId()可用于该活动存在的返回栈编号），该活动也可被其他应用程序使用，<br>应用程序中其他活动同属于一个返回栈</p>
+<p>例：A(返回栈1)-&gt;B(返回栈2)-&gt;C(返回栈1)<br>点击Back键返回A活动，再Back，到B活动，返回栈1空，再Back，返回栈2空，即退出程序</p>
+<h2 id="关于活动的几个小窍门：">关于活动的几个小窍门：</h2><h3 id="1-_接手一个项目，不知道界面对应的活动是哪一个，方法:">1. 接手一个项目，不知道界面对应的活动是哪一个，方法:</h3><p>新建一个class让他继承自Activity，无需再Manifest文件中注册<br>让其余活动继承自该class。这些活动间接继承自Activity，依旧拥有Activity的功能<br>只是每个活动onCreate(),都会去执行父类的onCreate函数，进而打印出该活动的类名</p>
+<h3 id="2-_随时随地退出程序：">2. 随时随地退出程序：</h3><p>注意：按下home键，活动会执行oonPause-&gt;onStop,因为活动都完全不可见了，这叫做程序被挂起</p>
+<p>建立一个集合类ActivityCollector(),对所有的活动进行管理，这里面所有方法和实例变量均采用public static,其他类可直接引用</p>
+<p>通过建立一个继承自Activity的基类，再让其他的三个活动继承自该基类，在该基类的onCreate()函数代码如下：<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        ActivityCollector.addActivity(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>那么每一个活动的onCreate()函数均执行其父类的onCreate()函数<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br></pre></td></tr></table></figure></p>
+<p>在每个活动创建过程中，均会被集合类ActivityCollector()给收入其activities集合中，附上ActivityCollector的代码：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ActivityCollector集合类的代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ActivityCollector</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Activity&gt; activities = <span class="keyword">new</span> ArrayList&lt;Activity&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addActivity</span>(<span class="params">Activity activity</span>) </span>&#123;</span><br><span class="line">        activities.add(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeActivity</span>(<span class="params">Activity activity</span>) </span>&#123;</span><br><span class="line">        activities.remove(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">finishAll</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Activity activity : activities) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!activity.isFinishing()) &#123;</span><br><span class="line">                activity.finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同理：在每个活动即将被销毁，执行该活动的onDestroy()，<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br></pre></td></tr></table></figure></p>
+<p>即会调用父类的onDestroy()如下：<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父类的onDestroy</span></span><br><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        ActivityCollector.removeActivity(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>将此活动从Collector中移除</p>
+<p>注意：List中存放的是活动的引用，可直接调用finish()方法，结束该活动<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//需要注意的语法</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;Activity&gt; activities = <span class="keyword">new</span> ArrayList&lt;Activity&gt;();</span><br><span class="line"><span class="keyword">for</span>(Activity <span class="string">activity:</span>activities)</span><br></pre></td></tr></table></figure></p>
+<h2 id="我的理解：">我的理解：</h2><p><code>class FirstActivity extends Activity</code>表明了这是一种继承自Activity的类，返回栈里的一个个活动相当于是对象。对继承自Activity的类在Manifest里面注册该种活动类应该以怎样的LaunchMode启动。</p>
+<h2 id="注意事项">注意事项</h2><p>Gradle build finished with 1 error(s) in 9s 110ms<br>出现这样的错误，通常可能是模拟器开着同样的活动，退出活动，重新运行</p>
+<p>要注意setOnclickListener的格式（括号分号）</p>
+<p><code>android studio</code>不稳定，遇到<code>android.content.ActivityNotFoundException: Unable to find explicit activity class {com.example.gaby.activitylifecycletest/com.example.gaby.activitylifecycletest.NormalActivity}; have you declared this activity in your AndroidManifest.xml?</code><br>提示在manifest文件下找不到活动，如果确认程序无误，重新run一次就好</p>
+<p>在一个类中新建一个常量<br>private static final String TAG = “MAINACTIVITY”</p>
+<h2 id="关于活动的几点沉思：">关于活动的几点沉思：</h2><ul>
+<li>当我们点击A活动的Back键，活动就执行onDestroy(onDestroy是在活动被销毁之前调用)，执行后活动状态变为销毁状态 </li>
+<li>只要按了Back键，虽然打开后台还有那个app，可是这时候启动这个activity又得onCreate()，因为在按下Back键后，活动已执行onDestroy，状态变为销毁状态（系统倾向于回收）</li>
+<li>点击Back键的过程是让栈顶活动出栈的过程，每个活动都会执行onPause-&gt;onStop-&gt;onDestroy</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="Intent用处">Intent用处</h2><p>隐式使用intent，在被启动的activity的manifest文件配置该活动<action> <category><br>在出发活动建立intent时就写好<action>和<category></p>
+<p>网页浏览器用new intent 时用Intent.ACTION_VIEW<br>其在activity的manifest文件下的intent filter值为android.intent.action.VIEW<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="type">intent</span> = new <span class="type">Intent</span>(<span class="type">Intent</span>.ACTION_VIEW);//设置<span class="keyword">action</span></span><br><span class="line"><span class="type">intent</span>.setData(Uri.parse(<span class="string">"http://www.baidu.com"</span>));//将网址解析成一个Uri对象</span><br><span class="line">startActivity(<span class="type">intent</span>)//该方法会自动加上category为默认的android.<span class="type">intent</span>.category.<span class="keyword">DEFAULT</span></span><br></pre></td></tr></table></figure></p>
+<p>调用系统内置的拨号界面，new intent 时使用Intent.ACTION_DIAL<br>其值为android.intent.action.</p>
+<h2 id="退出一个活动回传数据">退出一个活动回传数据</h2><p>在一个活动中使用startActivityForResult（intent,requestcode）,在被启动的Activity中setResult（resultcode,intent ）</p>
+<p>当界面finish或者back时，会回调启动方activity的onActivityResult（requestcode,resultcode ,Intent data）方法</p>
+<p>这个requestcode是启动方activity，在启动其他activity时，所用到的请求码，用于标识是哪个活动回调了这个方法,resultcode是被调用活动返回的结果码，通常RESULT_OK/RESULT_CANCEL</p>
+<p>Intent data即为被调用活动 返回的intent</p>
+<p>data.getStringExtra（”键”）</p>
+<p>intent.putExtra(“键”，“键值”)</p>
+<p>在覆写onBackPressed 去掉 ，能起到应该要有的输出的效果<br>super.onBackPressed();<br>]]>
+    
+    </summary>
+    
+      <category term="android" scheme="http://gabygoole.github.io/tags/android/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[使用GitHub和Hexo搭建Blog]]></title>
