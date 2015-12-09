@@ -4,7 +4,7 @@
   <subtitle><![CDATA[poetry,beauty,romance,love,these are what we stay alive for.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://gabygoole.github.io/"/>
-  <updated>2015-12-09T11:05:53.485Z</updated>
+  <updated>2015-12-09T11:32:53.215Z</updated>
   <id>http://gabygoole.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://gabygoole.github.io/2015/12/09/%E8%B4%AD%E4%B9%B0%E5%9F%9F%E5%90%8D%E3%80%81%E8%AE%BE%E7%BD%AEDNS/"/>
     <id>http://gabygoole.github.io/2015/12/09/购买域名、设置DNS/</id>
     <published>2015-12-09T09:01:28.000Z</published>
-    <updated>2015-12-09T11:05:53.485Z</updated>
+    <updated>2015-12-09T11:32:53.215Z</updated>
     <content type="html"><![CDATA[<h2 id="前往GoDaddy购买域名">前往GoDaddy购买域名</h2><p>如果翻墙上GoDaddy可能会被认为是老外，因而没有支付宝支付选项<br>解决办法：不建议清除cookies，推荐换个浏览器</p>
 <h2 id="前往github上gabygoole-github-io仓库">前往github上gabygoole.github.io仓库</h2><p>新建一个CNAME文件，填入买的域名:gabygoole.com<br><a id="more"></a><br><img src="http://ww3.sinaimg.cn/large/85184d39gw1eytjrecsnlj20td03lwf5.jpg" alt="ba"></p>
 <h2 id="更改DNS服务商">更改DNS服务商</h2><h3 id="1-_godaddy是与域名提供商，DNSPOD提供域名解析">1. godaddy是与域名提供商，DNSPOD提供域名解析</h3><p><img src="http://ww3.sinaimg.cn/large/85184d39gw1eytj3tizjmj207z05at8y.jpg" alt="ma"></p>
@@ -46,7 +46,7 @@
     <link href="http://gabygoole.github.io/2015/12/08/%E6%8E%A2%E7%A9%B6adroid%E6%B4%BB%E5%8A%A8/"/>
     <id>http://gabygoole.github.io/2015/12/08/探究adroid活动/</id>
     <published>2015-12-08T14:19:38.000Z</published>
-    <updated>2015-12-09T10:02:59.557Z</updated>
+    <updated>2015-12-09T11:32:51.638Z</updated>
     <content type="html"><![CDATA[<h2 id="Intent用处">Intent用处</h2><p>隐式使用intent，在被启动的activity的manifest文件配置该活动<action> <category><br>在出发活动建立intent时就写好<action>和<category></category></action></category></action></p>
 <p>网页浏览器用new intent 时用Intent.ACTION_VIEW<br>其在activity的manifest文件下的intent filter值为android.intent.action.VIEW<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="type">intent</span> = new <span class="type">Intent</span>(<span class="type">Intent</span>.ACTION_VIEW);//设置<span class="keyword">action</span></span><br><span class="line"><span class="type">intent</span>.setData(Uri.parse(<span class="string">"http://www.baidu.com"</span>));//将网址解析成一个Uri对象</span><br><span class="line">startActivity(<span class="type">intent</span>)//该方法会自动加上category为默认的android.<span class="type">intent</span>.category.<span class="keyword">DEFAULT</span></span><br></pre></td></tr></table></figure></p>
 <p>调用系统内置的拨号界面，new intent 时使用Intent.ACTION_DIAL<br>其值为android.intent.action.<br><a id="more"></a></p>
