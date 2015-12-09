@@ -3,9 +3,9 @@
   <title><![CDATA[Gabygoole's blog]]></title>
   <subtitle><![CDATA[poetry,beauty,romance,love,these are what we stay alive for.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://gabygoole.com/"/>
+  <link href="http://gabygoole.github.io/"/>
   <updated>2015-12-09T11:05:53.485Z</updated>
-  <id>http://gabygoole.com/</id>
+  <id>http://gabygoole.github.io/</id>
   
   <author>
     <name><![CDATA[GabyGoole]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[购买域名、设置DNS]]></title>
-    <link href="http://gabygoole.com/2015/12/09/%E8%B4%AD%E4%B9%B0%E5%9F%9F%E5%90%8D%E3%80%81%E8%AE%BE%E7%BD%AEDNS/"/>
-    <id>http://gabygoole.com/2015/12/09/购买域名、设置DNS/</id>
+    <link href="http://gabygoole.github.io/2015/12/09/%E8%B4%AD%E4%B9%B0%E5%9F%9F%E5%90%8D%E3%80%81%E8%AE%BE%E7%BD%AEDNS/"/>
+    <id>http://gabygoole.github.io/2015/12/09/购买域名、设置DNS/</id>
     <published>2015-12-09T09:01:28.000Z</published>
     <updated>2015-12-09T11:05:53.485Z</updated>
     <content type="html"><![CDATA[<h2 id="前往GoDaddy购买域名">前往GoDaddy购买域名</h2><p>如果翻墙上GoDaddy可能会被认为是老外，因而没有支付宝支付选项<br>解决办法：不建议清除cookies，推荐换个浏览器</p>
@@ -37,14 +37,14 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://gabygoole.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://gabygoole.github.io/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[探究adroid活动]]></title>
-    <link href="http://gabygoole.com/2015/12/08/%E6%8E%A2%E7%A9%B6adroid%E6%B4%BB%E5%8A%A8/"/>
-    <id>http://gabygoole.com/2015/12/08/探究adroid活动/</id>
+    <link href="http://gabygoole.github.io/2015/12/08/%E6%8E%A2%E7%A9%B6adroid%E6%B4%BB%E5%8A%A8/"/>
+    <id>http://gabygoole.github.io/2015/12/08/探究adroid活动/</id>
     <published>2015-12-08T14:19:38.000Z</published>
     <updated>2015-12-09T10:02:59.557Z</updated>
     <content type="html"><![CDATA[<h2 id="Intent用处">Intent用处</h2><p>隐式使用intent，在被启动的activity的manifest文件配置该活动<action> <category><br>在出发活动建立intent时就写好<action>和<category></category></action></category></action></p>
@@ -100,14 +100,14 @@
     
     </summary>
     
-      <category term="android" scheme="http://gabygoole.com/tags/android/"/>
+      <category term="android" scheme="http://gabygoole.github.io/tags/android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[使用GitHub和Hexo搭建Blog]]></title>
-    <link href="http://gabygoole.com/2015/12/02/%E4%BD%BF%E7%94%A8GitHub%E5%92%8CHexo%E6%90%AD%E5%BB%BABlog/"/>
-    <id>http://gabygoole.com/2015/12/02/使用GitHub和Hexo搭建Blog/</id>
+    <link href="http://gabygoole.github.io/2015/12/02/%E4%BD%BF%E7%94%A8GitHub%E5%92%8CHexo%E6%90%AD%E5%BB%BABlog/"/>
+    <id>http://gabygoole.github.io/2015/12/02/使用GitHub和Hexo搭建Blog/</id>
     <published>2015-12-02T08:53:00.000Z</published>
     <updated>2015-12-03T02:40:11.293Z</updated>
     <content type="html"><![CDATA[<h2 id="Hexo是什么？"><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>是什么？</h2><p><strong>A fast, simple &amp; powerful blog framework</strong><br>Hexo 是一个快速/简单/强有力的博客框架</p>
@@ -175,7 +175,7 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://gabygoole.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://gabygoole.github.io/tags/hexo/"/>
     
   </entry>
   
