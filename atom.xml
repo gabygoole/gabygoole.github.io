@@ -3,9 +3,9 @@
   <title><![CDATA[Gabygoole's blog]]></title>
   <subtitle><![CDATA[poetry,beauty,romance,love,these are what we stay alive for.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://gabygoole.github.io/"/>
-  <updated>2015-12-08T14:47:12.075Z</updated>
-  <id>http://gabygoole.github.io/</id>
+  <link href="http://gabygoole.com/"/>
+  <updated>2015-12-09T11:05:53.485Z</updated>
+  <id>http://gabygoole.com/</id>
   
   <author>
     <name><![CDATA[GabyGoole]]></name>
@@ -15,21 +15,48 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[购买域名、设置DNS]]></title>
+    <link href="http://gabygoole.com/2015/12/09/%E8%B4%AD%E4%B9%B0%E5%9F%9F%E5%90%8D%E3%80%81%E8%AE%BE%E7%BD%AEDNS/"/>
+    <id>http://gabygoole.com/2015/12/09/购买域名、设置DNS/</id>
+    <published>2015-12-09T09:01:28.000Z</published>
+    <updated>2015-12-09T11:05:53.485Z</updated>
+    <content type="html"><![CDATA[<h2 id="前往GoDaddy购买域名">前往GoDaddy购买域名</h2><p>如果翻墙上GoDaddy可能会被认为是老外，因而没有支付宝支付选项<br>解决办法：不建议清除cookies，推荐换个浏览器</p>
+<h2 id="前往github上gabygoole-github-io仓库">前往github上gabygoole.github.io仓库</h2><p>新建一个CNAME文件，填入买的域名:gabygoole.com<br><a id="more"></a><br><img src="http://ww3.sinaimg.cn/large/85184d39gw1eytjrecsnlj20td03lwf5.jpg" alt="ba"></p>
+<h2 id="更改DNS服务商">更改DNS服务商</h2><h3 id="1-_godaddy是与域名提供商，DNSPOD提供域名解析">1. godaddy是与域名提供商，DNSPOD提供域名解析</h3><p><img src="http://ww3.sinaimg.cn/large/85184d39gw1eytj3tizjmj207z05at8y.jpg" alt="ma"></p>
+<h3 id="2-_点击Manage_my_Domains,跳转到">2. 点击Manage my Domains,跳转到</h3><p><img src="http://ww2.sinaimg.cn/large/85184d39gw1eytjc6cxx4j20g00ajdgo.jpg" alt="qa"></p>
+<h3 id="3-_接着点击manage_DNS">3. 接着点击manage DNS</h3><p><img src="http://ww4.sinaimg.cn/large/85184d39gw1eytji78dwvj20pg0aymzb.jpg" alt="ga"></p>
+<h3 id="4-_点击左侧SETTEINGS">4. 点击左侧SETTEINGS</h3><p><img src="http://ww1.sinaimg.cn/large/85184d39gw1eytj7g13b6j20iq09dmy0.jpg" alt="ha"></p>
+<h3 id="5-_接着点击NameServers-&gt;manage">5. 接着点击NameServers-&gt;manage</h3><p>设置如下：<br><img src="http://ww3.sinaimg.cn/large/85184d39gw1eytjaqiugbj20km0b440b.jpg" alt="ta"></p>
+<h3 id="6-_等上一段时间,当域名解析商更改为dnspod后">6. 等上一段时间,当域名解析商更改为dnspod后</h3><h2 id="前往DNSPOD">前往DNSPOD</h2><h3 id="1-_注册后，添加域名：">1. 注册后，添加域名：</h3><p><img src="http://ww1.sinaimg.cn/large/85184d39gw1eytjjggtqkj20pk05j3yx.jpg" alt="ra"></p>
+<h3 id="2-_增加这三项纪录，通向github的">2. 增加这三项纪录，通向github的</h3><p><img src="http://ww1.sinaimg.cn/large/85184d39gw1eytjma67xej20lr03sq3h.jpg" alt="aa"><br>注意是：gabygoole.github.io</p>
+<h2 id="现在就可以访问">现在就可以访问</h2><p><a href="&quot;gabygoole.com&quot;">GabyGoole’s blog</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="前往GoDaddy购买域名">前往GoDaddy购买域名</h2><p>如果翻墙上GoDaddy可能会被认为是老外，因而没有支付宝支付选项<br>解决办法：不建议清除cookies，推荐换个浏览器</p>
+<h2 id="前往github上gabygoole-github-io仓库">前往github上gabygoole.github.io仓库</h2><p>新建一个CNAME文件，填入买的域名:gabygoole.com<br>]]>
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://gabygoole.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[探究adroid活动]]></title>
-    <link href="http://gabygoole.github.io/2015/12/08/%E6%8E%A2%E7%A9%B6adroid%E6%B4%BB%E5%8A%A8/"/>
-    <id>http://gabygoole.github.io/2015/12/08/探究adroid活动/</id>
+    <link href="http://gabygoole.com/2015/12/08/%E6%8E%A2%E7%A9%B6adroid%E6%B4%BB%E5%8A%A8/"/>
+    <id>http://gabygoole.com/2015/12/08/探究adroid活动/</id>
     <published>2015-12-08T14:19:38.000Z</published>
-    <updated>2015-12-08T14:47:12.075Z</updated>
+    <updated>2015-12-09T10:02:59.557Z</updated>
     <content type="html"><![CDATA[<h2 id="Intent用处">Intent用处</h2><p>隐式使用intent，在被启动的activity的manifest文件配置该活动<action> <category><br>在出发活动建立intent时就写好<action>和<category></category></action></category></action></p>
 <p>网页浏览器用new intent 时用Intent.ACTION_VIEW<br>其在activity的manifest文件下的intent filter值为android.intent.action.VIEW<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="type">intent</span> = new <span class="type">Intent</span>(<span class="type">Intent</span>.ACTION_VIEW);//设置<span class="keyword">action</span></span><br><span class="line"><span class="type">intent</span>.setData(Uri.parse(<span class="string">"http://www.baidu.com"</span>));//将网址解析成一个Uri对象</span><br><span class="line">startActivity(<span class="type">intent</span>)//该方法会自动加上category为默认的android.<span class="type">intent</span>.category.<span class="keyword">DEFAULT</span></span><br></pre></td></tr></table></figure></p>
-<p>调用系统内置的拨号界面，new intent 时使用Intent.ACTION_DIAL<br>其值为android.intent.action.</p>
+<p>调用系统内置的拨号界面，new intent 时使用Intent.ACTION_DIAL<br>其值为android.intent.action.<br><a id="more"></a></p>
 <h2 id="退出一个活动回传数据">退出一个活动回传数据</h2><p>在一个活动中使用startActivityForResult（intent,requestcode）,在被启动的Activity中setResult（resultcode,intent ）</p>
 <p>当界面finish或者back时，会回调启动方activity的onActivityResult（requestcode,resultcode ,Intent data）方法</p>
 <p>这个requestcode是启动方activity，在启动其他activity时，所用到的请求码，用于标识是哪个活动回调了这个方法,resultcode是被调用活动返回的结果码，通常RESULT_OK/RESULT_CANCEL</p>
 <p>Intent data即为被调用活动 返回的intent</p>
 <p>data.getStringExtra（”键”）</p>
 <p>intent.putExtra(“键”，“键值”)</p>
-<p>在覆写onBackPressed 去掉 ，能起到应该要有的输出的效果<br>super.onBackPressed();<br><a id="more"></a></p>
+<p>在覆写onBackPressed 去掉 ，能起到应该要有的输出的效果<br>super.onBackPressed();</p>
 <h2 id="活动的生命周期">活动的生命周期</h2><h3 id="1-_活动生命周期分类：">1. 活动生命周期分类：</h3><p>完整生存期：onCreate&lt;-&gt;onDestroy<br>可见生存期：onStart&lt;-&gt;onStop<br>前台生存期：onResume&lt;-&gt;onPause<br>出现rendering problems时，可更改主题或降低android版本，均可在在手机preview上方更改</p>
 <h3 id="2-_对话框活动和普通活动区别">2. 对话框活动和普通活动区别</h3><ul>
 <li>当从A活动跳转到B活动，A活动会执行onPause-&gt;onStop,如果此时返回A，A活动执行onRestart-&gt;onStart-&gt;onResume</li>
@@ -69,25 +96,18 @@
     <summary type="html">
     <![CDATA[<h2 id="Intent用处">Intent用处</h2><p>隐式使用intent，在被启动的activity的manifest文件配置该活动<action> <category><br>在出发活动建立intent时就写好<action>和<category></p>
 <p>网页浏览器用new intent 时用Intent.ACTION_VIEW<br>其在activity的manifest文件下的intent filter值为android.intent.action.VIEW<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="type">intent</span> = new <span class="type">Intent</span>(<span class="type">Intent</span>.ACTION_VIEW);//设置<span class="keyword">action</span></span><br><span class="line"><span class="type">intent</span>.setData(Uri.parse(<span class="string">"http://www.baidu.com"</span>));//将网址解析成一个Uri对象</span><br><span class="line">startActivity(<span class="type">intent</span>)//该方法会自动加上category为默认的android.<span class="type">intent</span>.category.<span class="keyword">DEFAULT</span></span><br></pre></td></tr></table></figure></p>
-<p>调用系统内置的拨号界面，new intent 时使用Intent.ACTION_DIAL<br>其值为android.intent.action.</p>
-<h2 id="退出一个活动回传数据">退出一个活动回传数据</h2><p>在一个活动中使用startActivityForResult（intent,requestcode）,在被启动的Activity中setResult（resultcode,intent ）</p>
-<p>当界面finish或者back时，会回调启动方activity的onActivityResult（requestcode,resultcode ,Intent data）方法</p>
-<p>这个requestcode是启动方activity，在启动其他activity时，所用到的请求码，用于标识是哪个活动回调了这个方法,resultcode是被调用活动返回的结果码，通常RESULT_OK/RESULT_CANCEL</p>
-<p>Intent data即为被调用活动 返回的intent</p>
-<p>data.getStringExtra（”键”）</p>
-<p>intent.putExtra(“键”，“键值”)</p>
-<p>在覆写onBackPressed 去掉 ，能起到应该要有的输出的效果<br>super.onBackPressed();<br>]]>
+<p>调用系统内置的拨号界面，new intent 时使用Intent.ACTION_DIAL<br>其值为android.intent.action.<br>]]>
     
     </summary>
     
-      <category term="android" scheme="http://gabygoole.github.io/tags/android/"/>
+      <category term="android" scheme="http://gabygoole.com/tags/android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[使用GitHub和Hexo搭建Blog]]></title>
-    <link href="http://gabygoole.github.io/2015/12/02/%E4%BD%BF%E7%94%A8GitHub%E5%92%8CHexo%E6%90%AD%E5%BB%BABlog/"/>
-    <id>http://gabygoole.github.io/2015/12/02/使用GitHub和Hexo搭建Blog/</id>
+    <link href="http://gabygoole.com/2015/12/02/%E4%BD%BF%E7%94%A8GitHub%E5%92%8CHexo%E6%90%AD%E5%BB%BABlog/"/>
+    <id>http://gabygoole.com/2015/12/02/使用GitHub和Hexo搭建Blog/</id>
     <published>2015-12-02T08:53:00.000Z</published>
     <updated>2015-12-03T02:40:11.293Z</updated>
     <content type="html"><![CDATA[<h2 id="Hexo是什么？"><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>是什么？</h2><p><strong>A fast, simple &amp; powerful blog framework</strong><br>Hexo 是一个快速/简单/强有力的博客框架</p>
@@ -155,7 +175,7 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://gabygoole.github.io/tags/hexo/"/>
+      <category term="hexo" scheme="http://gabygoole.com/tags/hexo/"/>
     
   </entry>
   

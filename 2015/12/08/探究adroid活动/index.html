@@ -15,15 +15,16 @@
 网页浏览器用new intent 时用Intent.ACTION_VIEW其在activity的manifest文件下的intent filter值为android.intent.action.VIEW123Intent intent = new Intent(I">
 <meta property="og:type" content="article">
 <meta property="og:title" content="探究adroid活动">
-<meta property="og:url" content="http://gabygoole.github.io/2015/12/08/探究adroid活动/index.html">
+<meta property="og:url" content="http://gabygoole.com/2015/12/08/探究adroid活动/index.html">
 <meta property="og:site_name" content="Gabygoole's blog">
 <meta property="og:description" content="Intent用处隐式使用intent，在被启动的activity的manifest文件配置该活动 在出发活动建立intent时就写好和
 网页浏览器用new intent 时用Intent.ACTION_VIEW其在activity的manifest文件下的intent filter值为android.intent.action.VIEW123Intent intent = new Intent(I">
-<meta property="og:updated_time" content="2015-12-08T14:47:12.075Z">
+<meta property="og:updated_time" content="2015-12-09T10:02:59.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="探究adroid活动">
 <meta name="twitter:description" content="Intent用处隐式使用intent，在被启动的activity的manifest文件配置该活动 在出发活动建立intent时就写好和
 网页浏览器用new intent 时用Intent.ACTION_VIEW其在activity的manifest文件下的intent filter值为android.intent.action.VIEW123Intent intent = new Intent(I">
+<meta name="twitter:creator" content="@gabygoole">
 
     
     <link rel="alternative" href="/atom.xml" title="Gabygoole&#39;s blog" type="application/atom+xml">
@@ -32,8 +33,8 @@
     <link rel="icon" href="/img/favicon.ico">
     
     
-    <link rel="apple-touch-icon" href="/img/jacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon" href="/img/jackman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jackman.jpg">
     
     <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
@@ -44,7 +45,7 @@
 <div>
 		
 			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="Gabygoole&#39;s blog" title="Gabygoole&#39;s blog"/></a>
+				<a href="/"><img src="/img/bull.png" alt="Gabygoole&#39;s blog" title="Gabygoole&#39;s blog"/></a>
 			</div>
 			
 			<div id="textlogo">
@@ -68,7 +69,7 @@
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
 						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:gabygoole.github.io">
+						<input type="hidden" name="q" value="site:gabygoole.com">
 					</form>
 					
 					</li>
@@ -105,14 +106,14 @@
 		
 		<h2 id="Intent用处">Intent用处</h2><p>隐式使用intent，在被启动的activity的manifest文件配置该活动<action> <category><br>在出发活动建立intent时就写好<action>和<category></category></action></category></action></p>
 <p>网页浏览器用new intent 时用Intent.ACTION_VIEW<br>其在activity的manifest文件下的intent filter值为android.intent.action.VIEW<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="type">intent</span> = new <span class="type">Intent</span>(<span class="type">Intent</span>.ACTION_VIEW);//设置<span class="keyword">action</span></span><br><span class="line"><span class="type">intent</span>.setData(Uri.parse(<span class="string">"http://www.baidu.com"</span>));//将网址解析成一个Uri对象</span><br><span class="line">startActivity(<span class="type">intent</span>)//该方法会自动加上category为默认的android.<span class="type">intent</span>.category.<span class="keyword">DEFAULT</span></span><br></pre></td></tr></table></figure></p>
-<p>调用系统内置的拨号界面，new intent 时使用Intent.ACTION_DIAL<br>其值为android.intent.action.</p>
+<p>调用系统内置的拨号界面，new intent 时使用Intent.ACTION_DIAL<br>其值为android.intent.action.<br><a id="more"></a></p>
 <h2 id="退出一个活动回传数据">退出一个活动回传数据</h2><p>在一个活动中使用startActivityForResult（intent,requestcode）,在被启动的Activity中setResult（resultcode,intent ）</p>
 <p>当界面finish或者back时，会回调启动方activity的onActivityResult（requestcode,resultcode ,Intent data）方法</p>
 <p>这个requestcode是启动方activity，在启动其他activity时，所用到的请求码，用于标识是哪个活动回调了这个方法,resultcode是被调用活动返回的结果码，通常RESULT_OK/RESULT_CANCEL</p>
 <p>Intent data即为被调用活动 返回的intent</p>
 <p>data.getStringExtra（”键”）</p>
 <p>intent.putExtra(“键”，“键值”)</p>
-<p>在覆写onBackPressed 去掉 ，能起到应该要有的输出的效果<br>super.onBackPressed();<br><a id="more"></a></p>
+<p>在覆写onBackPressed 去掉 ，能起到应该要有的输出的效果<br>super.onBackPressed();</p>
 <h2 id="活动的生命周期">活动的生命周期</h2><h3 id="1-_活动生命周期分类：">1. 活动生命周期分类：</h3><p>完整生存期：onCreate&lt;-&gt;onDestroy<br>可见生存期：onStart&lt;-&gt;onStop<br>前台生存期：onResume&lt;-&gt;onPause<br>出现rendering problems时，可更改主题或降低android版本，均可在在手机preview上方更改</p>
 <h3 id="2-_对话框活动和普通活动区别">2. 对话框活动和普通活动区别</h3><ul>
 <li>当从A活动跳转到B活动，A活动会执行onPause-&gt;onStop,如果此时返回A，A活动执行onRestart-&gt;onStart-&gt;onResume</li>
@@ -165,7 +166,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://gabygoole.github.io/2015/12/08/探究adroid活动/" data-title="探究adroid活动 | Gabygoole&#39;s blog" data-tsina="纵横捭阖gov## 用于微博秀和微博分享" class="share clearfix">
+	  <div data-url="http://gabygoole.com/2015/12/08/探究adroid活动/" data-title="探究adroid活动 | Gabygoole&#39;s blog" data-tsina="纵横捭阖gov## 用于微博秀和微博分享" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -178,6 +179,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/12/09/购买域名、设置DNS/" title="购买域名、设置DNS">
+  <strong>上一篇：</strong><br/>
+  <span>
+  购买域名、设置DNS</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2015/12/02/使用GitHub和Hexo搭建Blog/"  title="使用GitHub和Hexo搭建Blog">
@@ -191,7 +200,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/12/08/探究adroid活动/" data-title="探究adroid活动" data-url="http://gabygoole.github.io/2015/12/08/探究adroid活动/"></div>
+	<div class="ds-thread" data-thread-key="2015/12/08/探究adroid活动/" data-title="探究adroid活动" data-url="http://gabygoole.com/2015/12/08/探究adroid活动/"></div>
 </section>
 
 
@@ -223,7 +232,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
 			
 		
 			
@@ -240,7 +249,7 @@
         
           <li>
             
-            	<a href="http://e.jikexueyuan.com/invite/index.html?ZnJvbV9jb2RlPTQ4UVRMUyZ1bmFtZT1xcV94cm9hODl3biZjaGFubmVsPWludml0ZV9zaGFyZWJ1dHRvbl9kaXJlY3QwNA==" target="_blank" title="极客学院">极客学院</a>
+            	<a href="http://e.jikexueyuan.com/invite/index.html?ZnJvb  V9jb2RlPTQ4UVRMUyZ1bmFtZT1xcV94cm9hODl3biZjaGFubmVsPWludml0ZV9zaGFyZWJ1dHRvbl9kaXJlY3QwNA==" target="_blank" title="极客学院">极客学院</a>
             
           </li>
         
@@ -278,8 +287,16 @@
 		<a href="http://stackoverflow.com/users/5617711/%E9%83%AD%E4%BD%B3%E4%B9%90" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
 		
 		
+		<a href="https://twitter.com/gabygoole" target="_blank" class="icon-twitter" title="twitter"></a>
 		
 		
+		<a href="https://www.facebook.com/gabygoole" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/view?id=AAMAABu5UikBDdt957vGRQErNDY6XHAgKgW7rfI&amp;trk=hp-identity-name" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/138678711/" target="_blank" class="icon-douban" title="豆瓣"></a>
 		
 		
 		<a href="http://www.zhihu.com/people/jia-guo-67" target="_blank" class="icon-zhihu" title="知乎"></a>
@@ -446,7 +463,7 @@ $(document).ready(function(){
 
 <script type="text/javascript">
 
-var disqus_shortname = '郭佳乐';
+var disqus_shortname = 'gabygoole';
 
 (function(){
   var dsq = document.createElement('script');
@@ -495,6 +512,16 @@ $(document).ready(function(){
 <!-- Analytics Begin -->
 
 
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a630a6219ab3f6044135d9da2fc5e1f6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 
 
 
