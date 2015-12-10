@@ -1,0 +1,574 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta name="msvalidate.01" content="73A9A026622736C583F45F45CFE98E93" />
+  <meta name="baidu-site-verification" content="8vcFms7qhq" />
+  <meta name="google-site-verification" content="61ceZMeFSYlefpKp5PVknazRCb2wAKFTxdeA6AerqOI" />
+  <meta charset="UTF-8">
+  
+    <title>探究android控件及布局 | Gabygoole&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="GabyGoole">
+    
+
+    
+    <meta name="description" content="控件(widget)1. TextView(该控件的一些需要注意的属性，下同)gravity=&amp;quot;center&amp;quot;textSize=&amp;quot;24sp&amp;quot;textColor=&amp;quot;#00ff00&amp;quot;(完整的前面应该加android:,为了方便均忽略)
+2. EditTexthint=&amp;quot;Type something here&amp;quot;maxLine">
+<meta property="og:type" content="article">
+<meta property="og:title" content="探究android控件及布局">
+<meta property="og:url" content="http://gabygoole.com/2015/12/10/探究android控件及布局/index.html">
+<meta property="og:site_name" content="Gabygoole's blog">
+<meta property="og:description" content="控件(widget)1. TextView(该控件的一些需要注意的属性，下同)gravity=&amp;quot;center&amp;quot;textSize=&amp;quot;24sp&amp;quot;textColor=&amp;quot;#00ff00&amp;quot;(完整的前面应该加android:,为了方便均忽略)
+2. EditTexthint=&amp;quot;Type something here&amp;quot;maxLine">
+<meta property="og:updated_time" content="2015-12-10T15:29:39.347Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="探究android控件及布局">
+<meta name="twitter:description" content="控件(widget)1. TextView(该控件的一些需要注意的属性，下同)gravity=&amp;quot;center&amp;quot;textSize=&amp;quot;24sp&amp;quot;textColor=&amp;quot;#00ff00&amp;quot;(完整的前面应该加android:,为了方便均忽略)
+2. EditTexthint=&amp;quot;Type something here&amp;quot;maxLine">
+<meta name="twitter:creator" content="@gabygoole">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Gabygoole&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jackman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jackman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/bull.png" alt="Gabygoole&#39;s blog" title="Gabygoole&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Gabygoole&#39;s blog">Gabygoole&#39;s blog</a></h1>
+				<h2 class="blog-motto">poetry,beauty,romance,love,these are what we stay alive for.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:gabygoole.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/10/探究android控件及布局/" title="探究android控件及布局" itemprop="url">探究android控件及布局</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-10T15:06:29.000Z" itemprop="datePublished"> 发表于 2015-12-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#控件(widget)"><span class="toc-number">1.</span> <span class="toc-text">控件(widget)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_TextView(该控件的一些需要注意的属性，下同)"><span class="toc-number">1.1.</span> <span class="toc-text">1. TextView(该控件的一些需要注意的属性，下同)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-_EditText"><span class="toc-number">1.2.</span> <span class="toc-text">2. EditText</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-_ImageView"><span class="toc-number">1.3.</span> <span class="toc-text">3. ImageView</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-_ProgressBar"><span class="toc-number">1.4.</span> <span class="toc-text">4. ProgressBar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-_AlertDialog"><span class="toc-number">1.5.</span> <span class="toc-text">5. AlertDialog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-_ProgressDialog"><span class="toc-number">1.6.</span> <span class="toc-text">6. ProgressDialog</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四大布局(Layout)"><span class="toc-number">2.</span> <span class="toc-text">四大布局(Layout)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_LinearLayout"><span class="toc-number">2.1.</span> <span class="toc-text">1. LinearLayout</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#layout_gravity属性"><span class="toc-number">2.1.0.0.1.</span> <span class="toc-text">layout_gravity属性</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-_RelativeLayout"><span class="toc-number">2.2.</span> <span class="toc-text">2. RelativeLayout</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#控件相对父布局定位"><span class="toc-number">2.2.0.0.1.</span> <span class="toc-text">控件相对父布局定位</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#控件相对控件定位"><span class="toc-number">2.2.0.0.2.</span> <span class="toc-text">控件相对控件定位</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#边缘对齐(就试验的情况下，貌似此处orientation不顶用)"><span class="toc-number">2.2.0.0.3.</span> <span class="toc-text">边缘对齐(就试验的情况下，貌似此处orientation不顶用)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-_FrameLayout"><span class="toc-number">2.3.</span> <span class="toc-text">3. FrameLayout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-TableLayout"><span class="toc-number">2.4.</span> <span class="toc-text">4.TableLayout</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="控件(widget)">控件(widget)</h2><h3 id="1-_TextView(该控件的一些需要注意的属性，下同)">1. TextView(该控件的一些需要注意的属性，下同)</h3><p><code>gravity=&quot;center&quot;</code><br><code>textSize=&quot;24sp&quot;</code><br><code>textColor=&quot;#00ff00&quot;</code><br>(完整的前面应该加<code>android:</code>,为了方便均忽略)</p>
+<h3 id="2-_EditText">2. EditText</h3><p><code>hint=&quot;Type something here&quot;</code><br><code>maxLines=&quot;2&quot;</code></p>
+<h3 id="3-_ImageView">3. ImageView</h3><p><code>src=&quot;@drawable/ic_launcher&quot;</code><br><code>imageView.setImageResoure(R.drawable.jetlly)</code></p>
+<h3 id="4-_ProgressBar">4. ProgressBar</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">progressBar.<span class="function"><span class="title">setVisibility</span><span class="params">(View.GONE)</span></span><span class="comment">//设置不可见，且不占用任何空间</span></span><br><span class="line">progressBar.<span class="function"><span class="title">setVisibility</span><span class="params">(View.VISIBLE)</span></span><span class="comment">//设置可见</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>实际上需要去添加逻辑（比如当数据加载完成时执行：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">progressBar.<span class="function"><span class="title">setVisibility</span><span class="params">(View.GONE)</span></span><span class="comment">//设置不可见，且不占用任何空间</span></span><br></pre></td></tr></table></figure></p>
+<p>不然，ProgressBar会一直转<br>还有功能：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">progressbar.<span class="function"><span class="title">getVisibility</span><span class="params">()</span></span></span><br><span class="line"><span class="comment">//有三种值：View.GONE,View.VISIBLE</span></span><br></pre></td></tr></table></figure></p>
+<p>在ProgressBar参数中<code>style=&quot;?android:attr/progressBarStyleHorizontal&quot;</code><br>可将进度条变成水平,参数<code>max=&quot;100&quot;</code>设置水平进度条的最大值</p>
+<h3 id="5-_AlertDialog">5. AlertDialog</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AlertDialog.Builder dialog = <span class="keyword">new</span> AlertDialog.Builder(MainActivity.<span class="keyword">this</span>);<span class="comment">//可以理解为对话框建立在这个活动之上</span></span><br><span class="line">dialog.setTitle(<span class="string">"This is title"</span>);<span class="comment">//设置对话框的标题</span></span><br><span class="line">dialog.setMessage(<span class="string">"someting important"</span>);<span class="comment">//内容</span></span><br><span class="line">dialog.setCancelable(<span class="literal">false</span>);<span class="comment">//设置该对话框是否可由back键退回</span></span><br><span class="line">dialog.setPositiveButton(<span class="string">"OK"</span>，<span class="keyword">new</span> DialogInterface.OnclickListener()&#123;&#125;)<span class="comment">//为OK键设置监听器</span></span><br><span class="line">dialog.setNegativeButton(<span class="string">"CANCEL"</span>,<span class="keyword">new</span> DialogInterface.OnClickListener()&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<p>注意：AlertDialog在程序里面写，不再布局里写</p>
+<h3 id="6-_ProgressDialog">6. ProgressDialog</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ProgressDialog progressDialog = <span class="keyword">new</span> ProgressDialog(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">progressDialog.setTitle(<span class="string">"wait a moment!"</span>);</span><br><span class="line">progressDialog.setMessage(<span class="string">"Loding..."</span>);</span><br><span class="line">progressDialog.setCancelable(<span class="literal">false</span>);</span><br><span class="line">progressDialog.show();</span><br></pre></td></tr></table></figure>
+<p>与AlertDialog类似</p>
+<h2 id="四大布局(Layout)">四大布局(Layout)</h2><h3 id="1-_LinearLayout">1. LinearLayout</h3><h6 id="layout_gravity属性">layout_gravity属性</h6><p><code>orientation</code>的方向一定是与layout_gravity方向正交，解释如下：</p>
+<p>如果<code>orientation=&quot;vertical&quot;</code>，那么就只有水平方向的对齐有效<br>此时控件的<code>layout_gravity&quot;</code>就有三种值:  </p>
+<ul>
+<li>left</li>
+<li>center_horizontal</li>
+<li>right</li>
+</ul>
+<p>同理，如果<code>orientation=&quot;horizontal&quot;</code><br>此时控件的<code>layout_gravity</code>有三种值：</p>
+<ul>
+<li>top</li>
+<li>center_vertical</li>
+<li>bottom</li>
+</ul>
+<p>####### layout_weight(权重)<br>若<code>orientation=&quot;horizontal&quot;</code>，此时xml中有<code>EditText</code>和<code>Button</code>，设置他们的<code>layout_width=&quot;0dp&quot;</code>，若设置<code>EditText</code>的<code>layout_weight=&quot;3&quot;</code>,设置<code>Button</code>的<code>layout_weight=&quot;2&quot;</code>,前者占屏幕的3/5，后者占2/5</p>
+<h3 id="2-_RelativeLayout">2. RelativeLayout</h3><h6 id="控件相对父布局定位">控件相对父布局定位</h6><ul>
+<li>layout_alignParentTop</li>
+<li>layout_alignparentBottom</li>
+<li>layout_alignParentRight</li>
+<li>layout_alignParentLeft</li>
+<li>laout_centerInParent</li>
+</ul>
+<h6 id="控件相对控件定位">控件相对控件定位</h6><ul>
+<li>layout_below</li>
+<li>layout_toRightOf</li>
+<li>layout_toLeftOf</li>
+<li>layout_above</li>
+</ul>
+<h6 id="边缘对齐(就试验的情况下，貌似此处orientation不顶用)">边缘对齐(就试验的情况下，貌似此处orientation不顶用)</h6><ul>
+<li>layout_alignLeft</li>
+<li>layout_alignRight</li>
+<li>layout_alignTop</li>
+<li>layout_alignBottom</li>
+</ul>
+<h3 id="3-_FrameLayout">3. FrameLayout</h3><p>所有控件都摆放在左上角</p>
+<h3 id="4-TableLayout">4.TableLayout</h3><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一对这样的标签就表示一行</span></span><br><span class="line">&lt;<span class="keyword">TableRow</span>&gt; </span><br><span class="line">    <span class="comment">//一个组件表示一列</span></span><br><span class="line">&lt;/<span class="keyword">TableRow</span>&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>需要注意的是，《第一行代码》中当一行有<code>TextView</code>和<code>EditText</code>时,<code>TextView</code>只有<code>layout_height</code>属性，这可能是由于TableLayout有自己的关于每行中列宽度的规定，以后遇到这种情况再做更正</li>
+<li>合并单元格:<code>layout_span=&quot;2&quot;</code>表示横跨两列</li>
+<li>TableLayout头部添加<code>android:stretchColumns=&quot;1&quot;</code>，即将第二列拉伸，<code>0</code>则拉伸第一列</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a><a href="/tags/android控件及布局/">android控件及布局</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://gabygoole.com/2015/12/10/探究android控件及布局/" data-title="探究android控件及布局 | Gabygoole&#39;s blog" data-tsina="纵横捭阖gov## 用于微博秀和微博分享" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/12/09/购买域名、设置DNS/"  title="购买域名、设置DNS">
+ <strong>下一篇：</strong><br/> 
+ <span>购买域名、设置DNS
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/12/10/探究android控件及布局/" data-title="探究android控件及布局" data-url="http://gabygoole.com/2015/12/10/探究android控件及布局/"></div>
+</section>
+
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#控件(widget)"><span class="toc-number">1.</span> <span class="toc-text">控件(widget)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_TextView(该控件的一些需要注意的属性，下同)"><span class="toc-number">1.1.</span> <span class="toc-text">1. TextView(该控件的一些需要注意的属性，下同)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-_EditText"><span class="toc-number">1.2.</span> <span class="toc-text">2. EditText</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-_ImageView"><span class="toc-number">1.3.</span> <span class="toc-text">3. ImageView</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-_ProgressBar"><span class="toc-number">1.4.</span> <span class="toc-text">4. ProgressBar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-_AlertDialog"><span class="toc-number">1.5.</span> <span class="toc-text">5. AlertDialog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-_ProgressDialog"><span class="toc-number">1.6.</span> <span class="toc-text">6. ProgressDialog</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四大布局(Layout)"><span class="toc-number">2.</span> <span class="toc-text">四大布局(Layout)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_LinearLayout"><span class="toc-number">2.1.</span> <span class="toc-text">1. LinearLayout</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#layout_gravity属性"><span class="toc-number">2.1.0.0.1.</span> <span class="toc-text">layout_gravity属性</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-_RelativeLayout"><span class="toc-number">2.2.</span> <span class="toc-text">2. RelativeLayout</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#控件相对父布局定位"><span class="toc-number">2.2.0.0.1.</span> <span class="toc-text">控件相对父布局定位</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#控件相对控件定位"><span class="toc-number">2.2.0.0.2.</span> <span class="toc-text">控件相对控件定位</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#边缘对齐(就试验的情况下，貌似此处orientation不顶用)"><span class="toc-number">2.2.0.0.3.</span> <span class="toc-text">边缘对齐(就试验的情况下，貌似此处orientation不顶用)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-_FrameLayout"><span class="toc-number">2.3.</span> <span class="toc-text">3. FrameLayout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-TableLayout"><span class="toc-number">2.4.</span> <span class="toc-text">4.TableLayout</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android控件及布局/" title="android控件及布局">android控件及布局<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.trinea.cn/" target="_blank" title="Trinea&#39;s blog">Trinea&#39;s blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/guolin_blog" target="_blank" title="郭霖的博客">郭霖的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.daimajia.com/" target="_blank" title="代码家的博客">代码家的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.slyar.com/blog/" target="_blank" title="slyar&#39;s blog">slyar&#39;s blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Talk is cheap,show me the code <br/>
+			每天让你起床的是什么...</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2232962361/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/gabygoole" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/5617711/%E9%83%AD%E4%BD%B3%E4%B9%90" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/gabygoole" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/gabygoole" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/view?id=AAMAABu5UikBDdt957vGRQErNDY6XHAgKgW7rfI&amp;trk=hp-identity-name" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/138678711/" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/jia-guo-67" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:gabygoole@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="GabyGoole">GabyGoole</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Gaby"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'disqus_6bhiovEzfI';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a630a6219ab3f6044135d9da2fc5e1f6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

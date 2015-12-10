@@ -4,7 +4,7 @@
   <subtitle><![CDATA[poetry,beauty,romance,love,these are what we stay alive for.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://gabygoole.com/"/>
-  <updated>2015-12-09T11:32:53.215Z</updated>
+  <updated>2015-12-10T15:29:39.347Z</updated>
   <id>http://gabygoole.com/</id>
   
   <author>
@@ -13,6 +13,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[探究android控件及布局]]></title>
+    <link href="http://gabygoole.com/2015/12/10/%E6%8E%A2%E7%A9%B6android%E6%8E%A7%E4%BB%B6%E5%8F%8A%E5%B8%83%E5%B1%80/"/>
+    <id>http://gabygoole.com/2015/12/10/探究android控件及布局/</id>
+    <published>2015-12-10T15:06:29.000Z</published>
+    <updated>2015-12-10T15:29:39.347Z</updated>
+    <content type="html"><![CDATA[<h2 id="控件(widget)">控件(widget)</h2><h3 id="1-_TextView(该控件的一些需要注意的属性，下同)">1. TextView(该控件的一些需要注意的属性，下同)</h3><p><code>gravity=&quot;center&quot;</code><br><code>textSize=&quot;24sp&quot;</code><br><code>textColor=&quot;#00ff00&quot;</code><br>(完整的前面应该加<code>android:</code>,为了方便均忽略)</p>
+<h3 id="2-_EditText">2. EditText</h3><p><code>hint=&quot;Type something here&quot;</code><br><code>maxLines=&quot;2&quot;</code></p>
+<h3 id="3-_ImageView">3. ImageView</h3><p><code>src=&quot;@drawable/ic_launcher&quot;</code><br><code>imageView.setImageResoure(R.drawable.jetlly)</code></p>
+<h3 id="4-_ProgressBar">4. ProgressBar</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">progressBar.<span class="function"><span class="title">setVisibility</span><span class="params">(View.GONE)</span></span><span class="comment">//设置不可见，且不占用任何空间</span></span><br><span class="line">progressBar.<span class="function"><span class="title">setVisibility</span><span class="params">(View.VISIBLE)</span></span><span class="comment">//设置可见</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>实际上需要去添加逻辑（比如当数据加载完成时执行：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">progressBar.<span class="function"><span class="title">setVisibility</span><span class="params">(View.GONE)</span></span><span class="comment">//设置不可见，且不占用任何空间</span></span><br></pre></td></tr></table></figure></p>
+<p>不然，ProgressBar会一直转<br>还有功能：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">progressbar.<span class="function"><span class="title">getVisibility</span><span class="params">()</span></span></span><br><span class="line"><span class="comment">//有三种值：View.GONE,View.VISIBLE</span></span><br></pre></td></tr></table></figure></p>
+<p>在ProgressBar参数中<code>style=&quot;?android:attr/progressBarStyleHorizontal&quot;</code><br>可将进度条变成水平,参数<code>max=&quot;100&quot;</code>设置水平进度条的最大值</p>
+<h3 id="5-_AlertDialog">5. AlertDialog</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AlertDialog.Builder dialog = <span class="keyword">new</span> AlertDialog.Builder(MainActivity.<span class="keyword">this</span>);<span class="comment">//可以理解为对话框建立在这个活动之上</span></span><br><span class="line">dialog.setTitle(<span class="string">"This is title"</span>);<span class="comment">//设置对话框的标题</span></span><br><span class="line">dialog.setMessage(<span class="string">"someting important"</span>);<span class="comment">//内容</span></span><br><span class="line">dialog.setCancelable(<span class="literal">false</span>);<span class="comment">//设置该对话框是否可由back键退回</span></span><br><span class="line">dialog.setPositiveButton(<span class="string">"OK"</span>，<span class="keyword">new</span> DialogInterface.OnclickListener()&#123;&#125;)<span class="comment">//为OK键设置监听器</span></span><br><span class="line">dialog.setNegativeButton(<span class="string">"CANCEL"</span>,<span class="keyword">new</span> DialogInterface.OnClickListener()&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<p>注意：AlertDialog在程序里面写，不再布局里写</p>
+<h3 id="6-_ProgressDialog">6. ProgressDialog</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ProgressDialog progressDialog = <span class="keyword">new</span> ProgressDialog(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">progressDialog.setTitle(<span class="string">"wait a moment!"</span>);</span><br><span class="line">progressDialog.setMessage(<span class="string">"Loding..."</span>);</span><br><span class="line">progressDialog.setCancelable(<span class="literal">false</span>);</span><br><span class="line">progressDialog.show();</span><br></pre></td></tr></table></figure>
+<p>与AlertDialog类似</p>
+<h2 id="四大布局(Layout)">四大布局(Layout)</h2><h3 id="1-_LinearLayout">1. LinearLayout</h3><h6 id="layout_gravity属性">layout_gravity属性</h6><p><code>orientation</code>的方向一定是与layout_gravity方向正交，解释如下：</p>
+<p>如果<code>orientation=&quot;vertical&quot;</code>，那么就只有水平方向的对齐有效<br>此时控件的<code>layout_gravity&quot;</code>就有三种值:  </p>
+<ul>
+<li>left</li>
+<li>center_horizontal</li>
+<li>right</li>
+</ul>
+<p>同理，如果<code>orientation=&quot;horizontal&quot;</code><br>此时控件的<code>layout_gravity</code>有三种值：</p>
+<ul>
+<li>top</li>
+<li>center_vertical</li>
+<li>bottom</li>
+</ul>
+<p>####### layout_weight(权重)<br>若<code>orientation=&quot;horizontal&quot;</code>，此时xml中有<code>EditText</code>和<code>Button</code>，设置他们的<code>layout_width=&quot;0dp&quot;</code>，若设置<code>EditText</code>的<code>layout_weight=&quot;3&quot;</code>,设置<code>Button</code>的<code>layout_weight=&quot;2&quot;</code>,前者占屏幕的3/5，后者占2/5</p>
+<h3 id="2-_RelativeLayout">2. RelativeLayout</h3><h6 id="控件相对父布局定位">控件相对父布局定位</h6><ul>
+<li>layout_alignParentTop</li>
+<li>layout_alignparentBottom</li>
+<li>layout_alignParentRight</li>
+<li>layout_alignParentLeft</li>
+<li>laout_centerInParent</li>
+</ul>
+<h6 id="控件相对控件定位">控件相对控件定位</h6><ul>
+<li>layout_below</li>
+<li>layout_toRightOf</li>
+<li>layout_toLeftOf</li>
+<li>layout_above</li>
+</ul>
+<h6 id="边缘对齐(就试验的情况下，貌似此处orientation不顶用)">边缘对齐(就试验的情况下，貌似此处orientation不顶用)</h6><ul>
+<li>layout_alignLeft</li>
+<li>layout_alignRight</li>
+<li>layout_alignTop</li>
+<li>layout_alignBottom</li>
+</ul>
+<h3 id="3-_FrameLayout">3. FrameLayout</h3><p>所有控件都摆放在左上角</p>
+<h3 id="4-TableLayout">4.TableLayout</h3><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一对这样的标签就表示一行</span></span><br><span class="line">&lt;<span class="keyword">TableRow</span>&gt; </span><br><span class="line">    <span class="comment">//一个组件表示一列</span></span><br><span class="line">&lt;/<span class="keyword">TableRow</span>&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>需要注意的是，《第一行代码》中当一行有<code>TextView</code>和<code>EditText</code>时,<code>TextView</code>只有<code>layout_height</code>属性，这可能是由于TableLayout有自己的关于每行中列宽度的规定，以后遇到这种情况再做更正</li>
+<li>合并单元格:<code>layout_span=&quot;2&quot;</code>表示横跨两列</li>
+<li>TableLayout头部添加<code>android:stretchColumns=&quot;1&quot;</code>，即将第二列拉伸，<code>0</code>则拉伸第一列</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="控件(widget)">控件(widget)</h2><h3 id="1-_TextView(该控件的一些需要注意的属性，下同)">1. TextView(该控件的一些需要注意的属性，下同)</h3><p><code>gravity=&quot;center&quot;</code><br><code>textSize=&quot;24sp&quot;</code><br><code>textColor=&quot;#00ff00&quot;</code><br>(完整的前面应该加<code>android:</code>,为了方便均忽略)</p>
+<h3 id="2-_EditText">2. EditText</h3><p><code>hint=&quot;Type something here&quot;</code><br><code>maxLines=&quot;2&quot;</code></p>
+<h3 id="3-_ImageView">3. ImageView</h3><p><code>src=&quot;@drawable/ic_launcher&quot;</code><br><code>imageView.setImageResoure(R.drawable.jetlly)</code></p>
+<h3 id="4-_ProgressBar">4. ProgressBar</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">progressBar.<span class="function"><span class="title">setVisibility</span><span class="params">(View.GONE)</span></span><span class="comment">//设置不可见，且不占用任何空间</span></span><br><span class="line">progressBar.<span class="function"><span class="title">setVisibility</span><span class="params">(View.VISIBLE)</span></span><span class="comment">//设置可见</span></span><br></pre></td></tr></table></figure>]]>
+    
+    </summary>
+    
+      <category term="android" scheme="http://gabygoole.com/tags/android/"/>
+    
+      <category term="android控件及布局" scheme="http://gabygoole.com/tags/android%E6%8E%A7%E4%BB%B6%E5%8F%8A%E5%B8%83%E5%B1%80/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[购买域名、设置DNS]]></title>
