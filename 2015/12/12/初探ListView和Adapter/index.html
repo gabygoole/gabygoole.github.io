@@ -1,0 +1,534 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta name="msvalidate.01" content="73A9A026622736C583F45F45CFE98E93" />
+  <meta name="baidu-site-verification" content="8vcFms7qhq" />
+  <meta name="google-site-verification" content="61ceZMeFSYlefpKp5PVknazRCb2wAKFTxdeA6AerqOI" />
+  <meta charset="UTF-8">
+  
+    <title>初探ListView和Adapter | Gabygoole&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="GabyGoole">
+    
+
+    
+    <meta name="description" content="关于Android Adapter（适配器），参考Devin Zhang’s blog。简单的说，Adapter起到的作用是使得前端的显示和后端的数据能够适配，用以下代码作为例子">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初探ListView和Adapter">
+<meta property="og:url" content="http://gabygoole.com/2015/12/12/初探ListView和Adapter/index.html">
+<meta property="og:site_name" content="Gabygoole's blog">
+<meta property="og:description" content="关于Android Adapter（适配器），参考Devin Zhang’s blog。简单的说，Adapter起到的作用是使得前端的显示和后端的数据能够适配，用以下代码作为例子">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/85184d39gw1eywrs86emxj20e80mrgof.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/85184d39gw1eywroqv751j20b20ia755.jpg">
+<meta property="og:updated_time" content="2015-12-12T04:45:05.623Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初探ListView和Adapter">
+<meta name="twitter:description" content="关于Android Adapter（适配器），参考Devin Zhang’s blog。简单的说，Adapter起到的作用是使得前端的显示和后端的数据能够适配，用以下代码作为例子">
+<meta name="twitter:creator" content="@gabygoole">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Gabygoole&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jackman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jackman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/bull.png" alt="Gabygoole&#39;s blog" title="Gabygoole&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Gabygoole&#39;s blog">Gabygoole&#39;s blog</a></h1>
+				<h2 class="blog-motto">poetry,beauty,romance,love,these are what we stay alive for.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:gabygoole.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/12/初探ListView和Adapter/" title="初探ListView和Adapter" itemprop="url">初探ListView和Adapter</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-11T17:06:19.000Z" itemprop="datePublished"> 发表于 2015-12-12</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>关于Android Adapter（适配器），参考<a href="http://www.cnblogs.com/devinzhang/archive/2012/01/20/2328334.html" target="_blank" rel="external">Devin Zhang’s blog</a>。简单的说，Adapter起到的作用是使得前端的显示和后端的数据能够适配，用以下代码作为例子<br><a id="more"></a></p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class MainActivity extends Activity&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;fruit&gt; myFruits = <span class="keyword">new</span> ArrayList&lt;fruit&gt;();<span class="comment">//将数据定义为实例</span></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        initialFruits();</span><br><span class="line">        setContentView(R.layout.activity_main);<span class="comment">//与R.layout.activity_main布局绑定</span></span><br><span class="line">        ListView lv = (ListView) findViewById(R.id.lv);</span><br><span class="line">        fruitAdapter adapter = <span class="keyword">new</span> fruitAdapter(MainActivity.<span class="keyword">this</span>,R.layout.list_item,myFruits);<span class="comment">//fruitAdpter的三个参数依次为，上下文context,ListView单项布局文件，集合类型的数据</span></span><br><span class="line">        lv.setAdapter(adapter);<span class="comment">//用adapter做适配器（就理解为ListView看得懂并且存放有数据的容器）</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//初始化实例变量myFruits</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> initialFruits()&#123;</span><br><span class="line">        fruit orange = <span class="keyword">new</span> fruit(<span class="string">"orange"</span>,R.drawable.pa);</span><br><span class="line">        myFruits.<span class="built_in">add</span>(orange);</span><br><span class="line">        fruit grape = <span class="keyword">new</span> fruit(<span class="string">"grape"</span>,R.drawable.pb);</span><br><span class="line">        myFruits.<span class="built_in">add</span>(grape);</span><br><span class="line">        fruit milk = <span class="keyword">new</span> fruit(<span class="string">"milk"</span>,R.drawable.pc);</span><br><span class="line">        myFruits.<span class="built_in">add</span>(milk);</span><br><span class="line">        fruit bean = <span class="keyword">new</span> fruit(<span class="string">"bean"</span>,R.drawable.pd);</span><br><span class="line">        myFruits.<span class="built_in">add</span>(bean);</span><br><span class="line">        fruit kid = <span class="keyword">new</span> fruit(<span class="string">"kid"</span>,R.drawable.pe);</span><br><span class="line">        myFruits.<span class="built_in">add</span>(kid);</span><br><span class="line">        fruit banana = <span class="keyword">new</span> fruit(<span class="string">"banana"</span>,R.drawable.pf);   </span><br><span class="line">        myFruits.<span class="built_in">add</span>(banana);</span><br><span class="line">        fruit lamp = <span class="keyword">new</span> fruit(<span class="string">"lamp"</span>,R.drawable.pg);</span><br><span class="line">        myFruits.<span class="built_in">add</span>(lamp);</span><br><span class="line">        fruit hack = <span class="keyword">new</span> fruit(<span class="string">"hack"</span>,R.drawable.ph);</span><br><span class="line">        myFruits.<span class="built_in">add</span>(hack);</span><br><span class="line">        fruit keyboard = <span class="keyword">new</span> fruit(<span class="string">"keyboard"</span>,R.drawable.pi);</span><br><span class="line">        myFruits.<span class="built_in">add</span>(keyboard);</span><br><span class="line">        fruit water = <span class="keyword">new</span> fruit(<span class="string">"water"</span>,R.drawable.pj);</span><br><span class="line">        myFruits.<span class="built_in">add</span>(water);</span><br><span class="line">        fruit mouse = <span class="keyword">new</span> fruit(<span class="string">"mouse"</span>,R.drawable.pk);</span><br><span class="line">        myFruits.<span class="built_in">add</span>(mouse);</span><br><span class="line">        fruit ear = <span class="keyword">new</span> fruit(<span class="string">"ear"</span>,R.drawable.pl);</span><br><span class="line">        myFruits.<span class="built_in">add</span>(ear);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于<code>fruitAdapter</code>类</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">fruitAdapter</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">ArrayAdapter&lt;fruit&gt;</span>&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> int resourceId;</span><br><span class="line">    <span class="comment">//textViewResourceId即为传入的ListView的单项布局文件id</span></span><br><span class="line">    public fruitAdapter(<span class="type">Context</span> context,int textViewResourceId, <span class="type">List</span>&lt;fruit&gt; objects) &#123;</span><br><span class="line">        <span class="keyword">super</span>(context, textViewResourceId, objects);</span><br><span class="line">        <span class="comment">//adapter对象的resourceId实例变量保存ListView的单项布局文件id，以供getView()使用</span></span><br><span class="line">        resourceId = textViewResourceId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在每个子项被滚动到屏幕内的时候调用getView()</span></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    public <span class="type">View</span> getView(int position, <span class="type">View</span> convertView, <span class="type">ViewGroup</span> parent) &#123;</span><br><span class="line">        fruit newFruit = getItem(position);</span><br><span class="line">        <span class="type">View</span> view = <span class="type">LayoutInflater</span>.from(getContext()).inflate(resourceId,<span class="literal">null</span>);</span><br><span class="line">        <span class="type">ImageView</span> imageView = (<span class="type">ImageView</span>) view.findViewById(<span class="type">R</span>.id.fruit_image);</span><br><span class="line">        <span class="type">TextView</span> textView = (<span class="type">TextView</span>) view.findViewById(<span class="type">R</span>.id.fruit_name);</span><br><span class="line">        imageView.setImageResource(newFruit.getId());</span><br><span class="line">        textView.setText(newFruit.getName());</span><br><span class="line">        <span class="keyword">return</span>  view;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于getView(),《第一行代码》中给出的解释是“在每个子项被滚动到屏幕内的时候会被调用”。这句话的另一层意思是：凡是ListView中可见的子项，均调用了<code>getView()</code>方法。事实上也只能如此，因为在构造函数中并未告诉ListView如何呈现样式。也因此呢，整个ListView的过程是：创建Adapter(需调用构造函数)-&gt;特定的ListView指定该Adapter-&gt;在屏幕需要显示子项时调用getView()</p>
+<p>接着附上<code>fruit</code>类的代码</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">fruit</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> pic_id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">fruit</span>(<span class="params">String fname,<span class="keyword">int</span> id</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = fname;</span><br><span class="line">        <span class="keyword">this</span>.pic_id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pic_id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后就出现了这样的ListView<br><img src="http://ww1.sinaimg.cn/large/85184d39gw1eywrs86emxj20e80mrgof.jpg" alt="界面"><br><img src="http://ww1.sinaimg.cn/large/85184d39gw1eywroqv751j20b20ia755.jpg" alt="界面"></p>
+<p>这样看来图片的大小得事先选好，图片越大，速度越慢</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://gabygoole.com/2015/12/12/初探ListView和Adapter/" data-title="初探ListView和Adapter | Gabygoole&#39;s blog" data-tsina="纵横捭阖gov## 用于微博秀和微博分享" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/12/10/探究android控件及布局/"  title="探究android控件及布局">
+ <strong>下一篇：</strong><br/> 
+ <span>探究android控件及布局
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/12/12/初探ListView和Adapter/" data-title="初探ListView和Adapter" data-url="http://gabygoole.com/2015/12/12/初探ListView和Adapter/"></div>
+</section>
+
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android控件及布局/" title="android控件及布局">android控件及布局<sup>1</sup></a></li>
+			
+		
+			
+		
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.trinea.cn/" target="_blank" title="Trinea&#39;s blog">Trinea&#39;s blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/guolin_blog" target="_blank" title="郭霖的博客">郭霖的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.daimajia.com/" target="_blank" title="代码家的博客">代码家的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.slyar.com/blog/" target="_blank" title="slyar&#39;s blog">slyar&#39;s blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Talk is cheap,show me the code <br/>
+			每天让你起床的是什么...</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2232962361/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/gabygoole" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/5617711/%E9%83%AD%E4%BD%B3%E4%B9%90" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/gabygoole" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/gabygoole" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/view?id=AAMAABu5UikBDdt957vGRQErNDY6XHAgKgW7rfI&amp;trk=hp-identity-name" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/138678711/" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/jia-guo-67" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:gabygoole@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="GabyGoole">GabyGoole</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Gaby"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'disqus_6bhiovEzfI';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a630a6219ab3f6044135d9da2fc5e1f6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
