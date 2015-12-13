@@ -22,7 +22,7 @@
 <meta property="og:description" content="关于Android Adapter（适配器），参考Devin Zhang’s blog。简单的说，Adapter起到的作用是使得前端的显示和后端的数据能够适配，用以下代码作为例子">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/85184d39gw1eywrs86emxj20e80mrgof.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/85184d39gw1eywroqv751j20b20ia755.jpg">
-<meta property="og:updated_time" content="2015-12-12T04:45:05.623Z">
+<meta property="og:updated_time" content="2015-12-13T04:19:57.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初探ListView和Adapter">
 <meta name="twitter:description" content="关于Android Adapter（适配器），参考Devin Zhang’s blog。简单的说，Adapter起到的作用是使得前端的显示和后端的数据能够适配，用以下代码作为例子">
@@ -117,6 +117,10 @@
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">fruit</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> pic_id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">fruit</span>(<span class="params">String fname,<span class="keyword">int</span> id</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = fname;</span><br><span class="line">        <span class="keyword">this</span>.pic_id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pic_id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最后就出现了这样的ListView<br><img src="http://ww1.sinaimg.cn/large/85184d39gw1eywrs86emxj20e80mrgof.jpg" alt="界面"><br><img src="http://ww1.sinaimg.cn/large/85184d39gw1eywroqv751j20b20ia755.jpg" alt="界面"></p>
 <p>这样看来图片的大小得事先选好，图片越大，速度越慢</p>
+<p>滑动的时候确实会卡顿，优化如下:<br>getView()的convertView用于缓存加载好的布局，不至于每次有子项滑入屏幕内都要加载一次布局</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在每个子项被滚动到屏幕内的时候调用getView()</span></span><br><span class="line">    @Override</span><br><span class="line">    public <span class="keyword">View</span> getView(int position, <span class="keyword">View</span> convertView, ViewGroup parent) &#123;</span><br><span class="line">        <span class="keyword">View</span> <span class="keyword">view</span>;</span><br><span class="line">        ViewHolder viewHolder;</span><br><span class="line">        fruit myFruit = getItem(position);</span><br><span class="line">        <span class="keyword">if</span>(convertView == null)&#123;</span><br><span class="line">            viewHolder = new ViewHolder();</span><br><span class="line">            <span class="keyword">view</span> = LayoutInflater.from(getContext()).inflate(resourceId,null);</span><br><span class="line">            viewHolder.imageView = (ImageView) <span class="keyword">view</span>.findViewById(R.id.fruit_image);</span><br><span class="line">            viewHolder.textView = (TextView) <span class="keyword">view</span>.findViewById(R.id.fruit_name);</span><br><span class="line">            <span class="keyword">view</span>.setTag(viewHolder);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">view</span> = convertView;</span><br><span class="line">            viewHolder = (ViewHolder) <span class="keyword">view</span>.getTag();</span><br><span class="line">        &#125;</span><br><span class="line">        viewHolder.imageView.setImageResource(myFruit.getId());</span><br><span class="line">        viewHolder.textView.setText(myFruit.getName());</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">view</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>从优化ListView过程中，看出至始至终都是使用第一次加载好的view，索性在view里面再加上存有控件实例的viewHolder</p>
+<p>写子项-&gt;适配器-&gt;item-&gt;mainActivity(传数据)</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -147,6 +151,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/12/13/自定义控件类/" title="自定义控件类">
+  <strong>上一篇：</strong><br/>
+  <span>
+  自定义控件类</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2015/12/10/探究android控件及布局/"  title="探究android控件及布局">
@@ -192,7 +204,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/android/" title="android">android<sup>3</sup></a></li>
+				<li><a href="/tags/android/" title="android">android<sup>5</sup></a></li>
 			
 		
 			

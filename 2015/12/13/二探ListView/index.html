@@ -1,0 +1,593 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta name="msvalidate.01" content="73A9A026622736C583F45F45CFE98E93" />
+  <meta name="baidu-site-verification" content="8vcFms7qhq" />
+  <meta name="google-site-verification" content="61ceZMeFSYlefpKp5PVknazRCb2wAKFTxdeA6AerqOI" />
+  <meta charset="UTF-8">
+  
+    <title>二探ListView | Gabygoole&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="GabyGoole">
+    
+
+    
+    <meta name="description" content="使用draw9patch
+打开内置terminal
+输入CD C:\Users\Gaby\AppData\Local\Android\sdk
+在该目录下输入draw9patch
+导入图片，开始绘制
+本文成果图:
+
+
+
+左边和上边绘制的黑线，表示在纵向和横向拉伸时拉伸的部分。右边和下边的黑线表示要用于显示内容的部分
+从图片上可以看出，右边和下边的黑线可以偏中间一点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二探ListView">
+<meta property="og:url" content="http://gabygoole.com/2015/12/13/二探ListView/index.html">
+<meta property="og:site_name" content="Gabygoole's blog">
+<meta property="og:description" content="使用draw9patch
+打开内置terminal
+输入CD C:\Users\Gaby\AppData\Local\Android\sdk
+在该目录下输入draw9patch
+导入图片，开始绘制
+本文成果图:
+
+
+
+左边和上边绘制的黑线，表示在纵向和横向拉伸时拉伸的部分。右边和下边的黑线表示要用于显示内容的部分
+从图片上可以看出，右边和下边的黑线可以偏中间一点">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/85184d39gw1eyxyeov7zaj20an0hmmya.jpg">
+<meta property="og:updated_time" content="2015-12-13T05:34:34.464Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="二探ListView">
+<meta name="twitter:description" content="使用draw9patch
+打开内置terminal
+输入CD C:\Users\Gaby\AppData\Local\Android\sdk
+在该目录下输入draw9patch
+导入图片，开始绘制
+本文成果图:
+
+
+
+左边和上边绘制的黑线，表示在纵向和横向拉伸时拉伸的部分。右边和下边的黑线表示要用于显示内容的部分
+从图片上可以看出，右边和下边的黑线可以偏中间一点">
+<meta name="twitter:creator" content="@gabygoole">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Gabygoole&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jackman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jackman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/bull.png" alt="Gabygoole&#39;s blog" title="Gabygoole&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Gabygoole&#39;s blog">Gabygoole&#39;s blog</a></h1>
+				<h2 class="blog-motto">poetry,beauty,romance,love,these are what we stay alive for.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:gabygoole.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/13/二探ListView/" title="二探ListView" itemprop="url">二探ListView</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-13T03:57:37.000Z" itemprop="datePublished"> 发表于 2015-12-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用draw9patch"><span class="toc-number">1.</span> <span class="toc-text">使用draw9patch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上代码"><span class="toc-number">2.</span> <span class="toc-text">上代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#活动布局文件:"><span class="toc-number">3.</span> <span class="toc-text">活动布局文件:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Item类"><span class="toc-number">4.</span> <span class="toc-text">Item类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Item类对象的集合->初始化该集合"><span class="toc-number">5.</span> <span class="toc-text">Item类对象的集合->初始化该集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#item_layout单项布局"><span class="toc-number">6.</span> <span class="toc-text">item_layout单项布局</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="使用draw9patch">使用draw9patch</h3><ol>
+<li>打开内置terminal</li>
+<li>输入<code>CD C:\Users\Gaby\AppData\Local\Android\sdk</code></li>
+<li>在该目录下输入<code>draw9patch</code></li>
+<li>导入图片，开始绘制</li>
+<li>本文成果图:</li>
+</ol>
+<p><img src="http://ww1.sinaimg.cn/large/85184d39gw1eyxyeov7zaj20an0hmmya.jpg" alt="成果图"></p>
+<ol>
+<li>左边和上边绘制的黑线，表示在纵向和横向拉伸时拉伸的部分。右边和下边的黑线表示要用于显示内容的部分</li>
+<li>从图片上可以看出，右边和下边的黑线可以偏中间一点</li>
+</ol>
+<a id="more"></a>
+<h3 id="上代码">上代码</h3><p>首先写MainActivity,先只考虑需要哪些功能，不去管如何实现<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);<span class="comment">//首先写活动主布局文件</span></span><br><span class="line">        ListView listV = (ListView) findViewById(R.id.listView);</span><br><span class="line">        initData(); <span class="comment">//接着写类和initData函数</span></span><br><span class="line">        <span class="comment">//单项布局文件，然后写adapter类</span></span><br><span class="line">        mess_adapter adapter = <span class="keyword">new</span> mess_adapter(MainActivity.<span class="keyword">this</span>,R.layout.item_layout,mesgLists);</span><br><span class="line">        listV.setAdapter(adapter);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>顺序是：MainActivity-&gt;活动布局文件-&gt;Item类-&gt;Item类对象的集合-&gt;初始化该集合-&gt;item_layout单项布局-&gt;adapter类</p>
+<h3 id="活动布局文件:">活动布局文件:</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">	<span class="attribute">android:orientation</span>=<span class="value">"vertical"</span>/&gt;</span> </span><br><span class="line">    android:background="#d8e0e8"&gt;</span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="title">ListView</span></span><br><span class="line">       <span class="attribute">android:id</span>=<span class="value">"@+id/listView"</span></span><br><span class="line">       <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">       <span class="attribute">android:layout_height</span>=<span class="value">"0dp"</span></span><br><span class="line">       <span class="attribute">android:divider</span>=<span class="value">"#0000"</span> </span><br><span class="line">       <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span></span><br><span class="line">       &gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="title">ListView</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">       <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">       <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">EditText</span></span><br><span class="line">          <span class="attribute">android:layout_width</span>=<span class="value">"0dp"</span></span><br><span class="line">          <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">          <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span></span><br><span class="line">          <span class="attribute">android:hint</span>=<span class="value">"input your message"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">Button</span></span><br><span class="line">          <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">          <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">          <span class="attribute">android:text</span>=<span class="value">"Send"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注意:</p>
+<ul>
+<li><code>android:divider=&quot;#0000&quot;</code>该项用于设置ListView的的分割线为透明</li>
+<li>输入框和button通过LinearLaout绑定在一起</li>
+<li>最外<code>LinearLayout</code>的<code>orientation</code>设置为<code>vertical</code>是让<code>ListView</code>和内LinearLayout上下放置</li>
+<li>ListView设置<code>height = &quot;0dp&quot;</code> <code>weight = &quot;1&quot;</code>切内LinearLayout无设置，意思就是，在保证内LinearLayout的区域大小后，其他空间都归ListView，同理内LinearLayout的EditText和Button</li>
+</ul>
+<h3 id="Item类">Item类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Item</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SEND = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> REC = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> type;</span><br><span class="line">    <span class="keyword">private</span> String content;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Item</span><span class="params">(<span class="keyword">int</span> wtype, String content)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.type = wtype;</span><br><span class="line">        <span class="keyword">this</span>.content = content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getType</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getContent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<ul>
+<li>如果要在MainActivity中使用SEND来给一个Item对象赋值，那么这个SEND常量就一定得在Item类中定义</li>
+</ul>
+<h3 id="Item类对象的集合-&gt;初始化该集合">Item类对象的集合-&gt;初始化该集合</h3><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> List&lt;Item&gt; mesgs = <span class="keyword">new</span> ArrayList&lt;Item&gt;();</span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span> <span class="keyword">void</span> initData() &#123;</span><br><span class="line">        Item con_a = <span class="keyword">new</span> Item(Item.REC,<span class="string">"hello my name is Gaby"</span>);</span><br><span class="line">        mesgLists.<span class="built_in">add</span>(con_a);</span><br><span class="line">        Item con_b = <span class="keyword">new</span> Item(Item.SEND,<span class="string">"Hi,Gaby! I'm Cici"</span>);</span><br><span class="line">        mesgLists.<span class="built_in">add</span>(con_b);</span><br><span class="line">        Item con_c = <span class="keyword">new</span> Item(Item.SEND,<span class="string">"where are you come from?"</span>);</span><br><span class="line">        mesgLists.<span class="built_in">add</span>(con_c);</span><br><span class="line">        Item con_d = <span class="keyword">new</span> Item(Item.REC,<span class="string">"I'm from China"</span>);</span><br><span class="line">        mesgLists.<span class="built_in">add</span>(con_d);</span><br><span class="line"></span><br><span class="line">        Item con_e = <span class="keyword">new</span> Item(Item.SEND,<span class="string">"oh? I come from Japan"</span>);</span><br><span class="line">        mesgLists.<span class="built_in">add</span>(con_d);</span><br><span class="line"></span><br><span class="line">        Item con_f = <span class="keyword">new</span> Item(Item.REC,<span class="string">"so you must know yui hatano"</span>);</span><br><span class="line">        mesgLists.<span class="built_in">add</span>(con_f);</span><br><span class="line"></span><br><span class="line">        Item con_g = <span class="keyword">new</span> Item(Item.SEND,<span class="string">"I do,she is the best"</span>);</span><br><span class="line">        mesgLists.<span class="built_in">add</span>(con_g);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="item_layout单项布局">item_layout单项布局</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/left"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:background</span>=<span class="value">"@drawable/qq"</span></span><br><span class="line">        <span class="attribute">android:layout_gravity</span>=<span class="value">"left"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/tv_left"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/right"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:layout_gravity</span>=<span class="value">"right"</span></span><br><span class="line">        <span class="attribute">android:background</span>=<span class="value">"@drawable/oo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/tv_right"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注意:</p>
+<ul>
+<li><code>android:orientation=&quot;vertical&quot;</code>以及两个LinearLayout中各自的<code>android:layout_gravity=&quot;left&quot;</code> <code>android:layout_gravity=&quot;right&quot;</code><br>使得单项布局中的两个对话框一左一右垂直排列<br><a href="http://ww3.sinaimg.cn/large/85184d39gw1eyxy1byy9aj205f03eglg.jpg" target="_blank" rel="external">item_layout</a></li>
+<li>实际上对话框中带有TextView,因为LinearLayout中的两个属性都是<code>wrap_content</code></li>
+</ul>
+<p>adapter类<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">mess_adapter</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">ArrayAdapter&lt;Item&gt;</span>&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> int resourceId;</span><br><span class="line"></span><br><span class="line">    public mess_adapter(<span class="type">Context</span> context,int textViewResourceId, <span class="type">List</span>&lt;<span class="type">Item</span>&gt; objects) &#123;</span><br><span class="line">        <span class="keyword">super</span>(context,textViewResourceId, objects);</span><br><span class="line">           resourceId = textViewResourceId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    public <span class="type">View</span> getView(int position, <span class="type">View</span> convertView, <span class="type">ViewGroup</span> parent) &#123;</span><br><span class="line">        <span class="type">View</span> view;</span><br><span class="line">        <span class="type">ViewHolder</span> viewHolder;</span><br><span class="line">        <span class="type">Item</span> item = getItem(position);</span><br><span class="line">        <span class="keyword">if</span>(convertView == <span class="literal">null</span>)&#123;</span><br><span class="line">            viewHolder = <span class="keyword">new</span> <span class="type">ViewHolder</span>();</span><br><span class="line">            view = <span class="type">LayoutInflater</span>.from(getContext()).inflate(resourceId,<span class="literal">null</span>);</span><br><span class="line">            viewHolder.left_layout = (<span class="type">LinearLayout</span>) view.findViewById(<span class="type">R</span>.id.left);</span><br><span class="line">            viewHolder.right_layout = (<span class="type">LinearLayout</span>) view.findViewById(<span class="type">R</span>.id.right);</span><br><span class="line">            viewHolder.tv_right = (<span class="type">TextView</span>) view.findViewById(<span class="type">R</span>.id.tv_right);</span><br><span class="line">            viewHolder.tv_left = (<span class="type">TextView</span>) view.findViewById(<span class="type">R</span>.id.tv_left);</span><br><span class="line">            view.setTag(viewHolder);</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            view = convertView;</span><br><span class="line">            viewHolder = (<span class="type">ViewHolder</span>) view.getTag();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(item.getType() == <span class="type">Item</span>.<span class="type">SEND</span>)&#123;<span class="comment">//send is in the left</span></span><br><span class="line">            viewHolder.right_layout.setVisibility(<span class="type">View</span>.<span class="type">GONE</span>);</span><br><span class="line">            viewHolder.tv_left.setText(item.getContent());</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            viewHolder.left_layout.setVisibility(<span class="type">View</span>.<span class="type">GONE</span>);</span><br><span class="line">            viewHolder.tv_right.setText(item.getContent());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> view;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span>&#123;</span></span><br><span class="line">        <span class="type">LinearLayout</span> left_layout;</span><br><span class="line">        <span class="type">LinearLayout</span> right_layout;</span><br><span class="line">        <span class="type">TextView</span> tv_left;</span><br><span class="line">        <span class="type">TextView</span> tv_right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注意：</p>
+<ul>
+<li>因为不能通过一个布局去取得布局中的控件，也因此，每个控件都设置id</li>
+<li>viewHolder存放着四个控件实例</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://gabygoole.com/2015/12/13/二探ListView/" data-title="二探ListView | Gabygoole&#39;s blog" data-tsina="纵横捭阖gov## 用于微博秀和微博分享" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/12/13/自定义控件类/"  title="自定义控件类">
+ <strong>下一篇：</strong><br/> 
+ <span>自定义控件类
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/12/13/二探ListView/" data-title="二探ListView" data-url="http://gabygoole.com/2015/12/13/二探ListView/"></div>
+</section>
+
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用draw9patch"><span class="toc-number">1.</span> <span class="toc-text">使用draw9patch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上代码"><span class="toc-number">2.</span> <span class="toc-text">上代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#活动布局文件:"><span class="toc-number">3.</span> <span class="toc-text">活动布局文件:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Item类"><span class="toc-number">4.</span> <span class="toc-text">Item类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Item类对象的集合->初始化该集合"><span class="toc-number">5.</span> <span class="toc-text">Item类对象的集合->初始化该集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#item_layout单项布局"><span class="toc-number">6.</span> <span class="toc-text">item_layout单项布局</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android控件及布局/" title="android控件及布局">android控件及布局<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.trinea.cn/" target="_blank" title="Trinea&#39;s blog">Trinea&#39;s blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/guolin_blog" target="_blank" title="郭霖的博客">郭霖的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.daimajia.com/" target="_blank" title="代码家的博客">代码家的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.slyar.com/blog/" target="_blank" title="slyar&#39;s blog">slyar&#39;s blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Talk is cheap,show me the code <br/>
+			每天让你起床的是什么...</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2232962361/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/gabygoole" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/5617711/%E9%83%AD%E4%BD%B3%E4%B9%90" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/gabygoole" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/gabygoole" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/view?id=AAMAABu5UikBDdt957vGRQErNDY6XHAgKgW7rfI&amp;trk=hp-identity-name" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/138678711/" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/jia-guo-67" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:gabygoole@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="GabyGoole">GabyGoole</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Gaby"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'disqus_6bhiovEzfI';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a630a6219ab3f6044135d9da2fc5e1f6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
