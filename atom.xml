@@ -4,7 +4,7 @@
   <subtitle><![CDATA[poetry,beauty,romance,love,these are what we stay alive for.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://gabygoole.com/"/>
-  <updated>2015-12-13T05:34:34.464Z</updated>
+  <updated>2015-12-14T16:33:46.363Z</updated>
   <id>http://gabygoole.com/</id>
   
   <author>
@@ -15,11 +15,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[初探碎片]]></title>
+    <link href="http://gabygoole.com/2015/12/15/%E5%88%9D%E6%8E%A2%E7%A2%8E%E7%89%87/"/>
+    <id>http://gabygoole.com/2015/12/15/初探碎片/</id>
+    <published>2015-12-14T16:30:56.000Z</published>
+    <updated>2015-12-14T16:33:46.363Z</updated>
+    <content type="html"><![CDATA[<h3 id="解决android_studio中使用碎片后，平板预览出错问题">解决android studio中使用碎片后，平板预览出错问题</h3><p><img src="http://ww3.sinaimg.cn/large/85184d39gw1eyy7an6b2ij20e4086gls.jpg" alt="预览出错"><br>解决办法：<br>在左右fragment各加<code>tools:layout=&quot;@layout/left_fragment&quot;</code><br><a id="more"></a><br>问题地址，点进去后记得顶这个问题！<br>显示正常了：<br><img src="http://ww4.sinaimg.cn/large/85184d39gw1eyy7ecrts8j20da08iglt.jpg" alt="显示"></p>
+<p>其中，使用碎片的顺序应该是，写的方向则相反：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fragment-&#62;&#30862;&#29255;&#31867;: &#35843;&#29992;&#35813;&#31867;&#10;&#30862;&#29255;&#31867;-&#62;&#24067;&#23616;: &#21152;&#36733;&#35813;&#24067;&#23616;</span><br></pre></td></tr></table></figure></p>
+<h3 id="动态添加碎片">动态添加碎片</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建碎片类实例</span></span><br><span class="line">anotherFragment anotherFragment = new anotherFragment(); </span><br><span class="line"><span class="comment">//碎片管理器            </span></span><br><span class="line">android.<span class="keyword">app</span>.FragmentManager fragmentManager = getFragmentManager(); </span><br><span class="line"><span class="comment">//用碎片管理器开启事务</span></span><br><span class="line">FragmentTransaction transaction = fragmentManager.beginTransaction(); </span><br><span class="line"><span class="comment">//替换前者容器中的碎片实例，从这里可以看出，在布局文件&lt;fragment name="..."&gt;,实际上是创建了该碎片类的实例      </span></span><br><span class="line">transaction.<span class="keyword">replace</span>(R.id.right_container,anotherFragment);</span><br><span class="line"><span class="comment">//提交事务</span></span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
+<p>动态添加碎片实则是在一个容器中(此例为FrameLayout)将一个碎片(实例)替换成另一个碎片(实例)</p>
+<h3 id="在碎片中模拟返回栈">在碎片中模拟返回栈</h3><p>在事务(transaction)被commit前,添加<code>transaction.addToBackStack(null)</code>，按Back键可以返回事务前的状态</p>
+<p>从布局文件获取碎片实例，接着就可以调用碎片的方法：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LeftFragment leftfrag = (LeftFragment) getFragmentManager().findFragmentById(R.<span class="property">id</span>.left_frag);</span><br></pre></td></tr></table></figure></p>
+<p>碎片中调用活动的方法：<br>因为：活动)(1)&lt;–绑定–&gt;布局&lt;–包含–&gt;碎片-&gt;对应碎片类-&gt;在碎片类里面通过getActivity()获取相关联活动(1)</p>
+<h3 id="碎片的生命周期">碎片的生命周期</h3><ul>
+<li>若有在事务提交前 addToBackStack,那么起初的碎片会onPause-&gt;onStop-&gt;onDestroyView，按Back键会重新加载该碎片 onActivityCreated-&gt;onStart-&gt;onResume(没有onCreateView,原因是借助addToBackStack使得先前碎片的实例和视图得以保存)</li>
+<li>反之，在碎片被替换后，onDestroyView-&gt;onDestroy-&gt;onDetach</li>
+</ul>
+<h3 id="preview无法显示">preview无法显示</h3><p><img src="http://ww4.sinaimg.cn/large/85184d39gw1eyznahk9g0j20i90aw40z.jpg" alt="preview"></p>
+<p><a href="http://stackoverflow.com/questions/23898992/android-studio-google-map-v2-fragment-rendering" target="_blank" rel="external">问题的解答</a></p>
+<p>大致意思是，只要你代码写的对，真实运行的是时候就不会出错，忽略这个问题即可。我想会不会和上面的那个问题有关，加上<code>tools:layout=&quot;@layout/left_fragment&quot;</code>果然正确显示出来了</p>
+<p>其实，可以推理出，<code>tools:layout=&quot;@layout/left_fragment&quot;</code>不过是用了来自<code>xmlns:tools=&quot;http://schemas.android.com/tools&quot;</code>的工具，你不加，无非无法预览而已，该运行的还是运行起走</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="解决android_studio中使用碎片后，平板预览出错问题">解决android studio中使用碎片后，平板预览出错问题</h3><p><img src="http://ww3.sinaimg.cn/large/85184d39gw1eyy7an6b2ij20e4086gls.jpg" alt="预览出错"><br>解决办法：<br>在左右fragment各加<code>tools:layout=&quot;@layout/left_fragment&quot;</code><br>]]>
+    
+    </summary>
+    
+      <category term="android" scheme="http://gabygoole.com/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[二探ListView]]></title>
     <link href="http://gabygoole.com/2015/12/13/%E4%BA%8C%E6%8E%A2ListView/"/>
     <id>http://gabygoole.com/2015/12/13/二探ListView/</id>
     <published>2015-12-13T03:57:37.000Z</published>
-    <updated>2015-12-13T05:34:34.464Z</updated>
+    <updated>2015-12-13T05:37:03.965Z</updated>
     <content type="html"><![CDATA[<h3 id="使用draw9patch">使用draw9patch</h3><ol>
 <li>打开内置terminal</li>
 <li>输入<code>CD C:\Users\Gaby\AppData\Local\Android\sdk</code></li>
@@ -87,7 +118,7 @@
     <link href="http://gabygoole.com/2015/12/13/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E7%B1%BB/"/>
     <id>http://gabygoole.com/2015/12/13/自定义控件类/</id>
     <published>2015-12-13T03:47:12.000Z</published>
-    <updated>2015-12-13T05:33:05.832Z</updated>
+    <updated>2015-12-13T05:37:05.988Z</updated>
     <content type="html"><![CDATA[<p>在自定义标题栏时，自定义的标题栏总会置于系统自带的标题栏之下，于是在<code>activity_main.xml</code>中发现了这样一部分内容<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.AppBarLayout</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">    android:theme=<span class="string">"@style/AppTheme.AppBarOverlay"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android<span class="class">.support</span><span class="class">.v7</span><span class="class">.widget</span><span class="class">.Toolbar</span></span><br><span class="line">        android:id=<span class="string">"@+id/toolbar"</span></span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"?attr/actionBarSize"</span></span><br><span class="line">        android:<span class="attribute">background</span>=<span class="string">"?attr/colorPrimary"</span></span><br><span class="line">        app:popupTheme=<span class="string">"@style/AppTheme.PopupOverlay"</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.AppBarLayout</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;include layout=<span class="string">"@layout/content_main"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">include</span> layout=<span class="string">"@layout/content_main"</span> /&gt; <span class="regexp">//</span>此为引入布局的方法</span><br></pre></td></tr></table></figure>
