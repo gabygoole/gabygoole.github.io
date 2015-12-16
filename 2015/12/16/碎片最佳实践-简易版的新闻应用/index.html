@@ -1,0 +1,549 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta name="msvalidate.01" content="73A9A026622736C583F45F45CFE98E93" />
+  <meta name="baidu-site-verification" content="8vcFms7qhq" />
+  <meta name="google-site-verification" content="61ceZMeFSYlefpKp5PVknazRCb2wAKFTxdeA6AerqOI" />
+  <meta charset="UTF-8">
+  
+    <title>碎片最佳实践-简易版的新闻应用 | Gabygoole&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="GabyGoole">
+    
+
+    
+    <meta name="description" content="先上成果图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="碎片最佳实践-简易版的新闻应用">
+<meta property="og:url" content="http://gabygoole.com/2015/12/16/碎片最佳实践-简易版的新闻应用/index.html">
+<meta property="og:site_name" content="Gabygoole's blog">
+<meta property="og:description" content="先上成果图">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/85184d39gw1ez1dybimszj20ec0nfq4b.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/85184d39gw1ez1e1sf9boj20e70mi76i.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/85184d39gw1ez1e2eca23j20n70d40ti.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/85184d39gw1ez1e3asyf9j20ne0efgn8.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/85184d39gw1ez1fg2ousmj208y097gmt.jpg">
+<meta property="og:updated_time" content="2015-12-16T05:23:28.782Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="碎片最佳实践-简易版的新闻应用">
+<meta name="twitter:description" content="先上成果图">
+<meta name="twitter:creator" content="@gabygoole">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Gabygoole&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jackman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jackman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/bull.png" alt="Gabygoole&#39;s blog" title="Gabygoole&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Gabygoole&#39;s blog">Gabygoole&#39;s blog</a></h1>
+				<h2 class="blog-motto">poetry,beauty,romance,love,these are what we stay alive for.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:gabygoole.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/16/碎片最佳实践-简易版的新闻应用/" title="碎片最佳实践-简易版的新闻应用" itemprop="url">碎片最佳实践-简易版的新闻应用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-16T04:29:47.000Z" itemprop="datePublished"> 发表于 2015-12-16</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#先上成果图"><span class="toc-number">1.</span> <span class="toc-text">先上成果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主体思想"><span class="toc-number">2.</span> <span class="toc-text">主体思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遇到的问题"><span class="toc-number">3.</span> <span class="toc-text">遇到的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上代码"><span class="toc-number">4.</span> <span class="toc-text">上代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码结构"><span class="toc-number">4.1.</span> <span class="toc-text">代码结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#News-class"><span class="toc-number">4.2.</span> <span class="toc-text">News.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NewsAdapter-class"><span class="toc-number">4.3.</span> <span class="toc-text">NewsAdapter.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NewsContentFragment-class"><span class="toc-number">4.4.</span> <span class="toc-text">NewsContentFragment.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NewsTitleFragment-class"><span class="toc-number">4.5.</span> <span class="toc-text">NewsTitleFragment.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#content_frag-xml"><span class="toc-number">4.6.</span> <span class="toc-text">content_frag.xml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#newsTitle_frag-xml"><span class="toc-number">4.7.</span> <span class="toc-text">newsTitle_frag.xml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#title_item-xml"><span class="toc-number">4.8.</span> <span class="toc-text">title_item.xml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#content-xml"><span class="toc-number">4.9.</span> <span class="toc-text">content.xml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#layout-anctivity_main"><span class="toc-number">4.10.</span> <span class="toc-text">layout-anctivity_main</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#layout-sw600dp-activity_main"><span class="toc-number">4.11.</span> <span class="toc-text">layout-sw600dp-activity_main</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="先上成果图">先上成果图</h3><p><img src="http://ww4.sinaimg.cn/large/85184d39gw1ez1dybimszj20ec0nfq4b.jpg" alt="小屏幕"></p>
+<a id="more"></a>
+<p><img src="http://ww3.sinaimg.cn/large/85184d39gw1ez1e1sf9boj20e70mi76i.jpg" alt="点击后"><br><img src="http://ww1.sinaimg.cn/large/85184d39gw1ez1e2eca23j20n70d40ti.jpg" alt="大屏幕Nexus7"><br><img src="http://ww1.sinaimg.cn/large/85184d39gw1ez1e3asyf9j20ne0efgn8.jpg" alt="点击后"></p>
+<h3 id="主体思想">主体思想</h3><p>写两个<code>activity_main</code>布局文件，一个在layout文件夹下，另一个置于layout-sw600dp下。前者只有一个<code>titleFragment</code>碎片，后者还会加上<code>contentFragment</code>碎片，系统根据设备大小加载不同的<code>activity_main</code>。但是也由于两种布局下都包含<code>titleFragment</code>碎片，在点击ListView时，面临两种选择。其一，若为单页模式，就跳转到包含内容布局的活动。若为双页，获取右碎片实例(getFragmentManager.findFragmentById)，refresh下即可。至于如何判断当前处于单页还是双页，两个<code>activity_main</code>不同的就是大屏幕的多了一个右侧碎片，给这个碎片加上id,在<code>titleFragment</code>中的onActivityCreated(活动加载完成才执行的函数) 用getActivity().findViewById(右侧碎片的id)来判断。getActivity是获取与该碎片相关联的活动</p>
+<h3 id="遇到的问题">遇到的问题</h3><ol>
+<li>继承自android.app.Fragment的碎片类，里面的onAttach(Context context) 在API23中<br>不会被调用，导致里面的初始化操作不会执行</li>
+</ol>
+<p>解决办法: 将onAttach()中代码转移进onCreateView()</p>
+<ol>
+<li>代码无异常，运行时抛出ActivityNotFound异常</li>
+</ol>
+<p>解决办法：在AndroidManifest下注册活动</p>
+<h3 id="上代码">上代码</h3><h4 id="代码结构">代码结构</h4><p><img src="http://ww3.sinaimg.cn/large/85184d39gw1ez1fg2ousmj208y097gmt.jpg" alt="结构"></p>
+<h4 id="News-class"><code>News.class</code></h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> News &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">String</span> title;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">String</span> content;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> setTitle(<span class="built_in">String</span> title) &#123;</span><br><span class="line">        <span class="keyword">this</span>.title = title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> setContent(<span class="built_in">String</span> content) &#123;</span><br><span class="line">        <span class="keyword">this</span>.content = content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">String</span> getTitle() &#123;</span><br><span class="line">        <span class="keyword">return</span> title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">String</span> getContent() &#123;</span><br><span class="line">        <span class="keyword">return</span> content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="NewsAdapter-class"><code>NewsAdapter.class</code></h4><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">NewsAdapter</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">ArrayAdapter&lt;News&gt;</span>&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> int resourceId;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">View</span> view;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">ViewHolder</span> viewHolder;</span><br><span class="line"></span><br><span class="line">    public <span class="type">NewsAdapter</span>(<span class="type">Context</span> context,int textViewResourceId, <span class="type">List</span>&lt;<span class="type">News</span>&gt; objects) &#123;</span><br><span class="line">        <span class="keyword">super</span>(context, textViewResourceId, objects);</span><br><span class="line">        resourceId = textViewResourceId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    public <span class="type">View</span> getView(int position, <span class="type">View</span> convertView, <span class="type">ViewGroup</span> parent) &#123;</span><br><span class="line">        <span class="type">News</span> news = getItem(position);</span><br><span class="line">        <span class="keyword">if</span>(convertView == <span class="literal">null</span>)&#123;</span><br><span class="line">            view = <span class="type">LayoutInflater</span>.from(getContext()).inflate(resourceId,<span class="literal">null</span>);</span><br><span class="line">            viewHolder = <span class="keyword">new</span> <span class="type">ViewHolder</span>();</span><br><span class="line">            viewHolder.titleTextView = (<span class="type">TextView</span>) view.findViewById(<span class="type">R</span>.id.title_item_tv);</span><br><span class="line">            view.setTag(viewHolder);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            view = convertView;</span><br><span class="line">            viewHolder = (<span class="type">ViewHolder</span>) view.getTag();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        viewHolder.titleTextView.setText(news.getTitle());</span><br><span class="line">        <span class="keyword">return</span> view;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span>&#123;</span></span><br><span class="line">        <span class="type">TextView</span> titleTextView;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="NewsContentFragment-class"><code>NewsContentFragment.class</code></h4><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">NewsContentFragment</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Fragment</span>&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">View</span> view;</span><br><span class="line">    <span class="annotation">@Nullable</span></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    public <span class="type">View</span> onCreateView(<span class="type">LayoutInflater</span> inflater, <span class="type">ViewGroup</span> container, <span class="type">Bundle</span> savedInstanceState) &#123;</span><br><span class="line">        view = inflater.inflate(<span class="type">R</span>.layout.content_frag,container,<span class="literal">false</span>);</span><br><span class="line">        <span class="keyword">return</span> view;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void refresh(<span class="type">String</span> title, <span class="type">String</span> content)&#123;</span><br><span class="line">        <span class="type">LinearLayout</span> linearLayout = (<span class="type">LinearLayout</span>) view.findViewById(<span class="type">R</span>.id.content);</span><br><span class="line">        linearLayout.setVisibility(<span class="type">View</span>.<span class="type">VISIBLE</span>);</span><br><span class="line">        <span class="type">TextView</span> title_tv = (<span class="type">TextView</span>) view.findViewById(<span class="type">R</span>.id.tv_title);</span><br><span class="line">        <span class="type">TextView</span> content_tv = (<span class="type">TextView</span>) view.findViewById(<span class="type">R</span>.id.tv_content);</span><br><span class="line">        title_tv.setText(title);</span><br><span class="line">        content_tv.setText(content);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="NewsTitleFragment-class"><code>NewsTitleFragment.class</code></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NewsTitleFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> <span class="keyword">implements</span> <span class="title">AdapterView</span>.<span class="title">OnItemClickListener</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;News&gt; newsList = <span class="keyword">new</span> ArrayList&lt;News&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Boolean twoPane;</span><br><span class="line">    <span class="annotation">@Nullable</span></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        initData();</span><br><span class="line">        NewsAdapter adapter = <span class="keyword">new</span> NewsAdapter(getActivity(),R.layout.title_item,newsList);</span><br><span class="line">        View view = inflater.inflate(R.layout.newstitle_frag,container,<span class="keyword">false</span>);</span><br><span class="line">        ListView NewsTitleListView = (ListView) view.findViewById(R.id.title_list_view);</span><br><span class="line">        NewsTitleListView.setAdapter(adapter);</span><br><span class="line">        NewsTitleListView.setOnItemClickListener(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">return</span> view;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span></span>&#123;</span><br><span class="line">        News news1 = <span class="keyword">new</span> News();</span><br><span class="line">        news1.setTitle(<span class="string">"Google will accept Gaby to be the CEO"</span>);</span><br><span class="line">        news1.setContent(<span class="string">"To reduce housing inventories, more migrant rural workers should be issued with urban-residency permits, which will allow them to purchase housing in cities, according to a statement released after a meeting of the Political Bureau of the CPC Central Committee presided over by President Xi Jinping."</span>);</span><br><span class="line">        newsList.add(news1);</span><br><span class="line"></span><br><span class="line">        News news2 = <span class="keyword">new</span> News();</span><br><span class="line">        news2.setTitle(<span class="string">"High-tech products at Light of the Internet Expo Baidu 'self-driving' cars to hit roads in 3 years"</span>);</span><br><span class="line">        news2.setContent(<span class="string">"Baidu indicated that the new business unit will focus on research and development of self-driving technology as well as build the industrial chain to support the production of next-generation cars."</span>);</span><br><span class="line">        newsList.add(news2);</span><br><span class="line"></span><br><span class="line">        News news3 = <span class="keyword">new</span> News();</span><br><span class="line">        news3.setContent(<span class="string">"In the future, vehicles could be self-driven and controlled by smart systems. We have set a target to commercialize our operations in the next three years,\" he said, adding that in 10 years, about 80 percent of the newly produced vehicles would be equipped with self-driving technologies"</span>);</span><br><span class="line">        news3.setTitle(<span class="string">"Reasonable economomic growth rate targeted"</span>);</span><br><span class="line">        newsList.add(news3);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityCreated</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onActivityCreated(savedInstanceState);</span><br><span class="line">        <span class="keyword">if</span>(getActivity().findViewById(R.id.content_frag_layout) == <span class="keyword">null</span>)&#123;</span><br><span class="line">            twoPane = <span class="keyword">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            twoPane = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(AdapterView&lt;?&gt; parent, View view, <span class="keyword">int</span> position, <span class="keyword">long</span> id)</span> </span>&#123;</span><br><span class="line">        News news = newsList.get(position);</span><br><span class="line">        <span class="keyword">if</span>(twoPane)&#123;</span><br><span class="line">            NewsContentFragment newsContentFragment = (NewsContentFragment) getFragmentManager().findFragmentById(R.id.content_frag_layout);</span><br><span class="line">            newsContentFragment.refresh(news.getTitle(), news.getContent());</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            contentActivity.actionStart(getActivity(),news.getTitle(),news.getContent());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="content_frag-xml"><code>content_frag.xml</code></h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">RelativeLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/content"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span></span><br><span class="line">        <span class="attribute">android:visibility</span>=<span class="value">"invisible"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/tv_title"</span></span><br><span class="line">            <span class="attribute">android:textSize</span>=<span class="value">"20sp"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:padding</span>=<span class="value">"10dp"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">ImageView</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"1dp"</span></span><br><span class="line">            <span class="attribute">android:src</span>=<span class="value">"@drawable/vandh"</span></span><br><span class="line">            <span class="attribute">android:scaleType</span>=<span class="value">"fitXY"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/tv_content"</span></span><br><span class="line">            <span class="attribute">android:textSize</span>=<span class="value">"20sp"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"0dp"</span></span><br><span class="line">            <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span></span><br><span class="line">            <span class="attribute">android:padding</span>=<span class="value">"15dp"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">ImageView</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"1dp"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:src</span>=<span class="value">"@drawable/vandh"</span></span><br><span class="line">        <span class="attribute">android:layout_alignParentLeft</span>=<span class="value">"true"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="newsTitle_frag-xml"><code>newsTitle_frag.xml</code></h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span> <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">ListView</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/title_list_view"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>&gt;</span><span class="tag">&lt;/<span class="title">ListView</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="title_item-xml"><code>title_item.xml</code></h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span> <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/title_item_tv"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:singleLine</span>=<span class="value">"true"</span></span><br><span class="line">        <span class="attribute">android:ellipsize</span>=<span class="value">"end"</span></span><br><span class="line">        <span class="attribute">android:paddingLeft</span>=<span class="value">"10dp"</span></span><br><span class="line">        <span class="attribute">android:paddingRight</span>=<span class="value">"10dp"</span></span><br><span class="line">        <span class="attribute">android:paddingTop</span>=<span class="value">"15dp"</span></span><br><span class="line">        <span class="attribute">android:paddingBottom</span>=<span class="value">"15dp"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="content-xml"><code>content.xml</code></h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span> <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">fragment</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/content_alone"</span></span><br><span class="line">        <span class="attribute">android:name</span>=<span class="value">"com.example.gaby.fragmentbestpacticey.NewsContentFragment"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="layout-anctivity_main"><code>layout-anctivity_main</code></h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">RelativeLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">fragment</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/title_frag"</span></span><br><span class="line">        <span class="attribute">android:name</span>=<span class="value">"com.example.gaby.fragmentbestpacticey.NewsTitleFragment"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="layout-sw600dp-activity_main"><code>layout-sw600dp-activity_main</code></h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">fragment</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/news_title_fragment"</span></span><br><span class="line">        <span class="attribute">android:name</span>=<span class="value">"com.example.gaby.fragmentbestpacticey.NewsTitleFragment"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"0dp"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">fragment</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/content_frag_layout"</span></span><br><span class="line">        <span class="attribute">android:name</span>=<span class="value">"com.example.gaby.fragmentbestpacticey.NewsContentFragment"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"0dp"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_weight</span>=<span class="value">"3"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://gabygoole.com/2015/12/16/碎片最佳实践-简易版的新闻应用/" data-title="碎片最佳实践-简易版的新闻应用 | Gabygoole&#39;s blog" data-tsina="纵横捭阖gov## 用于微博秀和微博分享" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/12/15/初探碎片/"  title="初探碎片">
+ <strong>下一篇：</strong><br/> 
+ <span>初探碎片
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/12/16/碎片最佳实践-简易版的新闻应用/" data-title="碎片最佳实践-简易版的新闻应用" data-url="http://gabygoole.com/2015/12/16/碎片最佳实践-简易版的新闻应用/"></div>
+</section>
+
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#先上成果图"><span class="toc-number">1.</span> <span class="toc-text">先上成果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主体思想"><span class="toc-number">2.</span> <span class="toc-text">主体思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遇到的问题"><span class="toc-number">3.</span> <span class="toc-text">遇到的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上代码"><span class="toc-number">4.</span> <span class="toc-text">上代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码结构"><span class="toc-number">4.1.</span> <span class="toc-text">代码结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#News-class"><span class="toc-number">4.2.</span> <span class="toc-text">News.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NewsAdapter-class"><span class="toc-number">4.3.</span> <span class="toc-text">NewsAdapter.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NewsContentFragment-class"><span class="toc-number">4.4.</span> <span class="toc-text">NewsContentFragment.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NewsTitleFragment-class"><span class="toc-number">4.5.</span> <span class="toc-text">NewsTitleFragment.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#content_frag-xml"><span class="toc-number">4.6.</span> <span class="toc-text">content_frag.xml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#newsTitle_frag-xml"><span class="toc-number">4.7.</span> <span class="toc-text">newsTitle_frag.xml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#title_item-xml"><span class="toc-number">4.8.</span> <span class="toc-text">title_item.xml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#content-xml"><span class="toc-number">4.9.</span> <span class="toc-text">content.xml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#layout-anctivity_main"><span class="toc-number">4.10.</span> <span class="toc-text">layout-anctivity_main</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#layout-sw600dp-activity_main"><span class="toc-number">4.11.</span> <span class="toc-text">layout-sw600dp-activity_main</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android控件及布局/" title="android控件及布局">android控件及布局<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.trinea.cn/" target="_blank" title="Trinea&#39;s blog">Trinea&#39;s blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/guolin_blog" target="_blank" title="郭霖的博客">郭霖的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.daimajia.com/" target="_blank" title="代码家的博客">代码家的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.slyar.com/blog/" target="_blank" title="slyar&#39;s blog">slyar&#39;s blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Talk is cheap,show me the code <br/>
+			每天让你起床的是什么...</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2232962361/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/gabygoole" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/5617711/%E9%83%AD%E4%BD%B3%E4%B9%90" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/gabygoole" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/gabygoole" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/view?id=AAMAABu5UikBDdt957vGRQErNDY6XHAgKgW7rfI&amp;trk=hp-identity-name" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/138678711/" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/jia-guo-67" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:gabygoole@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="GabyGoole">GabyGoole</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Gaby"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'disqus_6bhiovEzfI';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a630a6219ab3f6044135d9da2fc5e1f6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
