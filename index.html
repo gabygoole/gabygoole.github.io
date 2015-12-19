@@ -87,6 +87,66 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/12/18/广播的最佳实践-实现强制下线功能/" title="广播的最佳实践-实现强制下线功能" itemprop="url">广播的最佳实践-实现强制下线功能</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-18T15:35:18.000Z" itemprop="datePublished"> 发表于 2015-12-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="主体思想">主体思想</h3><p>使用ActivityCollector来收集所有活动，所有的活动均继承自BaseActivity，使得每个活动在onCreate方法执行时，都会被加入到AcrivityCollector中。在每个活动onDestroy时都会从ActivityCollector中移除。这样就可以一次性将所有的活动全部销毁。在登陆界面输入账号密码，代码的设定是只有当敲击Login按钮时才会去获取两个EditText中，符合逻辑</p>
+<p>交互的流程是，输入账号密码，无误后跳转到MainActivity，点击按钮发送广播，app中的recreiver接收到广播执行onReceive方法，弹出AlertDialog窗口，给ok按钮设置监听。按下ok之后，用ActivityCollector销毁所有活动，重新加载login活动<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/12/18/广播的最佳实践-实现强制下线功能/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/18/广播的最佳实践-实现强制下线功能/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/18/广播的最佳实践-实现强制下线功能/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/12/16/碎片最佳实践-简易版的新闻应用/" title="碎片最佳实践-简易版的新闻应用" itemprop="url">碎片最佳实践-简易版的新闻应用</a>
   </h1>
   <p class="article-author">By
@@ -652,7 +712,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/android/" title="android">android<sup>7</sup></a></li>
+				<li><a href="/tags/android/" title="android">android<sup>8</sup></a></li>
 			
 		
 			

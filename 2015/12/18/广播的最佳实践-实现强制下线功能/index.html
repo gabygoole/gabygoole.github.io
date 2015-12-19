@@ -1,0 +1,541 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta name="msvalidate.01" content="73A9A026622736C583F45F45CFE98E93" />
+  <meta name="baidu-site-verification" content="8vcFms7qhq" />
+  <meta name="google-site-verification" content="61ceZMeFSYlefpKp5PVknazRCb2wAKFTxdeA6AerqOI" />
+  <meta charset="UTF-8">
+  
+    <title>广播的最佳实践-实现强制下线功能 | Gabygoole&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="GabyGoole">
+    
+
+    
+    <meta name="description" content="主体思想使用ActivityCollector来收集所有活动，所有的活动均继承自BaseActivity，使得每个活动在onCreate方法执行时，都会被加入到AcrivityCollector中。在每个活动onDestroy时都会从ActivityCollector中移除。这样就可以一次性将所有的活动全部销毁。在登陆界面输入账号密码，代码的设定是只有当敲击Login按钮时才会去获取两个EditT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="广播的最佳实践-实现强制下线功能">
+<meta property="og:url" content="http://gabygoole.com/2015/12/18/广播的最佳实践-实现强制下线功能/index.html">
+<meta property="og:site_name" content="Gabygoole's blog">
+<meta property="og:description" content="主体思想使用ActivityCollector来收集所有活动，所有的活动均继承自BaseActivity，使得每个活动在onCreate方法执行时，都会被加入到AcrivityCollector中。在每个活动onDestroy时都会从ActivityCollector中移除。这样就可以一次性将所有的活动全部销毁。在登陆界面输入账号密码，代码的设定是只有当敲击Login按钮时才会去获取两个EditT">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/85184d39gw1ez4znld8nuj20as08cdh1.jpg">
+<meta property="og:updated_time" content="2015-12-19T07:22:54.079Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="广播的最佳实践-实现强制下线功能">
+<meta name="twitter:description" content="主体思想使用ActivityCollector来收集所有活动，所有的活动均继承自BaseActivity，使得每个活动在onCreate方法执行时，都会被加入到AcrivityCollector中。在每个活动onDestroy时都会从ActivityCollector中移除。这样就可以一次性将所有的活动全部销毁。在登陆界面输入账号密码，代码的设定是只有当敲击Login按钮时才会去获取两个EditT">
+<meta name="twitter:creator" content="@gabygoole">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Gabygoole&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jackman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jackman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/bull.png" alt="Gabygoole&#39;s blog" title="Gabygoole&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Gabygoole&#39;s blog">Gabygoole&#39;s blog</a></h1>
+				<h2 class="blog-motto">poetry,beauty,romance,love,these are what we stay alive for.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:gabygoole.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/18/广播的最佳实践-实现强制下线功能/" title="广播的最佳实践-实现强制下线功能" itemprop="url">广播的最佳实践-实现强制下线功能</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-18T15:35:18.000Z" itemprop="datePublished"> 发表于 2015-12-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#主体思想"><span class="toc-number">1.</span> <span class="toc-text">主体思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#值得注意"><span class="toc-number">2.</span> <span class="toc-text">值得注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码结构"><span class="toc-number">3.</span> <span class="toc-text">代码结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上代码"><span class="toc-number">4.</span> <span class="toc-text">上代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ActivityCollector-class"><span class="toc-number">4.1.</span> <span class="toc-text">ActivityCollector.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BaseActivity-class"><span class="toc-number">4.2.</span> <span class="toc-text">BaseActivity.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#forceReceiver-class"><span class="toc-number">4.3.</span> <span class="toc-text">forceReceiver.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#loginActivity-class"><span class="toc-number">4.4.</span> <span class="toc-text">loginActivity.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MainActivity-class"><span class="toc-number">4.5.</span> <span class="toc-text">MainActivity.class</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#零散笔记"><span class="toc-number">5.</span> <span class="toc-text">零散笔记</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="主体思想">主体思想</h3><p>使用ActivityCollector来收集所有活动，所有的活动均继承自BaseActivity，使得每个活动在onCreate方法执行时，都会被加入到AcrivityCollector中。在每个活动onDestroy时都会从ActivityCollector中移除。这样就可以一次性将所有的活动全部销毁。在登陆界面输入账号密码，代码的设定是只有当敲击Login按钮时才会去获取两个EditText中，符合逻辑</p>
+<p>交互的流程是，输入账号密码，无误后跳转到MainActivity，点击按钮发送广播，app中的recreiver接收到广播执行onReceive方法，弹出AlertDialog窗口，给ok按钮设置监听。按下ok之后，用ActivityCollector销毁所有活动，重新加载login活动<br><a id="more"></a></p>
+<h3 id="值得注意">值得注意</h3><p>因为是从接收器中弹出活动，intent需加入<code>FLAG_ACTIVITY_NEW_TASK</code>，形如<code>intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)</code>,在接受器里启动活动，需以这样的格式：<code>context.startActivity(intent)</code>,而intent的初始化是以这样的形式：<code>Intent intent = new Intent(context,MainActivity.class)</code>,似乎在接收器里都用context来表示接收器的上下文</p>
+<p>再有，因为提示框是从广播接收器中弹出的，所以需要把对话框的类型设置为<code>TYPE_SYSTEM_ALERT</code>，形如：<code>alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT)</code>,由于都调用了系统级别的对话框，也需要在Manifest文件下注册<code>&lt;user-permission android:name=&quot;android.permission.SYSTEM_ALERT_WINDOW&quot;&gt;</code>,该应用才能使用该对话框</p>
+<p>另外需要注意的是，AlertDialog的造法：<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">AlertDialog</span>.<span class="type">Builder</span> builder = new <span class="type">AlertDialog</span>.<span class="type">Builder</span>(context)</span><br><span class="line">builder.setTitle</span><br><span class="line">builder.setMessage</span><br><span class="line">builder.setPositiveButton(<span class="string">"OK"</span>,new <span class="type">OnclickListener</span><span class="decorator">&#123;....&#125;</span>)</span><br><span class="line"><span class="type">AlertDialog</span> alertDialog = builder.create();</span><br><span class="line">alertDialog.getWindow().setType(<span class="type">WindowManager</span>.<span class="type">LayoutParams</span>.<span class="type">TYPE_SYSTEM_ALERT</span>)</span><br><span class="line">alertDialog.show()</span><br></pre></td></tr></table></figure></p>
+<p>先弄个builder，再用这个builder去建一个AlertDialog，接着再设置这个AlertDialog的类型，最后让他show出来</p>
+<h3 id="代码结构">代码结构</h3><p><img src="http://ww1.sinaimg.cn/large/85184d39gw1ez4znld8nuj20as08cdh1.jpg" alt="代码结构"></p>
+<h3 id="上代码">上代码</h3><h4 id="ActivityCollector-class">ActivityCollector.class</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ActivityCollector</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Activity&gt; activities = <span class="keyword">new</span> ArrayList&lt;Activity&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addActivity</span>(<span class="params">Activity activity</span>)</span>&#123;</span><br><span class="line">        activities.add(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeActivity</span>(<span class="params">Activity activity</span>)</span>&#123;</span><br><span class="line">        activities.remove(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">finishAll</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(Activity activity : activities)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!activity.isFinishing())&#123;</span><br><span class="line">                activity.finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="BaseActivity-class">BaseActivity.class</h4><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Activity</span>&#123;</span></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        <span class="type">ActivityCollector</span>.addActivity(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> void onDestroy() &#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        <span class="type">ActivityCollector</span>.removeActivity(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="forceReceiver-class">forceReceiver.class</h4><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">ForceOffReceiver</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">BroadcastReceiver</span>&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    public void onReceive(<span class="keyword">final</span> <span class="type">Context</span> context, <span class="keyword">final</span> <span class="type">Intent</span> intent) &#123;</span><br><span class="line">        <span class="type">AlertDialog</span>.<span class="type">Builder</span> builder = <span class="keyword">new</span> <span class="type">AlertDialog</span>.<span class="type">Builder</span>(context);</span><br><span class="line">        builder.setTitle(<span class="string">"Waring"</span>);</span><br><span class="line">        builder.setCancelable(<span class="literal">false</span>);</span><br><span class="line">        builder.setMessage(<span class="string">"you are forced to offline"</span>);</span><br><span class="line">        builder.setPositiveButton(<span class="string">"OK"</span>, <span class="keyword">new</span> <span class="type">DialogInterface</span>.<span class="type">OnClickListener</span>() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            public void onClick(<span class="type">DialogInterface</span> dialog, int which) &#123;</span><br><span class="line">                <span class="type">ActivityCollector</span>.finishAll();</span><br><span class="line">                <span class="type">Intent</span> intent1 = <span class="keyword">new</span> <span class="type">Intent</span>(context,loginActivity.<span class="keyword">class</span>);</span><br><span class="line">                intent1.addFlags(<span class="type">Intent</span>.<span class="type">FLAG_ACTIVITY_NEW_TASK</span>);</span><br><span class="line">                context.startActivity(intent1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="type">AlertDialog</span> alertDialog = builder.create();</span><br><span class="line">        alertDialog.getWindow().setType(<span class="type">WindowManager</span>.<span class="type">LayoutParams</span>.<span class="type">TYPE_SYSTEM_ALERT</span>);</span><br><span class="line">        alertDialog.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="loginActivity-class">loginActivity.class</h4><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">loginActivity</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">BaseActivity</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="type">EditText</span> accountEdit;</span><br><span class="line"></span><br><span class="line">    <span class="type">EditText</span> passwordEdit;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(<span class="type">R</span>.layout.activity_login);</span><br><span class="line">        accountEdit = (<span class="type">EditText</span>) findViewById(<span class="type">R</span>.id.content_account);</span><br><span class="line">        passwordEdit = (<span class="type">EditText</span>) findViewById(<span class="type">R</span>.id.content_password);</span><br><span class="line">        <span class="type">Button</span> btn = (<span class="type">Button</span>) findViewById(<span class="type">R</span>.id.btn_login);</span><br><span class="line">        btn.setOnClickListener(<span class="keyword">new</span> <span class="type">View</span>.<span class="type">OnClickListener</span>() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            public void onClick(<span class="type">View</span> v) &#123;</span><br><span class="line">                <span class="type">String</span> account = accountEdit.getText().toString();</span><br><span class="line">                <span class="type">String</span> password = passwordEdit.getText().toString();</span><br><span class="line">                <span class="keyword">if</span>(account.equals(<span class="string">"guojiale"</span>) &amp;&amp; password.equals(<span class="string">"123456"</span>))&#123;</span><br><span class="line">                    <span class="type">Intent</span> intent = <span class="keyword">new</span> <span class="type">Intent</span>(loginActivity.<span class="keyword">this</span>,<span class="type">MainActivity</span>.<span class="keyword">class</span>);</span><br><span class="line">                    startActivity(intent);</span><br><span class="line">                &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="type">Toast</span>.makeText(loginActivity.<span class="keyword">this</span>, <span class="string">"Check your account and password"</span>, <span class="type">Toast</span>.<span class="type">LENGTH_SHORT</span>).show();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="MainActivity-class">MainActivity.class</h4><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">BaseActivity</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(<span class="type">R</span>.layout.activity_main);</span><br><span class="line">        <span class="type">Button</span> button = (<span class="type">Button</span>) findViewById(<span class="type">R</span>.id.btn_sendBrodcast);</span><br><span class="line">        button.setOnClickListener(<span class="keyword">new</span> <span class="type">View</span>.<span class="type">OnClickListener</span>() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            public void onClick(<span class="type">View</span> v) &#123;</span><br><span class="line">                <span class="type">Intent</span> intent = <span class="keyword">new</span> <span class="type">Intent</span>(<span class="string">"forceOff"</span>);</span><br><span class="line">                sendBroadcast(intent);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="零散笔记">零散笔记</h3><p>广播接收器中不允许开线程，如果广播接收器中有太多操作，耗时太长，程序会报错</p>
+<p>在一个应用的Manifest文件中，配置<user-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"><br>使得该应用获得监听系统开机广播的权限，在<application>中，写<receiver android:name="BOOT_COMPLETED" ..<intent-filter=""> rr这是在注册监听器</receiver></application></user-permission></p>
+<p>在manifest中receiver（接收器）的intent-filter中的action是表示该接收器监听的广播类型一旦收到相应类型的广播，就会执行该接收器中的逻辑</p>
+<p>在一个活动中发送广播，<code>sendBroadcast</code>为发送标准广播,<code>sendOrderedBroadcast</code>为发送有序广播，在Manifest文件下配置<code>receiver</code>需要的<code>intentFilter</code>,用<code>priority</code>来判断接收器的接收顺序</p>
+<p>使用<code>abortBroadcast()</code> 截断广播<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LocalBroadcastManager <span class="keyword">l</span> = LocalBraodcastManager.getInstace(this)</span><br><span class="line"><span class="keyword">l</span>.registerReceiver(localReceiver,intentFilter);</span><br><span class="line"><span class="keyword">l</span>.sendBroadcast(intent)</span><br><span class="line"><span class="keyword">l</span>.unregisterReceiver(localReceiver)</span><br></pre></td></tr></table></figure></p>
+<p>抛出异常：<br> java.lang.RuntimeException: Unable to start receiver com.example.gaby.broadcastbestpractice.ForceOffReceiver: android.view.WindowManager<code>$</code>BadTokenException: Unable to add window android.view.ViewRootImpl$W@d5bf998 – permission denied for this window type</p>
+<p>原因：使用了系统级别的对话框，但没有在Manifest文件下声明该权限<br>解决办法:在Manifest文件下声明&lt; user-permission android:name=”android.permission.SYSTEM_ALERT_WINDOW” /&gt;</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://gabygoole.com/2015/12/18/广播的最佳实践-实现强制下线功能/" data-title="广播的最佳实践-实现强制下线功能 | Gabygoole&#39;s blog" data-tsina="纵横捭阖gov## 用于微博秀和微博分享" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/12/16/碎片最佳实践-简易版的新闻应用/"  title="碎片最佳实践-简易版的新闻应用">
+ <strong>下一篇：</strong><br/> 
+ <span>碎片最佳实践-简易版的新闻应用
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/12/18/广播的最佳实践-实现强制下线功能/" data-title="广播的最佳实践-实现强制下线功能" data-url="http://gabygoole.com/2015/12/18/广播的最佳实践-实现强制下线功能/"></div>
+</section>
+
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#主体思想"><span class="toc-number">1.</span> <span class="toc-text">主体思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#值得注意"><span class="toc-number">2.</span> <span class="toc-text">值得注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码结构"><span class="toc-number">3.</span> <span class="toc-text">代码结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上代码"><span class="toc-number">4.</span> <span class="toc-text">上代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ActivityCollector-class"><span class="toc-number">4.1.</span> <span class="toc-text">ActivityCollector.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BaseActivity-class"><span class="toc-number">4.2.</span> <span class="toc-text">BaseActivity.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#forceReceiver-class"><span class="toc-number">4.3.</span> <span class="toc-text">forceReceiver.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#loginActivity-class"><span class="toc-number">4.4.</span> <span class="toc-text">loginActivity.class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MainActivity-class"><span class="toc-number">4.5.</span> <span class="toc-text">MainActivity.class</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#零散笔记"><span class="toc-number">5.</span> <span class="toc-text">零散笔记</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android控件及布局/" title="android控件及布局">android控件及布局<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.trinea.cn/" target="_blank" title="Trinea&#39;s blog">Trinea&#39;s blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/guolin_blog" target="_blank" title="郭霖的博客">郭霖的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.daimajia.com/" target="_blank" title="代码家的博客">代码家的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.slyar.com/blog/" target="_blank" title="slyar&#39;s blog">slyar&#39;s blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Talk is cheap,show me the code <br/>
+			每天让你起床的是什么...</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2232962361/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/gabygoole" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/5617711/%E9%83%AD%E4%BD%B3%E4%B9%90" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/gabygoole" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/gabygoole" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/view?id=AAMAABu5UikBDdt957vGRQErNDY6XHAgKgW7rfI&amp;trk=hp-identity-name" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/138678711/" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/jia-guo-67" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:gabygoole@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="GabyGoole">GabyGoole</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Gaby"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'disqus_6bhiovEzfI';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a630a6219ab3f6044135d9da2fc5e1f6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
