@@ -87,6 +87,188 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/12/23/数据存储-持久化技术/" title="数据存储-持久化技术" itemprop="url">数据存储-持久化技术</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-23T15:23:32.000Z" itemprop="datePublished"> 发表于 2015-12-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="使用文件存储数据">使用文件存储数据</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span>(<span class="params">String inputText</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">       FileOutputStream <span class="keyword">out</span> = <span class="keyword">null</span>;</span><br><span class="line">       BufferedWriter writer = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="keyword">out</span> = openFileOutput(<span class="string">"data"</span>,Context.MODE_PRIVATE);</span><br><span class="line">           writer = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(<span class="keyword">out</span>));</span><br><span class="line">           writer.write(inputText);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="keyword">if</span>(writer != <span class="keyword">null</span>)&#123;</span><br><span class="line">                   writer.close();</span><br><span class="line">               &#125;</span><br><span class="line">           &#125; <span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/12/23/数据存储-持久化技术/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/23/数据存储-持久化技术/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/23/数据存储-持久化技术/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/19/《廖雪峰的Git教程》学习笔记/" title="《廖雪峰的Git教程》学习笔记" itemprop="url">《廖雪峰的Git教程》学习笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-19T08:28:36.000Z" itemprop="datePublished"> 发表于 2015-12-19</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>首先下载git 打开git Bash</p>
+<p>由于是分布式控制系统，每台机器必须自报家门</p>
+<p>输入：</p>
+<p>$git config –global user.name “guojiale”</p>
+<p>$git config –global user.email “gil102@sina.cn”<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/12/19/《廖雪峰的Git教程》学习笔记/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Git/">Git</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/19/《廖雪峰的Git教程》学习笔记/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/19/《廖雪峰的Git教程》学习笔记/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand android" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/19/Android studio环境搭建/" title="Android Studio环境搭建" itemprop="url">Android Studio环境搭建</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-19T08:25:55.000Z" itemprop="datePublished"> 发表于 2015-12-19</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>遇到哪些坑:</p>
+<p>Gradle:configure project 卡死在此处<br>Haxm is not installed<br>hax is not working and emulator runs in emulation mode(Haxm安装之后)<br>Genymotion插件安装及使用<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/12/19/Android studio环境搭建/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/19/Android studio环境搭建/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/19/Android studio环境搭建/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/12/18/广播的最佳实践-实现强制下线功能/" title="广播的最佳实践-实现强制下线功能" itemprop="url">广播的最佳实践-实现强制下线功能</a>
   </h1>
   <p class="article-author">By
@@ -509,193 +691,10 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/12/09/购买域名、设置DNS/" title="购买域名、设置DNS" itemprop="url">购买域名、设置DNS</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
-		
-  <p class="article-time">
-    <time datetime="2015-12-09T09:01:28.000Z" itemprop="datePublished"> 发表于 2015-12-09</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="前往GoDaddy购买域名">前往GoDaddy购买域名</h2><p>如果翻墙上GoDaddy可能会被认为是老外，因而没有支付宝支付选项<br>解决办法：不建议清除cookies，推荐换个浏览器</p>
-<h2 id="前往github上gabygoole-github-io仓库">前往github上gabygoole.github.io仓库</h2><p>新建一个CNAME文件，填入买的域名:gabygoole.com<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/12/09/购买域名、设置DNS/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/hexo/">hexo</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/12/09/购买域名、设置DNS/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/09/购买域名、设置DNS/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/12/08/探究adroid活动/" title="探究adroid活动" itemprop="url">探究adroid活动</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
-		
-  <p class="article-time">
-    <time datetime="2015-12-08T14:19:38.000Z" itemprop="datePublished"> 发表于 2015-12-08</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Intent用处">Intent用处</h2><p>隐式使用intent，在被启动的activity的manifest文件配置该活动<action> <category><br>在出发活动建立intent时就写好<action>和<category></p>
-<p>网页浏览器用new intent 时用Intent.ACTION_VIEW<br>其在activity的manifest文件下的intent filter值为android.intent.action.VIEW<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="type">intent</span> = new <span class="type">Intent</span>(<span class="type">Intent</span>.ACTION_VIEW);//设置<span class="keyword">action</span></span><br><span class="line"><span class="type">intent</span>.setData(Uri.parse(<span class="string">"http://www.baidu.com"</span>));//将网址解析成一个Uri对象</span><br><span class="line">startActivity(<span class="type">intent</span>)//该方法会自动加上category为默认的android.<span class="type">intent</span>.category.<span class="keyword">DEFAULT</span></span><br></pre></td></tr></table></figure></p>
-<p>调用系统内置的拨号界面，new intent 时使用Intent.ACTION_DIAL<br>其值为android.intent.action.<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/12/08/探究adroid活动/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/android/">android</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/12/08/探究adroid活动/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/08/探究adroid活动/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/12/02/使用GitHub和Hexo搭建Blog/" title="使用GitHub和Hexo搭建Blog" itemprop="url">使用GitHub和Hexo搭建Blog</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
-		
-  <p class="article-time">
-    <time datetime="2015-12-02T08:53:00.000Z" itemprop="datePublished"> 发表于 2015-12-02</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Hexo是什么？"><a href="https://hexo.io/">Hexo</a>是什么？</h2><p><strong>A fast, simple &amp; powerful blog framework</strong><br>Hexo 是一个快速/简单/强有力的博客框架</p>
-<h2 id="基础搭建过程">基础搭建过程</h2><h3 id="1-_安装node-js_和_git">1. 安装<a href="https://nodejs.org/en/">node.js</a> 和 <a href="https://git-scm.com/downloads">git</a></h3><ul>
-<li>npm环境变量配置：node.js中自带npm，所以安装好后在Path处配置环境变量，通常node.js会自动配置：<code>C:\Program Files\nodejs\</code>，但就我遇到的情况，还得更具体到npm的位置，npm命令才能使用，即：<code>C:\Program Files\nodejs\node_modules\npm</code></li>
-<li>下载git后，git要先自报家门，参见<a href="http://www.cnblogs.com/gabygoole/p/4972633.html">gabygoole’s 博客</a></li>
-</ul>
-<h3 id="2-_安装Hexo,并hexo一个文件夹">2. 安装Hexo,并hexo一个文件夹</h3><ul>
-<li>桌面上打开<code>git bash</code>输入<code>$ npm install -g hexo-cli</code></li>
-<li>任意盘下创建你的blog文件夹,在该文件夹根目录下启动<code>git bash</code><br>输入：<code>$hexo init</code>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/12/02/使用GitHub和Hexo搭建Blog/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/hexo/">hexo</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/12/02/使用GitHub和Hexo搭建Blog/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/02/使用GitHub和Hexo搭建Blog/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
+  <nav id="page-nav" class="clearfix">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+  </nav>
 
 </div>
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
@@ -712,7 +711,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/android/" title="android">android<sup>8</sup></a></li>
+				<li><a href="/tags/android/" title="android">android<sup>10</sup></a></li>
 			
 		
 			
@@ -721,6 +720,10 @@
 		
 			
 				<li><a href="/tags/android控件及布局/" title="android控件及布局">android控件及布局<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
 			
 		
 		</ul>

@@ -1,0 +1,571 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta name="msvalidate.01" content="73A9A026622736C583F45F45CFE98E93" />
+  <meta name="baidu-site-verification" content="8vcFms7qhq" />
+  <meta name="google-site-verification" content="61ceZMeFSYlefpKp5PVknazRCb2wAKFTxdeA6AerqOI" />
+  <meta charset="UTF-8">
+  
+    <title>数据存储-持久化技术 | Gabygoole&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="GabyGoole">
+    
+
+    
+    <meta name="description" content="使用文件存储数据123456789101112131415161718192021public void save(String inputText)&amp;#123;       FileOutputStream out = null;       BufferedWriter writer = null;       try &amp;#123;           out = openFileOutput">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据存储-持久化技术">
+<meta property="og:url" content="http://gabygoole.com/2015/12/23/数据存储-持久化技术/index.html">
+<meta property="og:site_name" content="Gabygoole's blog">
+<meta property="og:description" content="使用文件存储数据123456789101112131415161718192021public void save(String inputText)&amp;#123;       FileOutputStream out = null;       BufferedWriter writer = null;       try &amp;#123;           out = openFileOutput">
+<meta property="og:updated_time" content="2015-12-23T15:46:30.280Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据存储-持久化技术">
+<meta name="twitter:description" content="使用文件存储数据123456789101112131415161718192021public void save(String inputText)&amp;#123;       FileOutputStream out = null;       BufferedWriter writer = null;       try &amp;#123;           out = openFileOutput">
+<meta name="twitter:creator" content="@gabygoole">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Gabygoole&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jackman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jackman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/bull.png" alt="Gabygoole&#39;s blog" title="Gabygoole&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Gabygoole&#39;s blog">Gabygoole&#39;s blog</a></h1>
+				<h2 class="blog-motto">poetry,beauty,romance,love,these are what we stay alive for.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:gabygoole.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/23/数据存储-持久化技术/" title="数据存储-持久化技术" itemprop="url">数据存储-持久化技术</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-23T15:23:32.000Z" itemprop="datePublished"> 发表于 2015-12-23</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用文件存储数据"><span class="toc-number">1.</span> <span class="toc-text">使用文件存储数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用SharedPreferences存储数据"><span class="toc-number">2.</span> <span class="toc-text">使用SharedPreferences存储数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用SQLite（DBMS）创建数据库存储数据"><span class="toc-number">3.</span> <span class="toc-text">使用SQLite（DBMS）创建数据库存储数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#细节理解："><span class="toc-number">3.1.</span> <span class="toc-text">细节理解：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#adb命令列举:"><span class="toc-number">3.2.</span> <span class="toc-text">adb命令列举:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQLite命令："><span class="toc-number">3.3.</span> <span class="toc-text">SQLite命令：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CRUD"><span class="toc-number">3.4.</span> <span class="toc-text">CRUD</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#向数据库中添加数据(db-insert())_(·)Create_添加"><span class="toc-number">3.4.1.</span> <span class="toc-text">向数据库中添加数据(db.insert())   (·)Create 添加</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查询数据(db-query())_(·)Retrieve"><span class="toc-number">3.4.2.</span> <span class="toc-text">查询数据(db.query())      (·)Retrieve</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#更新数据(db-update())_(·)Update_更新"><span class="toc-number">3.4.3.</span> <span class="toc-text">更新数据(db.update())               (·)Update 更新</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除数据(db-delete)_(·)Delete_删除"><span class="toc-number">3.4.4.</span> <span class="toc-text">删除数据(db.delete)                 (·)Delete 删除</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库的事务(ACID要么全成功，要么全失败)"><span class="toc-number">3.5.</span> <span class="toc-text">数据库的事务(ACID要么全成功，要么全失败)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#升级数据库的最佳写法"><span class="toc-number">3.6.</span> <span class="toc-text">升级数据库的最佳写法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#个人想法"><span class="toc-number">4.</span> <span class="toc-text">个人想法</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="使用文件存储数据">使用文件存储数据</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span>(<span class="params">String inputText</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">       FileOutputStream <span class="keyword">out</span> = <span class="keyword">null</span>;</span><br><span class="line">       BufferedWriter writer = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="keyword">out</span> = openFileOutput(<span class="string">"data"</span>,Context.MODE_PRIVATE);</span><br><span class="line">           writer = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(<span class="keyword">out</span>));</span><br><span class="line">           writer.write(inputText);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="keyword">if</span>(writer != <span class="keyword">null</span>)&#123;</span><br><span class="line">                   writer.close();</span><br><span class="line">               &#125;</span><br><span class="line">           &#125; <span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>使用openFileOutput/openFileInput搭配相应的java输入输出流使用文件来存储数据。另外，记得writer.close()。</p>
+<p>读取文件就将<code>FileOutputStream-&gt;FileInputStream</code>，<code>BufferedWriter-&gt;BufferedReader</code>,<code>wirter.write-&gt;reader.redline()</code><br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">String</span> load()&#123;</span><br><span class="line"></span><br><span class="line">       FileInputStream inputStream = <span class="keyword">null</span>;</span><br><span class="line">       <span class="keyword">BufferedReader</span> reader = <span class="keyword">null</span>;</span><br><span class="line">       StringBuilder content = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           inputStream = openFileInput(<span class="string">"data"</span>);</span><br><span class="line">           reader = <span class="keyword">new</span> <span class="keyword">BufferedReader</span>(<span class="keyword">new</span> InputStreamReader(inputStream));</span><br><span class="line">           <span class="keyword">String</span> <span class="built_in">line</span> = <span class="string">""</span>;</span><br><span class="line">           <span class="keyword">while</span> ((<span class="built_in">line</span> = reader.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">               content.<span class="built_in">append</span>(<span class="built_in">line</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">           <span class="keyword">if</span> (reader != <span class="keyword">null</span>)&#123;</span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                  reader.close();</span><br><span class="line">              &#125; <span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">                  e.printStackTrace();</span><br><span class="line">              &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> content.toString();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用SharedPreferences存储数据">使用SharedPreferences存储数据</h3><p> 存放数据<br><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SharedPreferences.Editor <span class="keyword">editor</span> = getSharedPreferences(<span class="string">"data"</span>,MODE_PRIVATE).edit();</span><br><span class="line"><span class="keyword">editor</span>.putString(<span class="string">"name"</span>,<span class="string">"Gaby"</span>);</span><br><span class="line"><span class="keyword">editor</span>.putBoolean(<span class="string">"married"</span>,false);</span><br><span class="line"><span class="keyword">editor</span>.putInt(<span class="string">"age"</span>,<span class="number">19</span>);</span><br><span class="line"><span class="keyword">editor</span>.commit();</span><br></pre></td></tr></table></figure></p>
+<p>数据以xml的形式存在</p>
+<p>取数据<br><figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SharedPreferences pref = getSharedPreferences(<span class="string">"data"</span>,MODE_PRIVATE);<span class="comment">//输入相对应的文件名</span></span><br><span class="line"><span class="built_in">String</span> name = pref<span class="built_in">.</span>getString(<span class="string">"name"</span>, <span class="string">""</span>);</span><br><span class="line">int age = pref<span class="built_in">.</span>getInt(<span class="string">"age"</span>,<span class="number">29</span>);</span><br><span class="line"><span class="built_in">Boolean</span> married = pref<span class="built_in">.</span>getBoolean(<span class="string">"married"</span>,<span class="literal">false</span>);</span><br><span class="line"><span class="keyword">Log</span><span class="built_in">.</span>d(<span class="string">"MainActivity"</span>,<span class="string">"name is"</span> + name);</span><br><span class="line"><span class="keyword">Log</span><span class="built_in">.</span>d(<span class="string">"MainActivity"</span>,<span class="string">"age is"</span> + age);</span><br><span class="line"><span class="keyword">Log</span><span class="built_in">.</span>d(<span class="string">"MainActivity"</span>,<span class="string">"married is "</span> + married);</span><br></pre></td></tr></table></figure></p>
+<p>加深理解：<br><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SharedPreferences pref;</span><br><span class="line">SharedPreferences.Editor <span class="keyword">editor</span>;</span><br><span class="line">    </span><br><span class="line">pref = PreferenceManager.getDefaultSharedPreferences(this);</span><br><span class="line">     </span><br><span class="line"><span class="keyword">editor</span> = pref.edit();</span><br><span class="line"></span><br><span class="line"><span class="keyword">editor</span>.putBoolean(<span class="string">"remember_password"</span>, true);                                     <span class="keyword">editor</span>.putString(<span class="string">"account"</span>, account);</span><br><span class="line"><span class="keyword">editor</span>.putString(<span class="string">"password"</span>, password);</span><br><span class="line"><span class="keyword">editor</span>.commit();    </span><br><span class="line"></span><br><span class="line"><span class="keyword">editor</span>.<span class="keyword">clear</span>();<span class="comment">//将SharedPreference中的数据全部清除掉t</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="使用SQLite（DBMS）创建数据库存储数据">使用SQLite（DBMS）创建数据库存储数据</h3><h4 id="细节理解：">细节理解：</h4><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dbHelper = <span class="keyword">new</span> MyDatabaseHelpoer(MainActivity.<span class="keyword">this</span>,<span class="string">"BookStore.db"</span>,<span class="literal">null</span>,<span class="number">1</span>);<span class="comment">//构建一个MydatabaseHelper对象</span></span><br><span class="line"></span><br><span class="line">dbHelper.getWritableDatabase();<span class="comment">//没找到BookStore.db这个数据库，即调用onCreate()创建该数据库</span></span><br></pre></td></tr></table></figure>
+<p>创建MyDatabaseHelper继承自SQLiteOpenHelper,覆写onCreate(),onCreate()中只需要包含数据库的操作就可以了(该数据库的名字即为构造函数中传入的名字)</p>
+<p>一个MyDatabaseHelper的对象创建一个数据库，在onCreate()函数中执行对这个数据库的操作</p>
+<p>创建好后，用ddms的explorer(顶上<code>Tools-&gt;Android-&gt;Android Device Monitor-&gt;File Exploer</code>，FileExplorer里的文件目录即为模拟器的文件目录)不能看到改数据库创建的表，用adb shell（adb是一个对连接的usb设备或者模拟器的调试器）看。要使用adb,需要先配置环境变量:增加<code>C:\Users\Gaby\AppData\Local\Android\sdk\platform-tools</code>到系统变量里面的Path,就可以在android studio 的terminal里使用</p>
+<p>FileExplorer中<code>/data/data/com.example.gaby.databasetest/databases/</code>目录下有两个文件</p>
+<ul>
+<li>xxx.db数据库</li>
+<li>xxx.db-journal是为让数据库能够支持事务而产生的临时日志文件</li>
+</ul>
+<p>建表语句:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static final String CREATE_BOOK = "<span class="operator"><span class="keyword">create</span> <span class="keyword">table</span> Book (<span class="string">"</span><br><span class="line">        + "</span><span class="keyword">name</span> <span class="built_in">text</span>, <span class="string">"</span><br><span class="line">        + "</span>author <span class="built_in">text</span>, <span class="string">"</span><br><span class="line">        + "</span>price <span class="built_in">real</span>, <span class="string">"</span><br><span class="line">        + "</span>pages <span class="built_in">integer</span>, <span class="string">"</span><br><span class="line">        + "</span><span class="keyword">id</span> <span class="built_in">integer</span> primary <span class="keyword">key</span> autoincrement)<span class="string">";</span></span></span><br></pre></td></tr></table></figure></p>
+<h4 id="adb命令列举:">adb命令列举:</h4><p><code>adb devices</code> 列出当前设备<br><code>adb shell</code> 进入设备的控制台<br><code>cd /data/data/com.example.gaby.databasetest/databases/</code>进入模拟器该文件夹下<br><code>ls</code>列出该目录下文件夹<br><code>sqlite3 BookStore.db</code> 打开数据库</p>
+<h4 id="SQLite命令：">SQLite命令：</h4><p><code>.table</code>显示数据库中有哪些表<br><code>.schema</code>查看建表语句<br><code>.exit</code>/<code>.quit</code> 退出改数据库<br><code>select * from tableName;</code>(有分号) 查询该表下有哪些纪录<br>接着<code>exit</code>退出设备控制台(adb)</p>
+<p>注意<code>execSQL(String s)</code>传入的是字符串</p>
+<h4 id="CRUD">CRUD</h4><p>以下是按Android提供过的API来做的，实际上还可直接用SQL来操作数据库，见《第一行代码》page 260</p>
+<h5 id="向数据库中添加数据(db-insert())_(·)Create_添加">向数据库中添加数据(db.insert())   (·)Create 添加</h5><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">addData.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">           <span class="variable">@Override</span></span><br><span class="line">           public void onClick(View v) &#123;</span><br><span class="line">               SQLiteDatabase db = dbHelper.getWritableDatabase();</span><br><span class="line">               ContentValues <span class="keyword">values</span> = new ContentValues();</span><br><span class="line">               <span class="regexp">//di</span> yi zu</span><br><span class="line">               <span class="keyword">values</span>.put(<span class="string">"name"</span>, <span class="string">"Game Of Thrones"</span>);</span><br><span class="line">               <span class="keyword">values</span>.put(<span class="string">"price"</span>,<span class="number">70.29</span>);</span><br><span class="line">               <span class="keyword">values</span>.put(<span class="string">"author"</span>,<span class="string">"George Martin"</span>);</span><br><span class="line">               <span class="keyword">values</span>.put(<span class="string">"pages"</span>,<span class="number">800</span>);</span><br><span class="line">               db.insert(<span class="string">"Book"</span>, null, <span class="keyword">values</span>);</span><br><span class="line">               <span class="regexp">//di</span> er zu</span><br><span class="line">               <span class="keyword">values</span>.clear();</span><br><span class="line">               <span class="keyword">values</span>.put(<span class="string">"name"</span>,<span class="string">"KaiFu's Saying"</span>);</span><br><span class="line">               <span class="keyword">values</span>.put(<span class="string">"price"</span>,<span class="number">50.34</span>);</span><br><span class="line">               <span class="keyword">values</span>.put(<span class="string">"author"</span>,<span class="string">"KaiFu"</span>);</span><br><span class="line">               <span class="keyword">values</span>.put(<span class="string">"pages"</span>,<span class="number">300</span>);</span><br><span class="line">               db.insert(<span class="string">"Book"</span>, null, <span class="keyword">values</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+<p>getWritableDatabase()和getReadableDatabase()除了升级和创建数据库，该方法本身会返回SQLiteDatabase对象。db.insert(“表名”， null, ContentValue对象)。</p>
+<h5 id="查询数据(db-query())_(·)Retrieve">查询数据(db.query())      (·)Retrieve</h5><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">queryData.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> onClick(View v) &#123;</span><br><span class="line">                SQLiteDatabase db = dbHelper.getWritableDatabase();</span><br><span class="line">                Cursor <span class="built_in">cursor</span> = db.query(<span class="string">"Book"</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>);</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">cursor</span>.moveToFirst())&#123;</span><br><span class="line">                    do&#123;</span><br><span class="line">                        <span class="keyword">String</span> name = <span class="built_in">cursor</span>.getString(<span class="built_in">cursor</span>.getColumnIndex(<span class="string">"name"</span>));</span><br><span class="line">                        <span class="keyword">String</span> author = <span class="built_in">cursor</span>.getString(<span class="built_in">cursor</span>.getColumnIndex(<span class="string">"author"</span>));</span><br><span class="line">                        <span class="built_in">int</span> pages = <span class="built_in">cursor</span>.getInt(<span class="built_in">cursor</span>.getColumnIndex(<span class="string">"pages"</span>));</span><br><span class="line">                        <span class="keyword">double</span> price =  <span class="built_in">cursor</span>.getDouble(<span class="built_in">cursor</span>.getColumnIndex(<span class="string">"price"</span>));</span><br><span class="line">                        Log.d(<span class="string">"MainActivity"</span>,<span class="string">"book name is"</span> + name);</span><br><span class="line">                        Log.d(<span class="string">"MainActivity"</span>,<span class="string">"book author is"</span> + author);</span><br><span class="line">                        Log.d(<span class="string">"MainActivity"</span>,<span class="string">"book pages is "</span> + pages);</span><br><span class="line">                        Log.d(<span class="string">"MainActivity"</span>,<span class="string">"book price is "</span> + price);</span><br><span class="line">                    &#125;<span class="keyword">while</span>(<span class="built_in">cursor</span>.moveToNext());</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p><code>db.query()</code>返回Cursor对象</p>
+<h5 id="更新数据(db-update())_(·)Update_更新">更新数据(db.update())               (·)Update 更新</h5><p> 注意：在MyDatabaseHelper中的onUpgrade()方法是用于升级数据库(如 多建/删除 一张表)。而更新数据，则是在特定表上修改数据<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">updataData.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                SQLiteDatabase db = dbHelper.getWritableDatabase();</span><br><span class="line">                ContentValues values = <span class="keyword">new</span> ContentValues();</span><br><span class="line">                values.put(<span class="string">"price"</span>,<span class="number">12.33</span>);</span><br><span class="line">                db.update(<span class="string">"Book"</span>, values, <span class="string">"name = ?"</span>,<span class="keyword">new</span> String [] &#123;<span class="string">"Game Of Thrones"</span>&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
+<h5 id="删除数据(db-delete)_(·)Delete_删除">删除数据(db.delete)                 (·)Delete 删除</h5><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">deleteData.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                SQLiteDatabase db = dbHelper.getWritableDatabase();</span><br><span class="line">                db.delete(<span class="string">"Book"</span>,<span class="string">"pages &gt; ?"</span>, <span class="keyword">new</span> String[] &#123; <span class="string">"300"</span> &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p>删除Book表中pages列值大于300的记录</p>
+<h4 id="数据库的事务(ACID要么全成功，要么全失败)">数据库的事务(ACID要么全成功，要么全失败)</h4><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">replaceData.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                SQLiteDatabase db = dbHelper.getWritableDatabase();</span><br><span class="line">                db.beginTransaction();</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    db.delete(<span class="string">"Book"</span>,<span class="keyword">null</span>,<span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">                    ContentValues values = <span class="keyword">new</span> ContentValues();</span><br><span class="line">                    values.put(<span class="string">"name"</span>,<span class="string">"MySQL Crash Course"</span>);</span><br><span class="line">                    values.put(<span class="string">"price"</span>,<span class="number">12.93</span>);</span><br><span class="line">                    values.put(<span class="string">"pages"</span>,<span class="number">400</span>);</span><br><span class="line">                    values.put(<span class="string">"author"</span>,<span class="string">"Ben Forta"</span>);</span><br><span class="line">                    db.insert(<span class="string">"Book"</span>,<span class="keyword">null</span>,values);</span><br><span class="line">                    db.setTransactionSuccessful();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                    db.endTransaction();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p>解读：中途出现异常，<code>db.setTransactionSuccessful()</code>得不到执行，当结束事务<code>db.endTransaction()</code>时发现事务未成功执行，旧数据就不会被删除</p>
+<h4 id="升级数据库的最佳写法">升级数据库的最佳写法</h4><p>需要注意以下几点：</p>
+<ul>
+<li>当用户下载的新版本覆盖安装旧版本时，实际上安装好的新版本应用程序具备所有新功能，只是数据库还残留在上一个版本，此时如果代码如下：<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> MyDatabaseHelpoer dbHelper;</span><br><span class="line">dbHelper = <span class="keyword">new</span> MyDatabaseHelpoer(MainActivity.<span class="keyword">this</span>,<span class="string">"BookStore.db"</span>,<span class="keyword">null</span>,<span class="number">6</span>);</span><br><span class="line">Button createDatabase = (Button) findViewById(R.id.createDatebase);</span><br><span class="line">createDatabase.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                dbHelper.getWritableDatabase();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>则可视为手动更新数据库。如果将<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> MyDatabaseHelpoer dbHelper;</span><br><span class="line">dbHelper = <span class="keyword">new</span> MyDatabaseHelpoer(MainActivity.<span class="keyword">this</span>,<span class="string">"BookStore.db"</span>,<span class="literal">null</span>,<span class="number">6</span>);</span><br><span class="line">dbHelper.getWritableDatabase();</span><br></pre></td></tr></table></figure></p>
+<p>直接放置在主活动的onCreate(),而不放置在某个监听中，那么伴随活动的启动，数据库就被更新了。需要注意的是，<code>dbHelper.getWritableDatabase()</code>是在没有名为”BookStore.db”的数据库时就创建(执行<code>MydatabaseHelper</code>的<code>onCreate()</code>函数)。如果本来就有，就会去执行<code>onUpdate()</code>函数，判断旧版本是哪一个，进而做出对数据库的更改</p>
+<ul>
+<li><p>新版本的不光要在onUpgrade()做出更改，还应以备旧版本更新。更要在onCreate()中做出完整的创建工作，以备用户直接下载新版本</p>
+</li>
+<li><p>在<code>onUpgrade()</code> 中的 <code>case</code> 不加 <code>break</code> , 原因就是如果跨版本升级。比如旧版本的数据库停留在第二版，应用安装好了，且新版本的数据库是第8版，在更新数据库时就要从第二版更新到第八版，依次升级，升级结束后此时的数据库版本号为8</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="keyword">int</span> oldVersion, <span class="keyword">int</span> newVersion)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (oldVersion)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">                db.execSQL(CREATE_MILK);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">                db.execSQL(<span class="string">"alter table Milk add column volume real"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="个人想法">个人想法</h3><p>对于版本更新的问题，比如手机版的qq，不可能没更新一个版本就在，onUpgrade()里加一个型号，应该会要有个版本间隔（允许的最新和最旧的版本区间），不然200年以后，以腾讯的产品迭代速度，onUpgrade()里面的代码就太多了…</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://gabygoole.com/2015/12/23/数据存储-持久化技术/" data-title="数据存储-持久化技术 | Gabygoole&#39;s blog" data-tsina="纵横捭阖gov## 用于微博秀和微博分享" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/12/19/《廖雪峰的Git教程》学习笔记/"  title="《廖雪峰的Git教程》学习笔记">
+ <strong>下一篇：</strong><br/> 
+ <span>《廖雪峰的Git教程》学习笔记
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/12/23/数据存储-持久化技术/" data-title="数据存储-持久化技术" data-url="http://gabygoole.com/2015/12/23/数据存储-持久化技术/"></div>
+</section>
+
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用文件存储数据"><span class="toc-number">1.</span> <span class="toc-text">使用文件存储数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用SharedPreferences存储数据"><span class="toc-number">2.</span> <span class="toc-text">使用SharedPreferences存储数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用SQLite（DBMS）创建数据库存储数据"><span class="toc-number">3.</span> <span class="toc-text">使用SQLite（DBMS）创建数据库存储数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#细节理解："><span class="toc-number">3.1.</span> <span class="toc-text">细节理解：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#adb命令列举:"><span class="toc-number">3.2.</span> <span class="toc-text">adb命令列举:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQLite命令："><span class="toc-number">3.3.</span> <span class="toc-text">SQLite命令：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CRUD"><span class="toc-number">3.4.</span> <span class="toc-text">CRUD</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#向数据库中添加数据(db-insert())_(·)Create_添加"><span class="toc-number">3.4.1.</span> <span class="toc-text">向数据库中添加数据(db.insert())   (·)Create 添加</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查询数据(db-query())_(·)Retrieve"><span class="toc-number">3.4.2.</span> <span class="toc-text">查询数据(db.query())      (·)Retrieve</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#更新数据(db-update())_(·)Update_更新"><span class="toc-number">3.4.3.</span> <span class="toc-text">更新数据(db.update())               (·)Update 更新</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除数据(db-delete)_(·)Delete_删除"><span class="toc-number">3.4.4.</span> <span class="toc-text">删除数据(db.delete)                 (·)Delete 删除</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库的事务(ACID要么全成功，要么全失败)"><span class="toc-number">3.5.</span> <span class="toc-text">数据库的事务(ACID要么全成功，要么全失败)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#升级数据库的最佳写法"><span class="toc-number">3.6.</span> <span class="toc-text">升级数据库的最佳写法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#个人想法"><span class="toc-number">4.</span> <span class="toc-text">个人想法</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>10</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android控件及布局/" title="android控件及布局">android控件及布局<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.trinea.cn/" target="_blank" title="Trinea&#39;s blog">Trinea&#39;s blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/guolin_blog" target="_blank" title="郭霖的博客">郭霖的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.daimajia.com/" target="_blank" title="代码家的博客">代码家的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.slyar.com/blog/" target="_blank" title="slyar&#39;s blog">slyar&#39;s blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Talk is cheap,show me the code <br/>
+			每天让你起床的是什么...</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2232962361/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/gabygoole" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/5617711/%E9%83%AD%E4%BD%B3%E4%B9%90" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/gabygoole" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/gabygoole" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/view?id=AAMAABu5UikBDdt957vGRQErNDY6XHAgKgW7rfI&amp;trk=hp-identity-name" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/138678711/" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/jia-guo-67" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:gabygoole@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="GabyGoole">GabyGoole</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Gaby"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'disqus_6bhiovEzfI';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a630a6219ab3f6044135d9da2fc5e1f6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -7,26 +7,26 @@
   <meta name="google-site-verification" content="61ceZMeFSYlefpKp5PVknazRCb2wAKFTxdeA6AerqOI" />
   <meta charset="UTF-8">
   
-    <title>初探碎片 | Gabygoole&#39;s blog</title>
+    <title>Android Studio环境搭建 | Gabygoole&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="GabyGoole">
     
 
     
-    <meta name="description" content="解决android studio中使用碎片后，平板预览出错问题解决办法：在左右fragment各加tools:layout=&amp;quot;@layout/left_fragment&amp;quot;">
+    <meta name="description" content="遇到哪些坑:
+Gradle:configure project 卡死在此处Haxm is not installedhax is not working and emulator runs in emulation mode(Haxm安装之后)Genymotion插件安装及使用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初探碎片">
-<meta property="og:url" content="http://gabygoole.com/2015/12/15/初探碎片/index.html">
+<meta property="og:title" content="Android Studio环境搭建">
+<meta property="og:url" content="http://gabygoole.com/2015/12/19/Android studio环境搭建/index.html">
 <meta property="og:site_name" content="Gabygoole's blog">
-<meta property="og:description" content="解决android studio中使用碎片后，平板预览出错问题解决办法：在左右fragment各加tools:layout=&amp;quot;@layout/left_fragment&amp;quot;">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/85184d39gw1eyy7an6b2ij20e4086gls.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/85184d39gw1eyy7ecrts8j20da08iglt.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/85184d39gw1eyznahk9g0j20i90aw40z.jpg">
-<meta property="og:updated_time" content="2015-12-14T16:33:46.363Z">
+<meta property="og:description" content="遇到哪些坑:
+Gradle:configure project 卡死在此处Haxm is not installedhax is not working and emulator runs in emulation mode(Haxm安装之后)Genymotion插件安装及使用">
+<meta property="og:updated_time" content="2015-12-19T08:27:10.498Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初探碎片">
-<meta name="twitter:description" content="解决android studio中使用碎片后，平板预览出错问题解决办法：在左右fragment各加tools:layout=&amp;quot;@layout/left_fragment&amp;quot;">
+<meta name="twitter:title" content="Android Studio环境搭建">
+<meta name="twitter:description" content="遇到哪些坑:
+Gradle:configure project 卡死在此处Haxm is not installedhax is not working and emulator runs in emulation mode(Haxm安装之后)Genymotion插件安装及使用">
 <meta name="twitter:creator" content="@gabygoole">
 
     
@@ -83,20 +83,20 @@
 </div>
     </header>
     <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
+      <div id="main" class="android" itemscope itemprop="blogPost">
   
 	<article itemprop="articleBody"> 
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/12/15/初探碎片/" title="初探碎片" itemprop="url">初探碎片</a>
+      <a href="/2015/12/19/Android studio环境搭建/" title="Android Studio环境搭建" itemprop="url">Android Studio环境搭建</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
 		
   <p class="article-time">
-    <time datetime="2015-12-14T16:30:56.000Z" itemprop="datePublished"> 发表于 2015-12-15</time>
+    <time datetime="2015-12-19T08:25:55.000Z" itemprop="datePublished"> 发表于 2015-12-19</time>
     
   </p>
 </header>
@@ -105,25 +105,25 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#解决android_studio中使用碎片后，平板预览出错问题"><span class="toc-number">1.</span> <span class="toc-text">解决android studio中使用碎片后，平板预览出错问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态添加碎片"><span class="toc-number">2.</span> <span class="toc-text">动态添加碎片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在碎片中模拟返回栈"><span class="toc-number">3.</span> <span class="toc-text">在碎片中模拟返回栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#碎片的生命周期"><span class="toc-number">4.</span> <span class="toc-text">碎片的生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#preview无法显示"><span class="toc-number">5.</span> <span class="toc-text">preview无法显示</span></a></li></ol>
+			
 		
 		</div>
 		
-		<h3 id="解决android_studio中使用碎片后，平板预览出错问题">解决android studio中使用碎片后，平板预览出错问题</h3><p><img src="http://ww3.sinaimg.cn/large/85184d39gw1eyy7an6b2ij20e4086gls.jpg" alt="预览出错"><br>解决办法：<br>在左右fragment各加<code>tools:layout=&quot;@layout/left_fragment&quot;</code><br><a id="more"></a><br>问题地址，点进去后记得顶这个问题！<br>显示正常了：<br><img src="http://ww4.sinaimg.cn/large/85184d39gw1eyy7ecrts8j20da08iglt.jpg" alt="显示"></p>
-<p>其中，使用碎片的顺序应该是，写的方向则相反：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fragment-&#62;&#30862;&#29255;&#31867;: &#35843;&#29992;&#35813;&#31867;&#10;&#30862;&#29255;&#31867;-&#62;&#24067;&#23616;: &#21152;&#36733;&#35813;&#24067;&#23616;</span><br></pre></td></tr></table></figure></p>
-<h3 id="动态添加碎片">动态添加碎片</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建碎片类实例</span></span><br><span class="line">anotherFragment anotherFragment = new anotherFragment(); </span><br><span class="line"><span class="comment">//碎片管理器            </span></span><br><span class="line">android.<span class="keyword">app</span>.FragmentManager fragmentManager = getFragmentManager(); </span><br><span class="line"><span class="comment">//用碎片管理器开启事务</span></span><br><span class="line">FragmentTransaction transaction = fragmentManager.beginTransaction(); </span><br><span class="line"><span class="comment">//替换前者容器中的碎片实例，从这里可以看出，在布局文件&lt;fragment name="..."&gt;,实际上是创建了该碎片类的实例      </span></span><br><span class="line">transaction.<span class="keyword">replace</span>(R.id.right_container,anotherFragment);</span><br><span class="line"><span class="comment">//提交事务</span></span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
-<p>动态添加碎片实则是在一个容器中(此例为FrameLayout)将一个碎片(实例)替换成另一个碎片(实例)</p>
-<h3 id="在碎片中模拟返回栈">在碎片中模拟返回栈</h3><p>在事务(transaction)被commit前,添加<code>transaction.addToBackStack(null)</code>，按Back键可以返回事务前的状态</p>
-<p>从布局文件获取碎片实例，接着就可以调用碎片的方法：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LeftFragment leftfrag = (LeftFragment) getFragmentManager().findFragmentById(R.<span class="property">id</span>.left_frag);</span><br></pre></td></tr></table></figure></p>
-<p>碎片中调用活动的方法：<br>因为：活动)(1)&lt;–绑定–&gt;布局&lt;–包含–&gt;碎片-&gt;对应碎片类-&gt;在碎片类里面通过getActivity()获取相关联活动(1)</p>
-<h3 id="碎片的生命周期">碎片的生命周期</h3><ul>
-<li>若有在事务提交前 addToBackStack,那么起初的碎片会onPause-&gt;onStop-&gt;onDestroyView，按Back键会重新加载该碎片 onActivityCreated-&gt;onStart-&gt;onResume(没有onCreateView,原因是借助addToBackStack使得先前碎片的实例和视图得以保存)</li>
-<li>反之，在碎片被替换后，onDestroyView-&gt;onDestroy-&gt;onDetach</li>
-</ul>
-<h3 id="preview无法显示">preview无法显示</h3><p><img src="http://ww4.sinaimg.cn/large/85184d39gw1eyznahk9g0j20i90aw40z.jpg" alt="preview"></p>
-<p><a href="http://stackoverflow.com/questions/23898992/android-studio-google-map-v2-fragment-rendering" target="_blank" rel="external">问题的解答</a></p>
-<p>大致意思是，只要你代码写的对，真实运行的是时候就不会出错，忽略这个问题即可。我想会不会和上面的那个问题有关，加上<code>tools:layout=&quot;@layout/left_fragment&quot;</code>果然正确显示出来了</p>
-<p>其实，可以推理出，<code>tools:layout=&quot;@layout/left_fragment&quot;</code>不过是用了来自<code>xmlns:tools=&quot;http://schemas.android.com/tools&quot;</code>的工具，你不加，无非无法预览而已，该运行的还是运行起走</p>
+		<p>遇到哪些坑:</p>
+<p>Gradle:configure project 卡死在此处<br>Haxm is not installed<br>hax is not working and emulator runs in emulation mode(Haxm安装之后)<br>Genymotion插件安装及使用<br> <a id="more"></a></p>
+<p>他们的解决方法：</p>
+<p>Gradle:configure project<br>　　　　此处需要翻墙，等5-7min</p>
+<p>　　　　若不行，点击cancel在里面依然能完成gradle的下载配置</p>
+<p>Haxm is not installed<br>　　　　SDK manager-&gt;android SDK-&gt;SDK tools-&gt;安装Intel x86 Emulator Accelerrator</p>
+<p>　　　　安装好后进入这个文件夹：</p>
+<p>　　　　C:\Users\Gaby\AppData\Local\Android\sdk\extras\intel\Hardware_Accelerated_Execution_Manager</p>
+<p>　　　　启动intallHaxm.exe </p>
+<p>hax is not working and emulator runs in emulation mode(Haxm安装之后)<br>　　　　这个问题是安装Haxm时，设定的虚拟器大小1024MB</p>
+<p>　　　　点击AVD manager-&gt;Edit AVD-&gt;show advanced settings-&gt;在RAM处改成1024</p>
+<p>　　　　必须使得HAXM所配置的大小&gt;=某个模拟器的RAM大小</p>
+<p>Genymotion插件安装及使用<br>　　　　参见<a href="https://www.genymotion.com/#!/developers/user-guide#genymotion-plugin-for-android-studio" target="_blank" rel="external">https://www.genymotion.com/#!/developers/user-guide#genymotion-plugin-for-android-studio</a></p>
+<p>　　　　唯一需要注意的是,启动好的模拟器就别关了，桌面启动完成后</p>
+<p>　　　　再点击app的run，东西就会跳出来</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -141,7 +141,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://gabygoole.com/2015/12/15/初探碎片/" data-title="初探碎片 | Gabygoole&#39;s blog" data-tsina="纵横捭阖gov## 用于微博秀和微博分享" class="share clearfix">
+	  <div data-url="http://gabygoole.com/2015/12/19/Android studio环境搭建/" data-title="Android Studio环境搭建 | Gabygoole&#39;s blog" data-tsina="纵横捭阖gov## 用于微博秀和微博分享" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -155,18 +155,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/12/16/碎片最佳实践-简易版的新闻应用/" title="碎片最佳实践-简易版的新闻应用">
+ <a href="/2015/12/19/《廖雪峰的Git教程》学习笔记/" title="《廖雪峰的Git教程》学习笔记">
   <strong>上一篇：</strong><br/>
   <span>
-  碎片最佳实践-简易版的新闻应用</span>
+  《廖雪峰的Git教程》学习笔记</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/12/13/二探ListView/"  title="二探ListView">
+<a href="/2015/12/18/广播的最佳实践-实现强制下线功能/"  title="广播的最佳实践-实现强制下线功能">
  <strong>下一篇：</strong><br/> 
- <span>二探ListView
+ <span>广播的最佳实践-实现强制下线功能
 </span>
 </a>
 </div>
@@ -175,7 +175,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/12/15/初探碎片/" data-title="初探碎片" data-url="http://gabygoole.com/2015/12/15/初探碎片/"></div>
+	<div class="ds-thread" data-thread-key="2015/12/19/Android studio环境搭建/" data-title="Android Studio环境搭建" data-url="http://gabygoole.com/2015/12/19/Android studio环境搭建/"></div>
 </section>
 
 
@@ -187,13 +187,6 @@
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
- 
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#解决android_studio中使用碎片后，平板预览出错问题"><span class="toc-number">1.</span> <span class="toc-text">解决android studio中使用碎片后，平板预览出错问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态添加碎片"><span class="toc-number">2.</span> <span class="toc-text">动态添加碎片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在碎片中模拟返回栈"><span class="toc-number">3.</span> <span class="toc-text">在碎片中模拟返回栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#碎片的生命周期"><span class="toc-number">4.</span> <span class="toc-text">碎片的生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#preview无法显示"><span class="toc-number">5.</span> <span class="toc-text">preview无法显示</span></a></li></ol>
- 
-  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
@@ -398,55 +391,6 @@ $(document).ready(function(){
 </script>
 
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina'),
-      description = $this.attr('description');
-  var html = [
-  '<div class="hoverqrcode clearfix"></div>',
-  '<a class="overlay" id="qrcode"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
-  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-
-  $('.hoverqrcode').hide();
-
-  var myWidth = 0;
-  function updatehoverqrcode(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-    var qrsize = myWidth > 1024 ? 200:100;
-    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
-    var p = $('.article-share-qrcode').position();
-    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
-                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
-                          .qrcode(options);
-  };
-  $(window).resize(function(){
-    $('.hoverqrcode').hide();
-  });
-  $('.article-share-qrcode').click(function(){
-    updatehoverqrcode();
-    $('.hoverqrcode').toggle();
-  });
-  $('.article-share-qrcode').hover(function(){}, function(){
-      $('.hoverqrcode').hide();
-  });
-});   
-</script>
-
 
 
 <script type="text/javascript">
@@ -548,4 +492,4 @@ var _hmt = _hmt || [];
 <!-- Tiny_search End -->
 
   </body>
-</html>
+ </html>
