@@ -7,26 +7,23 @@
   <meta name="google-site-verification" content="61ceZMeFSYlefpKp5PVknazRCb2wAKFTxdeA6AerqOI" />
   <meta charset="UTF-8">
   
-    <title>初探碎片 | Gabygoole&#39;s blog</title>
+    <title>c语言结构体排序示例程序 | Gabygoole&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="GabyGoole">
     
 
     
-    <meta name="description" content="解决android studio中使用碎片后，平板预览出错问题解决办法：在左右fragment各加tools:layout=&amp;quot;@layout/left_fragment&amp;quot;">
+    <meta name="description" content="设计性实验编程实现对学生成绩表的相关信息排序。实验要求：⑴ 建立一个由n个学生的考试成绩表，每条信息由学号、姓名和分数组成。⑵ 按学号排序，并输出排序结果。⑶ 按分数排序，分数相同的则按学号有序，并输出排序结果。⑷ 排序方法及学生成绩表的存储结构不作限制，学生选择性能较好的即可。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初探碎片">
-<meta property="og:url" content="http://gabygoole.com/2015/12/15/初探碎片/index.html">
+<meta property="og:title" content="c语言结构体排序示例程序">
+<meta property="og:url" content="http://gabygoole.com/2015/12/27/c语言结构体排序示例程序/index.html">
 <meta property="og:site_name" content="Gabygoole's blog">
-<meta property="og:description" content="解决android studio中使用碎片后，平板预览出错问题解决办法：在左右fragment各加tools:layout=&amp;quot;@layout/left_fragment&amp;quot;">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/85184d39gw1eyy7an6b2ij20e4086gls.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/85184d39gw1eyy7ecrts8j20da08iglt.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/85184d39gw1eyznahk9g0j20i90aw40z.jpg">
-<meta property="og:updated_time" content="2015-12-14T16:33:46.363Z">
+<meta property="og:description" content="设计性实验编程实现对学生成绩表的相关信息排序。实验要求：⑴ 建立一个由n个学生的考试成绩表，每条信息由学号、姓名和分数组成。⑵ 按学号排序，并输出排序结果。⑶ 按分数排序，分数相同的则按学号有序，并输出排序结果。⑷ 排序方法及学生成绩表的存储结构不作限制，学生选择性能较好的即可。">
+<meta property="og:updated_time" content="2015-12-27T12:38:19.484Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初探碎片">
-<meta name="twitter:description" content="解决android studio中使用碎片后，平板预览出错问题解决办法：在左右fragment各加tools:layout=&amp;quot;@layout/left_fragment&amp;quot;">
+<meta name="twitter:title" content="c语言结构体排序示例程序">
+<meta name="twitter:description" content="设计性实验编程实现对学生成绩表的相关信息排序。实验要求：⑴ 建立一个由n个学生的考试成绩表，每条信息由学号、姓名和分数组成。⑵ 按学号排序，并输出排序结果。⑶ 按分数排序，分数相同的则按学号有序，并输出排序结果。⑷ 排序方法及学生成绩表的存储结构不作限制，学生选择性能较好的即可。">
 <meta name="twitter:creator" content="@gabygoole">
 
     
@@ -89,14 +86,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/12/15/初探碎片/" title="初探碎片" itemprop="url">初探碎片</a>
+      <a href="/2015/12/27/c语言结构体排序示例程序/" title="c语言结构体排序示例程序" itemprop="url">c语言结构体排序示例程序</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="GabyGoole" target="_blank" itemprop="author">GabyGoole</a>
 		
   <p class="article-time">
-    <time datetime="2015-12-14T16:30:56.000Z" itemprop="datePublished"> 发表于 2015-12-15</time>
+    <time datetime="2015-12-27T12:35:37.000Z" itemprop="datePublished"> 发表于 2015-12-27</time>
     
   </p>
 </header>
@@ -105,26 +102,12 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#解决android_studio中使用碎片后，平板预览出错问题"><span class="toc-number">1.</span> <span class="toc-text">解决android studio中使用碎片后，平板预览出错问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态添加碎片"><span class="toc-number">2.</span> <span class="toc-text">动态添加碎片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在碎片中模拟返回栈"><span class="toc-number">3.</span> <span class="toc-text">在碎片中模拟返回栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#碎片的生命周期"><span class="toc-number">4.</span> <span class="toc-text">碎片的生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#preview无法显示"><span class="toc-number">5.</span> <span class="toc-text">preview无法显示</span></a></li></ol>
+			
 		
 		</div>
 		
-		<h3 id="解决android_studio中使用碎片后，平板预览出错问题">解决android studio中使用碎片后，平板预览出错问题</h3><p><img src="http://ww3.sinaimg.cn/large/85184d39gw1eyy7an6b2ij20e4086gls.jpg" alt="预览出错"><br>解决办法：<br>在左右fragment各加<code>tools:layout=&quot;@layout/left_fragment&quot;</code><br><a id="more"></a><br>问题地址，点进去后记得顶这个问题！<br>显示正常了：<br><img src="http://ww4.sinaimg.cn/large/85184d39gw1eyy7ecrts8j20da08iglt.jpg" alt="显示"></p>
-<p>其中，使用碎片的顺序应该是，写的方向则相反：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fragment-&#62;&#30862;&#29255;&#31867;: &#35843;&#29992;&#35813;&#31867;&#10;&#30862;&#29255;&#31867;-&#62;&#24067;&#23616;: &#21152;&#36733;&#35813;&#24067;&#23616;</span><br></pre></td></tr></table></figure></p>
-<h3 id="动态添加碎片">动态添加碎片</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建碎片类实例</span></span><br><span class="line">anotherFragment anotherFragment = new anotherFragment(); </span><br><span class="line"><span class="comment">//碎片管理器            </span></span><br><span class="line">android.<span class="keyword">app</span>.FragmentManager fragmentManager = getFragmentManager(); </span><br><span class="line"><span class="comment">//用碎片管理器开启事务</span></span><br><span class="line">FragmentTransaction transaction = fragmentManager.beginTransaction(); </span><br><span class="line"><span class="comment">//替换前者容器中的碎片实例，从这里可以看出，在布局文件&lt;fragment name="..."&gt;,实际上是创建了该碎片类的实例      </span></span><br><span class="line">transaction.<span class="keyword">replace</span>(R.id.right_container,anotherFragment);</span><br><span class="line"><span class="comment">//提交事务</span></span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
-<p>动态添加碎片实则是在一个容器中(此例为FrameLayout)将一个碎片(实例)替换成另一个碎片(实例)</p>
-<h3 id="在碎片中模拟返回栈">在碎片中模拟返回栈</h3><p>在事务(transaction)被commit前,添加<code>transaction.addToBackStack(null)</code>，按Back键可以返回事务前的状态</p>
-<p>从布局文件获取碎片实例，接着就可以调用碎片的方法：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LeftFragment leftfrag = (LeftFragment) getFragmentManager().findFragmentById(R.<span class="property">id</span>.left_frag);</span><br></pre></td></tr></table></figure></p>
-<p>碎片中调用活动的方法：<br>因为：活动)(1)&lt;–绑定–&gt;布局&lt;–包含–&gt;碎片-&gt;对应碎片类-&gt;在碎片类里面通过getActivity()获取相关联活动(1)</p>
-<h3 id="碎片的生命周期">碎片的生命周期</h3><ul>
-<li>若有在事务提交前 addToBackStack,那么起初的碎片会onPause-&gt;onStop-&gt;onDestroyView，按Back键会重新加载该碎片 onActivityCreated-&gt;onStart-&gt;onResume(没有onCreateView,原因是借助addToBackStack使得先前碎片的实例和视图得以保存)</li>
-<li>反之，在碎片被替换后，onDestroyView-&gt;onDestroy-&gt;onDetach</li>
-</ul>
-<h3 id="preview无法显示">preview无法显示</h3><p><img src="http://ww4.sinaimg.cn/large/85184d39gw1eyznahk9g0j20i90aw40z.jpg" alt="preview"></p>
-<p><a href="http://stackoverflow.com/questions/23898992/android-studio-google-map-v2-fragment-rendering" target="_blank" rel="external">问题的解答</a></p>
-<p>大致意思是，只要你代码写的对，真实运行的是时候就不会出错，忽略这个问题即可。我想会不会和上面的那个问题有关，加上<code>tools:layout=&quot;@layout/left_fragment&quot;</code>果然正确显示出来了</p>
-<p>其实，可以推理出，<code>tools:layout=&quot;@layout/left_fragment&quot;</code>不过是用了来自<code>xmlns:tools=&quot;http://schemas.android.com/tools&quot;</code>的工具，你不加，无非无法预览而已，该运行的还是运行起走</p>
-  
+		<p>设计性实验<br>编程实现对学生成绩表的相关信息排序。<br>实验要求：<br>⑴ 建立一个由n个学生的考试成绩表，每条信息由学号、姓名和分数组成。<br>⑵ 按学号排序，并输出排序结果。<br>⑶ 按分数排序，分数相同的则按学号有序，并输出排序结果。<br>⑷ 排序方法及学生成绩表的存储结构不作限制，学生选择性能较好的即可。<br><a id="more"></a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> MaxSize <span class="number">50</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> Stu&#123;</span><br><span class="line">        <span class="keyword">char</span> *name;</span><br><span class="line">        <span class="keyword">int</span> id;</span><br><span class="line">        <span class="keyword">int</span> grade;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//按照学号排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span></span><br><span class="line"><span class="title">sortById</span><span class="params">(<span class="keyword">struct</span> Stu arr[<span class="number">5</span>])</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *a, <span class="keyword">const</span> <span class="keyword">void</span> *b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (*(<span class="keyword">struct</span> Stu *)a).id &gt; (*(<span class="keyword">struct</span> Stu *)b).id ? <span class="number">1</span>:-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    qsort(arr,<span class="number">5</span>,<span class="keyword">sizeof</span>(arr[<span class="number">0</span>]),cmp);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"按学号排序：\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%s %d %d\n"</span>,arr[i].name,arr[i].id,arr[i].grade);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//先按成绩后按学号</span></span><br><span class="line"><span class="function"><span class="keyword">void</span></span><br><span class="line"><span class="title">sortByGradeAndId</span><span class="params">(<span class="keyword">struct</span> Stu arr[<span class="number">5</span>])</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">Comp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *p1,<span class="keyword">const</span> <span class="keyword">void</span> *p2)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">struct</span> Stu *c=(<span class="keyword">struct</span> Stu *)p1;</span><br><span class="line">        <span class="keyword">struct</span> Stu *d=(<span class="keyword">struct</span> Stu *)p2;</span><br><span class="line">        <span class="keyword">if</span>(c-&gt;grade!=d-&gt;grade)</span><br><span class="line">                <span class="keyword">return</span> c-&gt;grade-d-&gt;grade;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> d-&gt;id - c-&gt;id;</span><br><span class="line">    &#125;</span><br><span class="line">    qsort(arr,<span class="number">5</span>,<span class="keyword">sizeof</span>(arr[<span class="number">0</span>]),Comp);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"先按成绩后按学号:\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%s %d %d\n"</span>,arr[i].name,arr[i].id,arr[i].grade);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">struct</span> Stu arrOfStudent[<span class="number">5</span>] = &#123;</span><br><span class="line">        &#123;<span class="string">"郭佳乐"</span>, <span class="number">20140356</span>, <span class="number">50</span>&#125;,</span><br><span class="line">        &#123;<span class="string">"张三"</span>, <span class="number">20140376</span>, <span class="number">53</span>&#125;,</span><br><span class="line">        &#123;<span class="string">"李四"</span>, <span class="number">20140279</span>, <span class="number">33</span>&#125;,</span><br><span class="line">        &#123;<span class="string">"网二麻子"</span>, <span class="number">20140367</span>, <span class="number">53</span>&#125;,</span><br><span class="line">        &#123;<span class="string">"隔壁老王"</span>, <span class="number">20140255</span>, <span class="number">89</span>&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    sortById(arrOfStudent);</span><br><span class="line">    sortByGradeAndId(arrOfStudent);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -132,7 +115,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/android/">android</a>
+  <span></span> <a href="/tags/C/">C</a>
   </div>
 
 </div>
@@ -141,7 +124,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://gabygoole.com/2015/12/15/初探碎片/" data-title="初探碎片 | Gabygoole&#39;s blog" data-tsina="纵横捭阖gov## 用于微博秀和微博分享" class="share clearfix">
+	  <div data-url="http://gabygoole.com/2015/12/27/c语言结构体排序示例程序/" data-title="c语言结构体排序示例程序 | Gabygoole&#39;s blog" data-tsina="纵横捭阖gov## 用于微博秀和微博分享" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -154,19 +137,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/12/16/碎片最佳实践-简易版的新闻应用/" title="碎片最佳实践-简易版的新闻应用">
-  <strong>上一篇：</strong><br/>
-  <span>
-  碎片最佳实践-简易版的新闻应用</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/12/13/二探ListView/"  title="二探ListView">
+<a href="/2015/12/23/数据存储-持久化技术/"  title="数据存储-持久化技术">
  <strong>下一篇：</strong><br/> 
- <span>二探ListView
+ <span>数据存储-持久化技术
 </span>
 </a>
 </div>
@@ -175,7 +150,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/12/15/初探碎片/" data-title="初探碎片" data-url="http://gabygoole.com/2015/12/15/初探碎片/"></div>
+	<div class="ds-thread" data-thread-key="2015/12/27/c语言结构体排序示例程序/" data-title="c语言结构体排序示例程序" data-url="http://gabygoole.com/2015/12/27/c语言结构体排序示例程序/"></div>
 </section>
 
 
@@ -191,7 +166,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#解决android_studio中使用碎片后，平板预览出错问题"><span class="toc-number">1.</span> <span class="toc-text">解决android studio中使用碎片后，平板预览出错问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态添加碎片"><span class="toc-number">2.</span> <span class="toc-text">动态添加碎片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在碎片中模拟返回栈"><span class="toc-number">3.</span> <span class="toc-text">在碎片中模拟返回栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#碎片的生命周期"><span class="toc-number">4.</span> <span class="toc-text">碎片的生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#preview无法显示"><span class="toc-number">5.</span> <span class="toc-text">preview无法显示</span></a></li></ol>
+ 
  
   </div>
 
